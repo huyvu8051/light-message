@@ -1,13 +1,12 @@
 package com.huyvu.lightmessage;
 
-import io.github.mderevyankoaqa.influxdb2.visualizer.InfluxDatabaseBackendListenerClient;
 import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.control.LoopController;
 import org.apache.jmeter.engine.StandardJMeterEngine;
 import org.apache.jmeter.protocol.http.sampler.HTTPSamplerProxy;
-import org.apache.jmeter.threads.ThreadGroup;
-import org.apache.jmeter.testelement.TestPlan;
 import org.apache.jmeter.save.SaveService;
+import org.apache.jmeter.testelement.TestPlan;
+import org.apache.jmeter.threads.ThreadGroup;
 import org.apache.jmeter.util.JMeterUtils;
 import org.apache.jmeter.visualizers.backend.BackendListener;
 import org.apache.jorphan.collections.ListedHashTree;
@@ -34,7 +33,7 @@ public class JMeterTestPlanGeneratorTest {
 
             // Create a Loop Controller
             LoopController loopController = new LoopController();
-            loopController.setLoops(1_000);
+            loopController.setLoops(100_000);
             loopController.setFirst(true);
             loopController.initialize();
 
@@ -69,8 +68,12 @@ public class JMeterTestPlanGeneratorTest {
             backendListenerProps.addArgument("influxDBBucket", "jmeter");            // Your InfluxDB bucket
 
 
-            backendListenerProps.addArgument("influxDBMaxBatchSize", "1000");             // Data write interval in milliseconds
-            backendListenerProps.addArgument("influxDBFlushInterval", "1000");             // Data write interval in milliseconds
+            backendListenerProps.addArgument("testName", "jmeter");
+            backendListenerProps.addArgument("nodeName", "jmeter");
+            backendListenerProps.addArgument("runId", "6969");
+
+            backendListenerProps.addArgument("influxDBMaxBatchSize", "2000");             // Data write interval in milliseconds
+            backendListenerProps.addArgument("influxDBFlushInterval", "4000");             // Data write interval in milliseconds
             backendListenerProps.addArgument("responseBodyLength", "1000");             // Data write interval in milliseconds
 
             backendListener.setArguments(backendListenerProps);
