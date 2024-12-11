@@ -1,7 +1,6 @@
 package com.huyvu.lightmessage;
 
 import org.apache.jmeter.control.LoopController;
-import org.apache.jmeter.engine.StandardJMeterEngine;
 import org.apache.jmeter.protocol.http.sampler.HTTPSamplerProxy;
 import org.apache.jmeter.threads.ThreadGroup;
 import org.apache.jmeter.testelement.TestPlan;
@@ -54,7 +53,8 @@ public class JMeterTestPlanGeneratorTest {
             SaveService.saveTree(testPlanTree, new FileOutputStream("target/example_test_plan.jmx"));
             System.out.println("Test Plan saved as example_test_plan.jmx");
 
-
+            jmeter.configure(testPlanTree);
+            jmeter.run();
 
         } catch (Exception e) {
             e.printStackTrace();
