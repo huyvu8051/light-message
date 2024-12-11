@@ -1,5 +1,6 @@
 package com.huyvu.lightmessage;
 
+import io.github.mderevyankoaqa.influxdb2.visualizer.InfluxDatabaseBackendListenerClient;
 import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.control.LoopController;
 import org.apache.jmeter.engine.StandardJMeterEngine;
@@ -56,17 +57,21 @@ public class JMeterTestPlanGeneratorTest {
 
             // Create a Backend Listener for Flux (InfluxDB)
             BackendListener backendListener = new BackendListener();
-            backendListener.setName("InfluxDB Backend Listener");
-            backendListener.setClassname("org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient");
+            backendListener.setName("InfluxDB 2.x Backend Listener");
+            backendListener.setClassname("io.github.mderevyankoaqa.influxdb2.visualizer.InfluxDatabaseBackendListenerClient");
 
             Arguments backendListenerProps = new Arguments();
 
-            backendListenerProps.addArgument("influxdbMetricsSender", "org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender");
-            backendListenerProps.addArgument("influxdbUrl", "http://localhost:8086/write?db=jmeter");
-            backendListenerProps.addArgument("application", "JMeter Test");
-            backendListenerProps.addArgument("measurement", "jmeter");
-            backendListenerProps.addArgument("summaryOnly", "false");
-            backendListenerProps.addArgument("influxdbToken", "MOmfJx2viblWwJz-vBgSuajs-fKJeouyToiaN3WC1Ykl2I57USDYFh_4juVlBxitNjbEbFBZk9P__0M1vpf9FQ==");
+            // Required properties for InfluxDB 2.x
+            backendListenerProps.addArgument("influxDBURL", "http://localhost:8086"); // InfluxDB server URL
+            backendListenerProps.addArgument("influxDBToken", "wsFnzuKBG6pu2d9ToRKo_33hRnUjdPVWZbutKLXM8GkBbG3xljcU4JROLWbQIJKxx4ft67UksMW1ct-i42c0EA=="); // Token for authentication
+            backendListenerProps.addArgument("influxDBOrganization", "example-org");           // Your InfluxDB organization
+            backendListenerProps.addArgument("influxDBBucket", "jmeter");            // Your InfluxDB bucket
+
+
+            backendListenerProps.addArgument("influxDBMaxBatchSize", "1000");             // Data write interval in milliseconds
+            backendListenerProps.addArgument("influxDBFlushInterval", "1000");             // Data write interval in milliseconds
+            backendListenerProps.addArgument("responseBodyLength", "1000");             // Data write interval in milliseconds
 
             backendListener.setArguments(backendListenerProps);
 
