@@ -1,18 +1,21 @@
 package com.huyvu.lightmessage;
 
 import org.apache.jmeter.control.LoopController;
+import org.apache.jmeter.engine.StandardJMeterEngine;
 import org.apache.jmeter.protocol.http.sampler.HTTPSamplerProxy;
 import org.apache.jmeter.threads.ThreadGroup;
 import org.apache.jmeter.testelement.TestPlan;
 import org.apache.jmeter.save.SaveService;
 import org.apache.jmeter.util.JMeterUtils;
-import org.apache.jorphan.collections.HashTree;
+import org.apache.jorphan.collections.ListedHashTree;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileOutputStream;
 
 public class JMeterTestPlanGeneratorTest {
 
+    @Disabled("Ignore during maven build")
     @Test
     void messageStressTest() {
         try {
@@ -25,8 +28,8 @@ public class JMeterTestPlanGeneratorTest {
 
             // Create a Loop Controller
             LoopController loopController = new LoopController();
-            loopController.setLoops(1); // Run 1 iteration
-            loopController.setFirst(true); // Start immediately
+            loopController.setLoops(10_000);
+            loopController.setFirst(true);
             loopController.initialize();
 
             // Create a Thread Group
@@ -38,22 +41,30 @@ public class JMeterTestPlanGeneratorTest {
 
             // Create an HTTP Sampler
             HTTPSamplerProxy httpSampler = new HTTPSamplerProxy();
-            httpSampler.setDomain("jsonplaceholder.typicode.com");
-            httpSampler.setPath("/posts/1");
-            httpSampler.setMethod("GET");
-            httpSampler.setName("Example HTTP Request");
+            httpSampler.setDomain("localhost");
+            httpSampler.setPort(8080);
+            httpSampler.setPath("/api/v1/messages");
+            httpSampler.setMethod("POST");
+            httpSampler.addNonEncodedArgument("", "{\"convId\":1,\"content\":\"Hello, World!\"}", "application/json");
+            httpSampler.setPostBodyRaw(true);
+            httpSampler.setName("Send Message HTTP Request");
 
             // Build the Test Plan tree
-            HashTree testPlanTree = new HashTree();
-            HashTree threadGroupTree = testPlanTree.add(testPlan);
-            HashTree samplerTree = threadGroupTree.add(threadGroup);
+            ListedHashTree testPlanTree = new ListedHashTree();
+            ListedHashTree threadGroupTree = testPlanTree.add(testPlan);
+            ListedHashTree samplerTree = threadGroupTree.add(threadGroup);
             samplerTree.add(httpSampler);
 
             // Save the Test Plan to a .jmx file
             SaveService.saveTree(testPlanTree, new FileOutputStream("target/example_test_plan.jmx"));
             System.out.println("Test Plan saved as example_test_plan.jmx");
 
+            // Execute the Test Plan programmatically
+            StandardJMeterEngine jmeterEngine = new StandardJMeterEngine();
+            jmeterEngine.configure(testPlanTree);
+            jmeterEngine.run();
 
+            System.out.println("Test execution completed.");
 
         } catch (Exception e) {
             e.printStackTrace();
