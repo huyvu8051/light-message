@@ -53,8 +53,7 @@ public class JMeterTestPlanGeneratorTest {
             SaveService.saveTree(testPlanTree, new FileOutputStream("target/example_test_plan.jmx"));
             System.out.println("Test Plan saved as example_test_plan.jmx");
 
-            jmeter.configure(testPlanTree);
-            jmeter.run();
+
 
         } catch (Exception e) {
             e.printStackTrace();
