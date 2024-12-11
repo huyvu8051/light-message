@@ -1,4 +1,4 @@
-package com.huyvu.lightmessage.security;
+package com.huyvu.lightmessage.exception;
 
 public class AuthenticationException extends RuntimeException {
     public AuthenticationException(String msg) {
