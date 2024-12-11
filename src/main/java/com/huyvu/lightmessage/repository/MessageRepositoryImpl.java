@@ -6,12 +6,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
 public class MessageRepositoryImpl implements MessageRepository {
-    private final AtomicLong ai = new AtomicLong(0);
+    private final AtomicLong messageKeyGen = new AtomicLong(1_000_000);
+    private final AtomicLong conversationKeyGen = new AtomicLong(2_000_000);
     private final Map<Long, MessageEntity> msgs = new ConcurrentHashMap<>();
     private final Map<Long, ConversationEntity> convs = new ConcurrentHashMap<>();
 
@@ -30,7 +32,7 @@ public class MessageRepositoryImpl implements MessageRepository {
 
     @Override
     public long getNextMessageId() {
-        return ai.incrementAndGet() + 100_000_000;
+        return messageKeyGen.incrementAndGet();
     }
 
 
@@ -50,7 +52,17 @@ public class MessageRepositoryImpl implements MessageRepository {
     }
 
     @Override
-    public ConversationEntity getConversation(long id) {
-        return convs.get(id);
+    public Optional<ConversationEntity> getConversation(long id) {
+        return Optional.of(convs.get(id));
+    }
+
+    @Override
+    public long getNextConversationId() {
+        return conversationKeyGen.incrementAndGet();
+    }
+
+    @Override
+    public void saveConversation(ConversationEntity conversation) {
+        convs.put(conversation.id(),conversation);
     }
 }

@@ -4,6 +4,7 @@ import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MessageRepository {
     List<MessageEntity> findAllMessages(long convId);
@@ -14,5 +15,9 @@ public interface MessageRepository {
 
     void updateConversationLastMessage(long convId, MessageEntity entity);
 
-    ConversationEntity getConversation(long id);
+    Optional<ConversationEntity> getConversation(long id);
+
+    long getNextConversationId();
+
+    void saveConversation(ConversationEntity conversation);
 }
