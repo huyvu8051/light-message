@@ -1,0 +1,56 @@
+package com.huyvu.lightmessage.repository;
+
+import com.huyvu.lightmessage.entity.ConversationEntity;
+import com.huyvu.lightmessage.entity.MessageEntity;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
+
+@Repository
+public class MessageRepositoryImpl implements MessageRepository {
+    private final AtomicLong ai = new AtomicLong(0);
+    private final Map<Long, MessageEntity> msgs = new ConcurrentHashMap<>();
+    private final Map<Long, ConversationEntity> convs = new ConcurrentHashMap<>();
+
+    @Override
+    public List<MessageEntity> findAllMessages(long convId) {
+        return msgs.values().stream()
+                .filter(messageEntity -> messageEntity.convId() == convId)
+                .sorted((o1, o2) -> Math.toIntExact(o2.timestamp() - o1.timestamp()))
+                .toList();
+    }
+
+    @Override
+    public void saveMessage(MessageEntity message) {
+        msgs.put(message.id(), message);
+    }
+
+    @Override
+    public long getNextMessageId() {
+        return ai.incrementAndGet() + 100_000_000;
+    }
+
+
+    /**
+     * todo:
+     * race condition in update conversation last update message
+     * high traffic
+     * large participant lists
+     *
+     * @param convId
+     * @param entity
+     */
+    @Override
+    public void updateConversationLastMessage(long convId, MessageEntity entity) {
+        var conv = convs.get(convId);
+        convs.put(convId, new ConversationEntity(conv.id(), conv.name(), conv.isGroupChat(), conv.createdAt(), entity.id(),entity.timestamp()));
+    }
+
+    @Override
+    public ConversationEntity getConversation(long id) {
+        return convs.get(id);
+    }
+}
