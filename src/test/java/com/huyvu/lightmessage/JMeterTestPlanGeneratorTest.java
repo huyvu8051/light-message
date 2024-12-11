@@ -1,5 +1,6 @@
 package com.huyvu.lightmessage;
 
+import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.control.LoopController;
 import org.apache.jmeter.engine.StandardJMeterEngine;
 import org.apache.jmeter.protocol.http.sampler.HTTPSamplerProxy;
@@ -7,6 +8,7 @@ import org.apache.jmeter.threads.ThreadGroup;
 import org.apache.jmeter.testelement.TestPlan;
 import org.apache.jmeter.save.SaveService;
 import org.apache.jmeter.util.JMeterUtils;
+import org.apache.jmeter.visualizers.backend.BackendListener;
 import org.apache.jorphan.collections.ListedHashTree;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -31,7 +33,7 @@ public class JMeterTestPlanGeneratorTest {
 
             // Create a Loop Controller
             LoopController loopController = new LoopController();
-            loopController.setLoops(10_000);
+            loopController.setLoops(1_000);
             loopController.setFirst(true);
             loopController.initialize();
 
@@ -52,11 +54,30 @@ public class JMeterTestPlanGeneratorTest {
             httpSampler.setPostBodyRaw(true);
             httpSampler.setName("Send Message HTTP Request");
 
+            // Create a Backend Listener for Flux (InfluxDB)
+            BackendListener backendListener = new BackendListener();
+            backendListener.setName("InfluxDB Backend Listener");
+            backendListener.setClassname("org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient");
+
+            Arguments backendListenerProps = new Arguments();
+
+            backendListenerProps.addArgument("influxdbMetricsSender", "org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender");
+            backendListenerProps.addArgument("influxdbUrl", "http://localhost:8086/write?db=jmeter");
+            backendListenerProps.addArgument("application", "JMeter Test");
+            backendListenerProps.addArgument("measurement", "jmeter");
+            backendListenerProps.addArgument("summaryOnly", "false");
+            backendListenerProps.addArgument("influxdbToken", "MOmfJx2viblWwJz-vBgSuajs-fKJeouyToiaN3WC1Ykl2I57USDYFh_4juVlBxitNjbEbFBZk9P__0M1vpf9FQ==");
+
+            backendListener.setArguments(backendListenerProps);
+
+
+
             // Build the Test Plan tree
             ListedHashTree testPlanTree = new ListedHashTree();
             ListedHashTree threadGroupTree = testPlanTree.add(testPlan);
             ListedHashTree samplerTree = threadGroupTree.add(threadGroup);
             samplerTree.add(httpSampler);
+            threadGroupTree.add(backendListener);
 
             // Save the Test Plan to a .jmx file
             SaveService.saveTree(testPlanTree, new FileOutputStream("target/example_test_plan.jmx"));
