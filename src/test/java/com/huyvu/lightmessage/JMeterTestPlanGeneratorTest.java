@@ -10,10 +10,13 @@ import org.apache.jmeter.util.JMeterUtils;
 import org.apache.jorphan.collections.ListedHashTree;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileOutputStream;
 
 public class JMeterTestPlanGeneratorTest {
+    static Logger logger = LoggerFactory.getLogger(JMeterTestPlanGeneratorTest.class);
 
     @Disabled("Ignore during maven build")
     @Test
@@ -67,7 +70,7 @@ public class JMeterTestPlanGeneratorTest {
             System.out.println("Test execution completed.");
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
     }
 }
