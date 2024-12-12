@@ -13,4 +13,6 @@ public interface MessageService {
     List<MessageDTO> getMessages(long convId);
 
     ConversationEntity createGroupChatConversation(CreateConversationRequestDTO request);
+
+    List<ConversationEntity> getAllConversations();
 }

@@ -20,4 +20,6 @@ public interface MessageRepository {
     long getNextConversationId();
 
     void saveConversation(ConversationEntity conversation);
+
+    List<ConversationEntity> findAllConversations();
 }

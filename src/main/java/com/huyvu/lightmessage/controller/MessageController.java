@@ -22,6 +22,11 @@ public class MessageController {
         this.messageService = messageService;
     }
 
+    @GetMapping("/conversations")
+    List<ConversationEntity> conversations() {
+        return messageService.getAllConversations();
+    }
+
     @PostMapping("/conversations")
     ResponseEntity<ConversationEntity> conversations(@RequestBody CreateConversationRequestDTO request){
         var conversation = messageService.createGroupChatConversation(request);

@@ -65,4 +65,9 @@ public class MessageRepositoryImpl implements MessageRepository {
     public void saveConversation(ConversationEntity conversation) {
         convs.put(conversation.id(),conversation);
     }
+
+    @Override
+    public List<ConversationEntity> findAllConversations() {
+        return convs.values().stream().toList();
+    }
 }

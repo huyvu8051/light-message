@@ -82,4 +82,9 @@ public class MessageServiceImpl implements MessageService {
         msgRepo.saveConversation(conversation);
         return conversation;
     }
+
+    @Override
+    public List<ConversationEntity> getAllConversations() {
+        return msgRepo.findAllConversations();
+    }
 }
