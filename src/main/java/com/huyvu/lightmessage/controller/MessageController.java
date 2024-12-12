@@ -6,6 +6,8 @@ import com.huyvu.lightmessage.dto.MessageDTO;
 import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.service.MessageService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -16,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 public class MessageController {
+    private static final Logger logger = LoggerFactory.getLogger(MessageController.class);
     private final MessageService messageService;
 
     public MessageController(MessageService messageService) {
@@ -38,6 +41,7 @@ public class MessageController {
 
     @GetMapping("/messages")
     List<MessageDTO> messages(long convId) {
+        logger.info("get messages in conversation {}", convId);
         return messageService.getMessages(convId);
     }
 
