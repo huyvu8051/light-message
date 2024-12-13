@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -28,8 +29,14 @@ public class MessageRepositoryImpl implements MessageRepository {
     }
 
 
+
     @Override
     public List<MessageEntity> findAllMessages(long convId) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(300);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return msgs.values().stream()
                 .filter(messageEntity -> messageEntity.convId() == convId)
                 .sorted((o1, o2) -> Math.toIntExact(o2.timestamp() - o1.timestamp()))
@@ -38,6 +45,11 @@ public class MessageRepositoryImpl implements MessageRepository {
 
     @Override
     public void saveMessage(MessageEntity message) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         msgs.put(message.id(), message);
     }
 
@@ -60,10 +72,20 @@ public class MessageRepositoryImpl implements MessageRepository {
     public void updateConversationLastMessage(long convId, MessageEntity entity) {
         var conv = convs.get(convId);
         convs.put(convId, new ConversationEntity(conv.id(), conv.name(), conv.isGroupChat(), conv.createdAt(), entity.id(),entity.timestamp()));
+        try {
+            TimeUnit.MILLISECONDS.sleep(200);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public Optional<ConversationEntity> getConversation(long id) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         var value = convs.get(id);
 
