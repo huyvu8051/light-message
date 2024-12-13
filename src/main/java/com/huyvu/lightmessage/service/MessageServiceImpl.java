@@ -64,7 +64,7 @@ public class MessageServiceImpl implements MessageService {
 
         rtmService.sendMessageNotification(conversation, entity);
 
-        logger.info("User {} send a message to {}", userContextProvider.getUserContext().id(), request.convId());
+        // logger.info("User {} send a message to {}", userContextProvider.getUserContext().id(), request.convId());
         return entity;
     }
 

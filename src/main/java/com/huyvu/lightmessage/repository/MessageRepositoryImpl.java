@@ -4,11 +4,14 @@ import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
 import org.springframework.stereotype.Repository;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 @Repository
 public class MessageRepositoryImpl implements MessageRepository {
@@ -16,6 +19,14 @@ public class MessageRepositoryImpl implements MessageRepository {
     private final AtomicLong conversationKeyGen = new AtomicLong(2_000_000);
     private final Map<Long, MessageEntity> msgs = new ConcurrentHashMap<>();
     private final Map<Long, ConversationEntity> convs = new ConcurrentHashMap<>();
+
+    public MessageRepositoryImpl(){
+        var now = Instant.now().getEpochSecond();
+        LongStream.range(2_000, 2_020).parallel().forEach(value -> {
+            convs.put(value, new ConversationEntity(value, "Generated title", true, now, now, now));
+        });
+    }
+
 
     @Override
     public List<MessageEntity> findAllMessages(long convId) {
@@ -53,7 +64,10 @@ public class MessageRepositoryImpl implements MessageRepository {
 
     @Override
     public Optional<ConversationEntity> getConversation(long id) {
-        return Optional.of(convs.get(id));
+
+        var value = convs.get(id);
+
+        return Optional.of(value);
     }
 
     @Override

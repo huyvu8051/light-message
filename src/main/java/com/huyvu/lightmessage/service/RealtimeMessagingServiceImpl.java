@@ -18,6 +18,6 @@ public class RealtimeMessagingServiceImpl implements RealtimeMessagingService {
      */
     @Override
     public void sendMessageNotification(ConversationEntity conversation, MessageEntity entity) {
-        logger.info("Send socket to channel {} = {}", conversation.id(), entity.content());
+        //logger.info("Send socket to channel {} = {}", conversation.id(), entity.content());
     }
 }
