@@ -70,7 +70,7 @@ public class MessageApiSimulation extends Simulation {
         setUp(
                 sendMessagesScenario.injectOpen(
                         CoreDsl.rampUsersPerSec(10).to(400).during(5),
-                        CoreDsl.constantUsersPerSec(400).during(30)
+                        CoreDsl.constantUsersPerSec(400).during(300)
                 )
         ).protocols(httpProtocol);
     }
