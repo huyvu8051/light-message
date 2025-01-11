@@ -28,7 +28,8 @@ services:
         reservations:
           cpus: "1"
           memory: "512m"
-
+    volumes:
+      - "./docker/tmp-hprof:/tmp"
 
 
 
