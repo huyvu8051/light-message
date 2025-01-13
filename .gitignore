@@ -33,3 +33,7 @@ build/
 .vscode/
 
 docker/tmp-hprof/
+
+
+node_modules
+package-lock.json

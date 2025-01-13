@@ -69,7 +69,7 @@ public class MessageApiSimulation extends Simulation {
         // Load Simulation: Define the number of users and ramp-up time
         setUp(
                 sendMessagesScenario.injectOpen(
-                        CoreDsl.rampUsersPerSec(10).to(400).during(5),
+                        CoreDsl.rampUsersPerSec(10).to(400).during(10),
                         CoreDsl.constantUsersPerSec(400).during(300)
                 )
         ).protocols(httpProtocol);
