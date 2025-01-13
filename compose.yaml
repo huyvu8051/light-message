@@ -1,13 +1,7 @@
-#  Final Architecture Overview
-#    Spring Boot application provides metrics and logs via Actuator and Micrometer.
-#    Prometheus collects metrics.
-#    Grafana visualizes metrics.
-#    ELK Stack aggregates and analyzes logs.
-#    Zipkin traces requests across distributed systems.
-#    Alerts notify teams of performance degradation or failures.
+
 version: '3.8'
 services:
-  spring-boot-app:
+  sba:
     container_name: sba
     build:
       context: .
@@ -30,7 +24,12 @@ services:
           memory: "512m"
     volumes:
       - "./docker/tmp-hprof:/tmp"
-
+  k6:
+    container_name: k6
+    image: grafana/k6:latest
+    volumes:
+      - ./stress.js:/scripts/stress.js:ro
+    command: run /scripts/stress.js
 
   redis:
     image: redis:6.2

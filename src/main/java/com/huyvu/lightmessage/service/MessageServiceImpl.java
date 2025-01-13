@@ -50,18 +50,20 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public MessageEntity sendMessage(SendMessageRequestDTO request) {
         var conversationOpt = msgRepo.getConversation(request.convId());
-        if (conversationOpt.isEmpty()) {
-            throw new ConversationNotExistException("ID: " + request.convId());
-        }
-        var conversation = conversationOpt.get();
+        var conversation = conversationOpt.orElseThrow(() -> new ConversationNotExistException("ID: " + request.convId()));
         var now = Instant.now();
         var id = msgRepo.getNextMessageId();
 
-        var entity = new MessageEntity(id, request.convId(), request.content(), userContextProvider.getUserContext().id(), now.getEpochSecond());
+        var entity = MessageEntity.builder()
+                .id(id)
+                .convId(request.convId())
+                .content(request.content())
+                .senderId(userContextProvider.getUserContext().id())
+                .timestamp(now.getEpochSecond())
+                .build();
 
         msgRepo.saveMessage(entity);
         msgRepo.updateConversationLastMessage(request.convId(), entity);
-
         rtmService.sendMessageNotification(conversation, entity);
 
         // logger.info("User {} send a message to {}", userContextProvider.getUserContext().id(), request.convId());

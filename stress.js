@@ -1,10 +1,8 @@
 import { check } from 'k6';
 import http from 'k6/http';
-import { Random } from 'k6';
-
 // Base URL for the API
-const BASE_URL = 'http://localhost:8080/api/v1';
-
+const BASE_URL = 'http://sba:8080/api/v1';
+// console.log(faker.number.int({ min: 1, max: 100 }))
 // Generate Authorization Token (Mock)
 function generateAuthToken() {
     const userId = 1; // Simulating a userId
@@ -17,7 +15,7 @@ function generateFeederData() {
     for (let i = 0; i < 1000; i++) {
         const conversation = {
             content: 'dick', // Random string as content
-            convId: 2020 // Random conversation ID
+            convId: 2019 // Random conversation ID
         };
         data.push(conversation);
     }
@@ -45,12 +43,12 @@ export default function () {
 
     // Send POST request
     const res = http.post(`${BASE_URL}/messages`, body, { headers });
-
     // Check if the response status is 201 (Created)
     check(res, {
         'is status 201': (r) => r.status === 201,
     });
 }
+
 
 // Define options for virtual users and load testing behavior
 export let options = {
@@ -62,3 +60,4 @@ export let options = {
         { duration: '30s', target: 0 },    // Gradually reduce users to 0 in 30 seconds
     ],
 };
+
