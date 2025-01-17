@@ -12,22 +12,23 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @Entity
+@Table(indexes = {
+        @Index(name = "idx_message__conv_id", columnList = "conv_id")
+})
 public class Message extends Auditable<String> {
     @Id
     @GeneratedValue
     long id;
 
-
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_message__conv"))
     Conversation conv;
-
-    String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_message__sender"))
     UserProfile sender;
 
+    String content;
     long timestamp;
 
 }

@@ -26,7 +26,6 @@ public class Member extends Auditable<String> {
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_member__user"))
     UserProfile user;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_member__conv"))
     Conversation conversation;

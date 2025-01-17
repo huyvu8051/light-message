@@ -17,13 +17,15 @@ public class UserProfile extends Auditable<String> {
     @Id
     @GeneratedValue
     long id;
-    String name;
-    String username;
-
 
     @OneToMany(mappedBy = "user")
     List<Member> convMembers;
 
     @OneToMany(mappedBy = "sender")
     List<Message> messages;
+
+    String name;
+    String username;
+
+
 }

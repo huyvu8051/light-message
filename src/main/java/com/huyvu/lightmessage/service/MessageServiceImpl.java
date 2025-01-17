@@ -6,27 +6,27 @@ import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
 import com.huyvu.lightmessage.exception.ConversationNotExistException;
-import com.huyvu.lightmessage.repository.MessageRepository;
-import com.huyvu.lightmessage.security.UserContextProvider;
+import com.huyvu.lightmessage.repository.MessageRepo;
+import com.huyvu.lightmessage.util.Paging;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MessageServiceImpl implements MessageService {
     private final Logger logger = LoggerFactory.getLogger(MessageServiceImpl.class);
-    private final MessageRepository msgRepo;
-    private final RealtimeMessagingService rtmService;
-    private final UserContextProvider userContextProvider;
+    private final MessageRepo msgRepo;
+    private final RealtimeSendingService rtmService;
 
 
-    public MessageServiceImpl(MessageRepository msgRepo, RealtimeMessagingService rtmService, UserContextProvider userContextProvider) {
+    public MessageServiceImpl(MessageRepo msgRepo, RealtimeSendingService rtmService) {
         this.msgRepo = msgRepo;
         this.rtmService = rtmService;
-        this.userContextProvider = userContextProvider;
     }
 
 
@@ -48,7 +48,7 @@ public class MessageServiceImpl implements MessageService {
      * @return
      */
     @Override
-    public MessageEntity sendMessage(SendMessageRequestDTO request) {
+    public void sendMessage(long userId, SendMessageRequestDTO request) {
         var conversationOpt = msgRepo.getConversation(request.convId());
         var conversation = conversationOpt.orElseThrow(() -> new ConversationNotExistException("ID: " + request.convId()));
         var now = Instant.now();
@@ -58,7 +58,7 @@ public class MessageServiceImpl implements MessageService {
                 .id(id)
                 .convId(request.convId())
                 .content(request.content())
-                .senderId(userContextProvider.getUserContext().id())
+                .senderId(userId)
                 .timestamp(now.getEpochSecond())
                 .build();
 
@@ -67,17 +67,23 @@ public class MessageServiceImpl implements MessageService {
         rtmService.sendMessageNotification(conversation, entity);
 
         // logger.info("User {} send a message to {}", userContextProvider.getUserContext().id(), request.convId());
-        return entity;
+
     }
 
+
+
     @Override
-    public List<MessageDTO> getMessages(long convId) {
+    public List<MessageDTO> getMessages(long userId, long convId, Paging paging) {
+        Optional<?> conversation = msgRepo.findMember(userId, convId);
+        if(conversation.isEmpty()){
+            throw new ConversationNotExistException("userId: " + userId + " convId:" + convId);
+        }
         var allMessages = msgRepo.findAllMessages(convId);
         return allMessages.stream().map(e -> new MessageDTO(e.id(), e.content(), e.senderId())).toList();
     }
 
     @Override
-    public ConversationEntity createGroupChatConversation(CreateConversationRequestDTO request) {
+    public ConversationEntity createGroupChatConversation(long userId, CreateConversationRequestDTO request) {
 
         var id = msgRepo.getNextConversationId();
         var conversation = new ConversationEntity(id, request.conversationName(), true, Instant.now().getEpochSecond(), 0, 0);
@@ -86,7 +92,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<ConversationEntity> getAllConversations() {
-        return msgRepo.findAllConversations();
+    public List<ConversationEntity> getNewestConversations(long userId, Paging paging) {
+        return msgRepo.findAllConversations(userId, paging);
     }
 }

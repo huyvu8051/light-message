@@ -2,6 +2,9 @@ package com.huyvu.lightmessage.repository;
 
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
+import com.huyvu.lightmessage.jpa.model.Member;
+import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
+import com.huyvu.lightmessage.util.Paging;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
@@ -15,20 +18,22 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.LongStream;
 
 @Repository
-public class MessageRepositoryImpl implements MessageRepository {
+public class MessageRepoImpl implements MessageRepo {
     private final AtomicLong messageKeyGen = new AtomicLong(1_000_000);
     private final AtomicLong conversationKeyGen = new AtomicLong(2_000_000);
     private final Map<Long, MessageEntity> msgs = new ConcurrentHashMap<>();
     private final Map<Long, ConversationEntity> convs = new ConcurrentHashMap<>();
+    private final MemberJpaRepo memberJpaRepo;
 
-    public MessageRepositoryImpl() {
+    public MessageRepoImpl(MemberJpaRepo memberJpaRepo) {
+        this.memberJpaRepo = memberJpaRepo;
         var now = Instant.now().getEpochSecond();
         LongStream.range(2_000, 2_020).parallel().forEach(value -> {
             convs.put(value, new ConversationEntity(value, "Generated title", true, now, now, now));
         });
     }
 
-    @Cacheable(value = "findAllMessages", condition = "#convId > 5")
+    @Cacheable(value = "findAllMessages")
     @Override
     public List<MessageEntity> findAllMessages(long convId) {
         try {
@@ -102,7 +107,12 @@ public class MessageRepositoryImpl implements MessageRepository {
     }
 
     @Override
-    public List<ConversationEntity> findAllConversations() {
+    public List<ConversationEntity> findAllConversations(long userId, Paging paging) {
         return convs.values().stream().toList();
+    }
+
+    @Override
+    public Optional<Member> findMember(long userId, long convId) {
+        return memberJpaRepo.findOneByUserIdAndConversationId(userId, convId);
     }
 }

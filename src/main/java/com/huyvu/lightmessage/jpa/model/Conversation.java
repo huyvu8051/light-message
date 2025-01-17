@@ -18,13 +18,13 @@ public class Conversation extends Auditable<String> {
     @GeneratedValue
     long id;
 
-    String name;
-    boolean isGroupChat;
-
     @OneToMany(mappedBy = "conversation")
     List<Member> convMembers;
 
-
     @OneToMany(mappedBy = "conv")
     List<Message> messages;
+
+    String name;
+    boolean isGroupChat;
+
 }

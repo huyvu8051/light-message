@@ -5,7 +5,9 @@ import com.huyvu.lightmessage.dto.SendMessageResponseDTO;
 import com.huyvu.lightmessage.dto.MessageDTO;
 import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
+import com.huyvu.lightmessage.security.UserContextProvider;
 import com.huyvu.lightmessage.service.MessageService;
+import com.huyvu.lightmessage.util.Paging;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -17,20 +19,22 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class MessageController {
     private final MessageService messageService;
+    private final UserContextProvider userCtxProvider;
 
-    public MessageController(MessageService messageService) {
+    public MessageController(MessageService messageService, UserContextProvider userCtxProvider) {
         this.messageService = messageService;
+        this.userCtxProvider = userCtxProvider;
     }
 
     @GetMapping("/conversations")
     List<ConversationEntity> conversations() {
-        return messageService.getAllConversations();
+        return messageService.getNewestConversations(userCtxProvider.getUserContext().id(), new Paging(0, 10));
     }
 
 
     @PostMapping("/conversations")
     ResponseEntity<ConversationEntity> conversations(@RequestBody CreateConversationRequestDTO request){
-        var conversation = messageService.createGroupChatConversation(request);
+        var conversation = messageService.createGroupChatConversation(userCtxProvider.getUserContext().id(),request);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
@@ -42,25 +46,24 @@ public class MessageController {
     }
 
 
-    @GetMapping("/messages")
-    List<MessageDTO> messages(long convId) {
-        return messageService.getMessages(convId);
+    @GetMapping("/messages/{convId}")
+    List<MessageDTO> messages(@PathVariable long convId) {
+        return messageService.getMessages(userCtxProvider.getUserContext().id(), convId, new Paging(0, 10));
     }
 
     @PostMapping("/messages")
     ResponseEntity<SendMessageResponseDTO> messages(@RequestBody SendMessageRequestDTO msg) {
-        var messageEntity = messageService.sendMessage(msg);
+        messageService.sendMessage(userCtxProvider.getUserContext().id(), msg);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(messageEntity.id())
+                .buildAndExpand(msg.convId())
                 .toUri();
 
-        var responseBody = new SendMessageResponseDTO(messageEntity.id(), messageEntity.content(), messageEntity.senderId(), messageEntity.timestamp());
         return ResponseEntity
                 .created(location)
-                .body(responseBody);
+                .build();
     }
 
 

@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RealtimeMessagingServiceImpl implements RealtimeMessagingService {
-    private static final Logger logger = LoggerFactory.getLogger(RealtimeMessagingServiceImpl.class);
+public class RealtimeSendingServiceImpl implements RealtimeSendingService {
+    private static final Logger logger = LoggerFactory.getLogger(RealtimeSendingServiceImpl.class);
 
     /**
      * todo: send new message notification to participants, including conversation id, name, last updated timestamp, last message content, last message sender.
