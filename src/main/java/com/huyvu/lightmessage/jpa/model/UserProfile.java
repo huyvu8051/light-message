@@ -7,27 +7,23 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @Entity
-public class Message extends Auditable<String> {
+public class UserProfile extends Auditable<String> {
     @Id
     @GeneratedValue
     long id;
+    String name;
+    String username;
 
 
-    @ManyToOne
-    @JoinColumn(foreignKey = @ForeignKey(name = "fk_message__conv"))
-    Conversation conv;
+    @OneToMany(mappedBy = "user")
+    List<Member> convMembers;
 
-    String content;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(foreignKey = @ForeignKey(name = "fk_message__sender"))
-    UserProfile sender;
-
-    long timestamp;
-
+    @OneToMany(mappedBy = "sender")
+    List<Message> messages;
 }

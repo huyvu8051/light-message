@@ -1,6 +1,5 @@
-package com.huyvu.lightmessage.jpa.model;
+package com.huyvu.lightmessage.jpa;
 
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
 import lombok.AccessLevel;
 import lombok.Data;

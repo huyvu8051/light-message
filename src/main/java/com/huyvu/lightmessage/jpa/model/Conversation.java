@@ -1,5 +1,6 @@
 package com.huyvu.lightmessage.jpa.model;
 
+import com.huyvu.lightmessage.jpa.Auditable;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -11,7 +12,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
-//@Entity
+@Entity
 public class Conversation extends Auditable<String> {
     @Id
     @GeneratedValue
@@ -20,10 +21,10 @@ public class Conversation extends Auditable<String> {
     String name;
     boolean isGroupChat;
 
-    /*@ManyToMany
-    List<Member> members;*/
+    @OneToMany(mappedBy = "conversation")
+    List<Member> convMembers;
 
 
-    /*@OneToMany(mappedBy = "conv")
-    List<Message> messages;*/
+    @OneToMany(mappedBy = "conv")
+    List<Message> messages;
 }
