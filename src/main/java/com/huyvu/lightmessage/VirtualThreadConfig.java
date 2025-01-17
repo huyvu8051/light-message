@@ -13,7 +13,7 @@ public class VirtualThreadConfig {
     @Bean
     public TomcatServletWebServerFactory tomcatFactory() {
         TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
-        factory.addConnectorCustomizers((TomcatConnectorCustomizer) connector -> {
+        factory.addConnectorCustomizers(connector -> {
             ProtocolHandler handler = connector.getProtocolHandler();
             handler.setExecutor(Executors.newThreadPerTaskExecutor(Thread.ofVirtual().factory()));
         });

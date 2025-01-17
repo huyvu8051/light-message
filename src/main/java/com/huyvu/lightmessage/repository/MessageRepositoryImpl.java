@@ -2,6 +2,7 @@ package com.huyvu.lightmessage.repository;
 
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.time.Instant;
@@ -11,7 +12,6 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 @Repository
@@ -21,15 +21,14 @@ public class MessageRepositoryImpl implements MessageRepository {
     private final Map<Long, MessageEntity> msgs = new ConcurrentHashMap<>();
     private final Map<Long, ConversationEntity> convs = new ConcurrentHashMap<>();
 
-    public MessageRepositoryImpl(){
+    public MessageRepositoryImpl() {
         var now = Instant.now().getEpochSecond();
         LongStream.range(2_000, 2_020).parallel().forEach(value -> {
             convs.put(value, new ConversationEntity(value, "Generated title", true, now, now, now));
         });
     }
 
-
-
+    @Cacheable(value = "findAllMessages", condition = "#convId > 5")
     @Override
     public List<MessageEntity> findAllMessages(long convId) {
         try {
@@ -71,7 +70,7 @@ public class MessageRepositoryImpl implements MessageRepository {
     @Override
     public void updateConversationLastMessage(long convId, MessageEntity entity) {
         var conv = convs.get(convId);
-        convs.put(convId, new ConversationEntity(conv.id(), conv.name(), conv.isGroupChat(), conv.createdAt(), entity.id(),entity.timestamp()));
+        convs.put(convId, new ConversationEntity(conv.id(), conv.name(), conv.isGroupChat(), conv.createdAt(), entity.id(), entity.timestamp()));
         try {
             TimeUnit.MILLISECONDS.sleep(200);
         } catch (InterruptedException e) {
@@ -99,7 +98,7 @@ public class MessageRepositoryImpl implements MessageRepository {
 
     @Override
     public void saveConversation(ConversationEntity conversation) {
-        convs.put(conversation.id(),conversation);
+        convs.put(conversation.id(), conversation);
     }
 
     @Override
