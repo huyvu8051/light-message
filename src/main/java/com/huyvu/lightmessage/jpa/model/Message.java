@@ -16,12 +16,15 @@ public class Message extends Auditable<String> {
     @GeneratedValue
     long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    Conversation conversation;
+
+    /*@ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_message_conv"))
+    Conversation conv;*/
 
     String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_message_sender"))
     Member sender;
 
     long timestamp;

@@ -1,9 +1,6 @@
 package com.huyvu.lightmessage.jpa.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,6 +19,10 @@ public class Member extends Auditable<String> {
     String name;
     String username;
 
-    @OneToMany
-    List<ConvMember> conversations;
+    /*@ManyToMany
+    @JoinTable
+    List<Conversation> conversations;*/
+
+    @OneToMany(mappedBy = "sender")
+    List<Message> messages;
 }

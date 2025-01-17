@@ -11,7 +11,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
-@Entity
+//@Entity
 public class Conversation extends Auditable<String> {
     @Id
     @GeneratedValue
@@ -20,6 +20,10 @@ public class Conversation extends Auditable<String> {
     String name;
     boolean isGroupChat;
 
-    @OneToMany
-    List<ConvMember> members;
+    /*@ManyToMany
+    List<Member> members;*/
+
+
+    /*@OneToMany(mappedBy = "conv")
+    List<Message> messages;*/
 }
