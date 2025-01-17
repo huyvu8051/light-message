@@ -1,12 +1,12 @@
 package com.huyvu.lightmessage.jpa.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -19,4 +19,7 @@ public class Conversation extends Auditable<String> {
 
     String name;
     boolean isGroupChat;
+
+    @OneToMany
+    List<ConvMember> members;
 }

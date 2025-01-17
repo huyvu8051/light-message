@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @Entity
+@Table(indexes = {@Index(columnList = "mem.id, conv.id")})
 public class ConvMember extends Auditable<String> {
 
     @EmbeddedId

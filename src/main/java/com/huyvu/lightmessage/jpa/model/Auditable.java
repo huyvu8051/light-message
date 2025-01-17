@@ -18,14 +18,12 @@ import java.time.Instant;
 public abstract class Auditable<U> {
 
     @CreatedBy
-    @ManyToOne
     U createdBy;
 
     @CreatedDate
     Instant createdDate;
 
     @LastModifiedBy
-    @ManyToOne
     U lastModifiedBy;
 
     @LastModifiedDate

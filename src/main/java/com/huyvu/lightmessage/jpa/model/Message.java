@@ -22,7 +22,7 @@ public class Message extends Auditable<String> {
     String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    Participant sender;
+    Member sender;
 
     long timestamp;
 

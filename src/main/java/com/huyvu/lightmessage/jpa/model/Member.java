@@ -15,7 +15,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @Entity
-public class Participant extends Auditable<String> {
+public class Member extends Auditable<String> {
     @Id
     @GeneratedValue
     long id;
