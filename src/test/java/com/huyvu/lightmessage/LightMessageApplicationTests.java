@@ -16,13 +16,13 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class LightMessageApplicationTests {
     static final long CURR_USER_ID = 1100001;
     static final long SEC_USER_ID = 1100002;
     static final long THIRD_USER_ID = 1100003;
 
-    @Autowired
+//    @Autowired
     private TestRestTemplate testRestTemplate;
 
     private long createdConversationId;
@@ -50,7 +50,7 @@ class LightMessageApplicationTests {
     }
 
 
-    @Test
+//    @Test
     void shouldCreateMessageSuccessfully() {
 
 

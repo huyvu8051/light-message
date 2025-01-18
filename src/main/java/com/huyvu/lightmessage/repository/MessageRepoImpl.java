@@ -54,7 +54,7 @@ public class MessageRepoImpl implements MessageRepo {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        msgs.put(message.id(), message);
+//        msgs.put(message.id(), message);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class MessageRepoImpl implements MessageRepo {
     @Override
     public void updateConversationLastMessage(long convId, MessageEntity entity) {
         var conv = convs.get(convId);
-        convs.put(convId, new ConversationEntity(conv.id(), conv.name(), conv.isGroupChat(), conv.createdAt(), entity.id(), entity.timestamp()));
+        // convs.put(convId, new ConversationEntity(conv.id(), conv.name(), conv.isGroupChat(), conv.createdAt(), entity.id(), entity.timestamp()));
         try {
             TimeUnit.MILLISECONDS.sleep(200);
         } catch (InterruptedException e) {
@@ -103,7 +103,7 @@ public class MessageRepoImpl implements MessageRepo {
 
     @Override
     public void saveConversation(ConversationEntity conversation) {
-        convs.put(conversation.id(), conversation);
+//        convs.put(conversation.id(), conversation);
     }
 
     @Override

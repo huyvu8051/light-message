@@ -46,6 +46,7 @@ public class MessageController {
     }
 
 
+
     @GetMapping("/messages/{convId}")
     List<MessageDTO> messages(@PathVariable long convId) {
         return messageService.getMessages(userCtxProvider.getUserContext().id(), convId, new Paging(0, 10));

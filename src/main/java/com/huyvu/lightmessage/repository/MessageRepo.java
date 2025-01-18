@@ -2,7 +2,6 @@ package com.huyvu.lightmessage.repository;
 
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
-import com.huyvu.lightmessage.jpa.model.Conversation;
 import com.huyvu.lightmessage.jpa.model.Member;
 import com.huyvu.lightmessage.util.Paging;
 

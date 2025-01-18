@@ -44,10 +44,9 @@ services:
     environment:
       BASE_URL: "http://sba:8080/api/v1"
     volumes:
-      - ./k6/stress.js:/scripts/stress.js:ro
-      - ./k6/faker.min.js:/scripts/faker.min.js:ro
-    command: run /scripts/stress.js
+      - ./k6/:/scripts/:ro
 
+    command: run /scripts/ssadfasf.js
   redis:
     image: redis:6.2
     container_name: redis

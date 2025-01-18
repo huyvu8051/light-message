@@ -1,7 +1,13 @@
 package com.huyvu.lightmessage.entity;
 
-import lombok.Builder;
+import lombok.*;
 
 @Builder
-public record MessageEntity(long id, long convId,  String content, long senderId, long timestamp) {
+public record MessageEntity(
+        long id,
+        long convId,
+        String content,
+        long senderId,
+        long timestamp
+) {
 }
