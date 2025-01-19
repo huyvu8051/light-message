@@ -9,6 +9,7 @@ import com.huyvu.lightmessage.jpa.model.UserProfile;
 import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MessageJpaRepo;
 import com.huyvu.lightmessage.util.Paging;
+import org.hibernate.SessionFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
@@ -28,9 +29,11 @@ public class MessageRepoImpl implements MessageRepo {
     private final Map<Long, ConversationEntity> convs = new ConcurrentHashMap<>();
     private final MemberJpaRepo memberJpaRepo;
     private final MessageJpaRepo messageJpaRepo;
-    public MessageRepoImpl(MemberJpaRepo memberJpaRepo, MessageJpaRepo messageJpaRepo) {
+    private final SessionFactory sessionFactory;
+    public MessageRepoImpl(MemberJpaRepo memberJpaRepo, MessageJpaRepo messageJpaRepo, SessionFactory sessionFactory) {
         this.memberJpaRepo = memberJpaRepo;
         this.messageJpaRepo = messageJpaRepo;
+        this.sessionFactory = sessionFactory;
         var now = Instant.now().getEpochSecond();
         LongStream.range(2_000, 2_020).parallel().forEach(value -> {
             convs.put(value, new ConversationEntity(value, "Generated title", true, now, now, now));
@@ -60,7 +63,28 @@ public class MessageRepoImpl implements MessageRepo {
                 .build();
 
         messageJpaRepo.save(message);
+
+
     }
+
+
+    /*@Override
+    public void saveMessage(MessageEntity msg) {
+        var session = sessionFactory.openSession();
+        var conversation = session.getReference(Conversation.class, msg.convId());
+        var sender = session.getReference(UserProfile.class, msg.senderId());
+        var message = Message.builder()
+                .conv(conversation)
+                .sender(sender)
+                .content(msg.content())
+                .sendAt(msg.sentAt())
+                .build();
+        var transaction = session.beginTransaction();
+        session.persist(message);
+        transaction.commit();
+        session.close();
+    }*/
+
 
 
 
