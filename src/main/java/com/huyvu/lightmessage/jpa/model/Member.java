@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
+import java.util.UUID;
+
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
@@ -20,7 +22,7 @@ import lombok.experimental.FieldDefaults;
 public class Member extends Auditable<String> {
     @Id
     @GeneratedValue
-    Long id;
+    UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_member__user"))

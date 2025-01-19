@@ -2,12 +2,14 @@ package com.huyvu.lightmessage.entity;
 
 import lombok.*;
 
+import java.util.UUID;
+
 @Builder
 public record MessageEntity(
-        long id,
-        long convId,
+        UUID id,
+        UUID convId,
         String content,
-        long senderId,
-        long timestamp
+        UUID senderId,
+        long sentAt
 ) {
 }

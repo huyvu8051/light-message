@@ -1,4 +1,6 @@
 package com.huyvu.lightmessage.dto;
 
-public record SendMessageRequestDTO(long convId, String content) {
+import java.util.UUID;
+
+public record SendMessageRequestDTO(UUID convId, String content) {
 }

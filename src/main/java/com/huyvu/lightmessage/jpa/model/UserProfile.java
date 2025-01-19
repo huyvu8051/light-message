@@ -8,15 +8,19 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
+import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 @Entity
+@Table(indexes = {
+        @Index(name = "idx_user_profile__username", columnList = "username")
+})
 public class UserProfile extends Auditable<String> {
     @Id
     @GeneratedValue
-    long id;
+    UUID id;
 
     @OneToMany(mappedBy = "user")
     List<Member> convMembers;

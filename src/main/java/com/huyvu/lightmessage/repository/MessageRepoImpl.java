@@ -4,6 +4,7 @@ import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
 import com.huyvu.lightmessage.jpa.model.Member;
 import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
+import com.huyvu.lightmessage.jpa.repo.MessageJpaRepo;
 import com.huyvu.lightmessage.util.Paging;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
@@ -12,6 +13,7 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
@@ -24,9 +26,10 @@ public class MessageRepoImpl implements MessageRepo {
     private final Map<Long, MessageEntity> msgs = new ConcurrentHashMap<>();
     private final Map<Long, ConversationEntity> convs = new ConcurrentHashMap<>();
     private final MemberJpaRepo memberJpaRepo;
-
-    public MessageRepoImpl(MemberJpaRepo memberJpaRepo) {
+    private final MessageJpaRepo messageJpaRepo;
+    public MessageRepoImpl(MemberJpaRepo memberJpaRepo, MessageJpaRepo messageJpaRepo) {
         this.memberJpaRepo = memberJpaRepo;
+        this.messageJpaRepo = messageJpaRepo;
         var now = Instant.now().getEpochSecond();
         LongStream.range(2_000, 2_020).parallel().forEach(value -> {
             convs.put(value, new ConversationEntity(value, "Generated title", true, now, now, now));
@@ -43,58 +46,25 @@ public class MessageRepoImpl implements MessageRepo {
         }
         return msgs.values().stream()
                 .filter(messageEntity -> messageEntity.convId() == convId)
-                .sorted((o1, o2) -> Math.toIntExact(o2.timestamp() - o1.timestamp()))
+                .sorted((o1, o2) -> Math.toIntExact(o2.sentAt() - o1.sentAt()))
                 .toList();
     }
 
     @Override
     public void saveMessage(MessageEntity message) {
-        try {
-            TimeUnit.MILLISECONDS.sleep(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-//        msgs.put(message.id(), message);
-    }
+        var entity = MessageJpaRepo.SendMessage.builder()
+                .senderId(message.senderId())
+                .convId(message.convId())
+                .content(message.content())
+                .sendAt(message.sentAt())
+                .build();
 
-    @Override
-    public long getNextMessageId() {
-        return messageKeyGen.incrementAndGet();
+        messageJpaRepo.saveNew(entity);
     }
 
 
-    /**
-     * todo:
-     * race condition in update conversation last update message
-     * high traffic
-     * large participant lists
-     *
-     * @param convId
-     * @param entity
-     */
-    @Override
-    public void updateConversationLastMessage(long convId, MessageEntity entity) {
-        var conv = convs.get(convId);
-        // convs.put(convId, new ConversationEntity(conv.id(), conv.name(), conv.isGroupChat(), conv.createdAt(), entity.id(), entity.timestamp()));
-        try {
-            TimeUnit.MILLISECONDS.sleep(200);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
-    @Override
-    public Optional<ConversationEntity> getConversation(long id) {
-        try {
-            TimeUnit.MILLISECONDS.sleep(100);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
 
-        var value = convs.get(id);
-
-        return Optional.of(value);
-    }
 
     @Override
     public long getNextConversationId() {
@@ -103,7 +73,7 @@ public class MessageRepoImpl implements MessageRepo {
 
     @Override
     public void saveConversation(ConversationEntity conversation) {
-//        convs.put(conversation.id(), conversation);
+        convs.put(conversation.id(), conversation);
     }
 
     @Override
@@ -112,7 +82,7 @@ public class MessageRepoImpl implements MessageRepo {
     }
 
     @Override
-    public Optional<Member> findMember(long userId, long convId) {
+    public Optional<Member> findMember(UUID userId, UUID convId) {
         return memberJpaRepo.findOneByUserIdAndConversationId(userId, convId);
     }
 }

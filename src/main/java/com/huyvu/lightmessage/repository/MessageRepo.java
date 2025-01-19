@@ -7,17 +7,12 @@ import com.huyvu.lightmessage.util.Paging;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface MessageRepo {
     List<MessageEntity> findAllMessages(long convId);
 
     void saveMessage(MessageEntity message);
-
-    long getNextMessageId();
-
-    void updateConversationLastMessage(long convId, MessageEntity entity);
-
-    Optional<ConversationEntity> getConversation(long id);
 
     long getNextConversationId();
 
@@ -25,5 +20,5 @@ public interface MessageRepo {
 
     List<ConversationEntity> findAllConversations(long userId, Paging paging);
 
-    Optional<Member> findMember(long userId, long convId);
+    Optional<Member> findMember(UUID userId, UUID convId);
 }

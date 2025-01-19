@@ -1,4 +1,4 @@
 package com.huyvu.lightmessage.security;
 
-public record UserContext(long id) {
+public record UserContext(String username) {
 }

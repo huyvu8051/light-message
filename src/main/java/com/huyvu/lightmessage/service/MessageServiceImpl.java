@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class MessageServiceImpl implements MessageService {
@@ -48,25 +49,24 @@ public class MessageServiceImpl implements MessageService {
      * @return
      */
     @Override
-    public void sendMessage(long userId, SendMessageRequestDTO request) {
-        var conversationOpt = msgRepo.getConversation(request.convId());
-        var conversation = conversationOpt.orElseThrow(() -> new ConversationNotExistException("ID: " + request.convId()));
+    public void sendMessage(UUID userId, SendMessageRequestDTO request) {
+        var conversationOpt = msgRepo.findMember(userId, request.convId());
+        if(conversationOpt.isEmpty()){
+            throw new ConversationNotExistException("ID: " + request.convId());
+        }
         var now = Instant.now();
-        var id = msgRepo.getNextMessageId();
 
         var entity = MessageEntity.builder()
-                .id(id)
                 .convId(request.convId())
                 .content(request.content())
                 .senderId(userId)
-                .timestamp(now.getEpochSecond())
+                .sentAt(now.getEpochSecond())
                 .build();
 
         msgRepo.saveMessage(entity);
-        msgRepo.updateConversationLastMessage(request.convId(), entity);
-        rtmService.sendMessageNotification(conversation, entity);
+        rtmService.sendMessageNotification(request.convId(), entity);
 
-        // logger.info("User {} send a message to {}", userContextProvider.getUserContext().id(), request.convId());
+        // logger.info("User {} send a message to {}", userContextProvider.getUserContext().username(), request.convId());
 
     }
 

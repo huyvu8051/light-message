@@ -30,10 +30,10 @@ mvn gatling:test
 docker ps
 ```
 ```shell
-docker exec -it <container-id/name> /bin/bash
+docker exec -it <container-username/name> /bin/bash
 ```
 ```shell
-docker attach <container-id/name>
+docker attach <container-username/name>
 ```
 
 

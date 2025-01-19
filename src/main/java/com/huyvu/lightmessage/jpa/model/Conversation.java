@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
+import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -16,7 +17,7 @@ import java.util.List;
 public class Conversation extends Auditable<String> {
     @Id
     @GeneratedValue
-    long id;
+    UUID id;
 
     @OneToMany(mappedBy = "conversation")
     List<Member> convMembers;
