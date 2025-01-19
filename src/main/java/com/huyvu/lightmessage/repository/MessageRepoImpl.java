@@ -82,7 +82,7 @@ public class MessageRepoImpl implements MessageRepo {
     }
 
     @Override
-    public Optional<Member> findMember(UUID userId, UUID convId) {
+    public Optional<Member> findMember(long userId, long convId) {
         return memberJpaRepo.findOneByUserIdAndConversationId(userId, convId);
     }
 }

@@ -22,7 +22,7 @@ import java.util.UUID;
 public class Member extends Auditable<String> {
     @Id
     @GeneratedValue
-    UUID id;
+    long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_member__user"))

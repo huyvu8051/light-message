@@ -20,5 +20,5 @@ public interface MessageRepo {
 
     List<ConversationEntity> findAllConversations(long userId, Paging paging);
 
-    Optional<Member> findMember(UUID userId, UUID convId);
+    Optional<Member> findMember(long userId, long convId);
 }

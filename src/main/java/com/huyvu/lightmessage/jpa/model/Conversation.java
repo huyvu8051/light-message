@@ -17,7 +17,7 @@ import java.util.UUID;
 public class Conversation extends Auditable<String> {
     @Id
     @GeneratedValue
-    UUID id;
+    long id;
 
     @OneToMany(mappedBy = "conversation")
     List<Member> convMembers;

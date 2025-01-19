@@ -49,7 +49,7 @@ public class MessageServiceImpl implements MessageService {
      * @return
      */
     @Override
-    public void sendMessage(UUID userId, SendMessageRequestDTO request) {
+    public void sendMessage(long userId, SendMessageRequestDTO request) {
         var conversationOpt = msgRepo.findMember(userId, request.convId());
         if(conversationOpt.isEmpty()){
             throw new ConversationNotExistException("ID: " + request.convId());

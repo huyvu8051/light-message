@@ -6,10 +6,10 @@ import java.util.UUID;
 
 @Builder
 public record MessageEntity(
-        UUID id,
-        UUID convId,
+        long id,
+        long convId,
         String content,
-        UUID senderId,
+        long senderId,
         long sentAt
 ) {
 }

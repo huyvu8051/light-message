@@ -20,7 +20,7 @@ import java.util.UUID;
 public class UserProfile extends Auditable<String> {
     @Id
     @GeneratedValue
-    UUID id;
+    long id;
 
     @OneToMany(mappedBy = "user")
     List<Member> convMembers;

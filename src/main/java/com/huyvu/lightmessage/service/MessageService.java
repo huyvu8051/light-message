@@ -7,14 +7,13 @@ import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.util.Paging;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface MessageService {
-    void sendMessage(UUID userId, SendMessageRequestDTO request);
+    void sendMessage(long userId, SendMessageRequestDTO request);
 
-    List<MessageDTO> getMessages(UUID userId, UUID convId, Paging paging);
+    List<MessageDTO> getMessages(long userId, long convId, Paging paging);
 
-    ConversationEntity createGroupChatConversation(UUID userId, CreateConversationRequestDTO request);
+    ConversationEntity createGroupChatConversation(long userId, CreateConversationRequestDTO request);
 
-    List<ConversationEntity> getNewestConversations(UUID userId, Paging paging);
+    List<ConversationEntity> getNewestConversations(long userId, Paging paging);
 }

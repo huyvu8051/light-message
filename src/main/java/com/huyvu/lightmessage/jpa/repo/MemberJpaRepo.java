@@ -7,6 +7,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 
-public interface MemberJpaRepo extends JpaRepository<Member, UUID> {
-    Optional<Member> findOneByUserIdAndConversationId(UUID userId, UUID convId);
+public interface MemberJpaRepo extends JpaRepository<Member, Long> {
+    Optional<Member> findOneByUserIdAndConversationId(long userId, long convId);
 }
