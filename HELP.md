@@ -3,22 +3,22 @@
 ### Build and deploy to docker
 ```shell
 mvn clean package -DskipTests
-docker-compose build spring-boot-app
-docker-compose up -d spring-boot-app
+docker-compose build sba
+docker-compose up -d sba
 mvn gatling:test
 ```
 
 ### Build and deploy to docker
 ```shell
 mvn clean package -DskipTests
-docker-compose build spring-boot-app
-docker-compose up -d spring-boot-app
+docker-compose build sba
+docker-compose up -d sba
 ```
 ```shell
-docker-compose build spring-boot-app
+docker-compose build sba
 ```
 ```shell
-docker-compose up -d spring-boot-app
+docker-compose up -d sba
 ```
 ### Run stress test
 ```shell
