@@ -8,6 +8,7 @@ import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.security.UserContextProvider;
 import com.huyvu.lightmessage.service.MessageService;
 import com.huyvu.lightmessage.util.Paging;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1")
 public class MessageController {
@@ -54,6 +56,8 @@ public class MessageController {
 
     @PostMapping("/messages")
     ResponseEntity<SendMessageResponseDTO> messages(@RequestBody SendMessageRequestDTO msg) {
+//        log.info("Using: {}", Thread.currentThread());
+
         messageService.sendMessage(userCtxProvider.getUserContext().id(), msg);
 
         URI location = ServletUriComponentsBuilder

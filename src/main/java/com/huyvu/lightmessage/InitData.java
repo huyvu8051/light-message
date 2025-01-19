@@ -7,6 +7,7 @@ import com.huyvu.lightmessage.jpa.model.UserProfile;
 import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.UserProfileJpaRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.IntStream;
 
+@Slf4j
 @Configuration
 public class InitData implements ApplicationRunner {
     private final UserProfileJpaRepo upRepo;
@@ -31,7 +33,6 @@ public class InitData implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-
         var userProfiles = upRepo.saveAll(IntStream.range(0, 20).mapToObj(e -> {
             var entity = new UserProfile();
             entity.setUsername("USER_" + String.format("%03d", e));

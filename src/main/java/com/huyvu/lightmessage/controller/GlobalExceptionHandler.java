@@ -11,13 +11,11 @@ import org.springframework.web.context.request.WebRequest;
 @Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    // Handle a specific exception
     @ExceptionHandler(ConversationNotExistException.class)
     public ResponseEntity<String> handleResourceNotFoundException(ConversationNotExistException ex, WebRequest request) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-    // Handle a general exception
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGlobalException(Exception ex, WebRequest request) {
         log.error(ex.getMessage(), ex);
