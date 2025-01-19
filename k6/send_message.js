@@ -7,7 +7,7 @@ const faker = require('./faker.min.js')
 
 function generateMessage() {
     return {
-        convId: faker.datatype.number({min: 2000, max: 2020}),
+        convId: faker.datatype.number({min: 1, max: 20}),
         content: faker.lorem.sentence(),
     }
 }

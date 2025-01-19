@@ -2,7 +2,10 @@ package com.huyvu.lightmessage.repository;
 
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
+import com.huyvu.lightmessage.jpa.model.Conversation;
 import com.huyvu.lightmessage.jpa.model.Member;
+import com.huyvu.lightmessage.jpa.model.Message;
+import com.huyvu.lightmessage.jpa.model.UserProfile;
 import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MessageJpaRepo;
 import com.huyvu.lightmessage.util.Paging;
@@ -21,9 +24,7 @@ import java.util.stream.LongStream;
 
 @Repository
 public class MessageRepoImpl implements MessageRepo {
-    private final AtomicLong messageKeyGen = new AtomicLong(1_000_000);
     private final AtomicLong conversationKeyGen = new AtomicLong(2_000_000);
-    private final Map<Long, MessageEntity> msgs = new ConcurrentHashMap<>();
     private final Map<Long, ConversationEntity> convs = new ConcurrentHashMap<>();
     private final MemberJpaRepo memberJpaRepo;
     private final MessageJpaRepo messageJpaRepo;
@@ -39,27 +40,26 @@ public class MessageRepoImpl implements MessageRepo {
     @Cacheable(value = "findAllMessages")
     @Override
     public List<MessageEntity> findAllMessages(long convId) {
-        try {
-            TimeUnit.MILLISECONDS.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        return msgs.values().stream()
-                .filter(messageEntity -> messageEntity.convId() == convId)
-                .sorted((o1, o2) -> Math.toIntExact(o2.sentAt() - o1.sentAt()))
-                .toList();
+
+        return messageJpaRepo.findAllByConversationId(convId);
     }
 
     @Override
-    public void saveMessage(MessageEntity message) {
-        var entity = MessageJpaRepo.SendMessage.builder()
-                .senderId(message.senderId())
-                .convId(message.convId())
-                .content(message.content())
-                .sendAt(message.sentAt())
+    public void saveMessage(MessageEntity msg) {
+
+        var message = Message.builder()
+                .conv(
+                        Conversation.builder()
+                                .id(msg.convId())
+                                .build())
+                .sender(UserProfile.builder()
+                        .id(msg.senderId())
+                        .build())
+                .content(msg.content())
+                .sendAt(msg.sentAt())
                 .build();
 
-        messageJpaRepo.saveNew(entity);
+        messageJpaRepo.save(message);
     }
 
 

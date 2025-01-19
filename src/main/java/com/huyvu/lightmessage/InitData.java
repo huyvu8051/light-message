@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 @Configuration
 public class InitData implements ApplicationRunner {

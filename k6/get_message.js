@@ -7,7 +7,7 @@ const faker = require('./faker.min.js')
 
 // Stress test for fetching messages
 function testGetMessages() {
-    const convId = faker.datatype.number({min: 2000, max: 2019}) // Simulate conversation ID
+    const convId = faker.datatype.number({min: 1, max: 20}) // Simulate conversation ID
     const headers = {
         Authorization: generateAuthToken(),
     }

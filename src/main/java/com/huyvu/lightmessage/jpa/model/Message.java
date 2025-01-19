@@ -2,19 +2,20 @@ package com.huyvu.lightmessage.jpa.model;
 
 import com.huyvu.lightmessage.jpa.Auditable;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
+@Builder
 @Entity
 @Table(indexes = {
         @Index(name = "idx_message__conv_id", columnList = "conv_id")
 })
+@NoArgsConstructor
+@AllArgsConstructor
 public class Message extends Auditable<String> {
     @Id
     @GeneratedValue
@@ -29,6 +30,6 @@ public class Message extends Auditable<String> {
     UserProfile sender;
 
     String content;
-    long timestamp;
+    long sendAt;
 
 }
