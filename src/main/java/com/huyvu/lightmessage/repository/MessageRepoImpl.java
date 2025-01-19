@@ -49,7 +49,6 @@ public class MessageRepoImpl implements MessageRepo {
 
     @Override
     public void saveMessage(MessageEntity msg) {
-
         var message = Message.builder()
                 .conv(
                         Conversation.builder()
@@ -63,8 +62,6 @@ public class MessageRepoImpl implements MessageRepo {
                 .build();
 
         messageJpaRepo.save(message);
-
-
     }
 
 
@@ -84,11 +81,6 @@ public class MessageRepoImpl implements MessageRepo {
         transaction.commit();
         session.close();
     }*/
-
-
-
-
-
 
     @Override
     public long getNextConversationId() {
