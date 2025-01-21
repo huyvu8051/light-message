@@ -33,6 +33,8 @@ public class InitData implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        if(!upRepo.findAll().isEmpty()) return;
+
         var userProfiles = upRepo.saveAll(IntStream.range(0, 20).mapToObj(e -> {
             var entity = new UserProfile();
             entity.setUsername("USER_" + String.format("%03d", e));
