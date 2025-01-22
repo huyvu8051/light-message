@@ -6,17 +6,16 @@ import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
 import com.huyvu.lightmessage.exception.ConversationNotExistException;
+import com.huyvu.lightmessage.jpa.ConversationDto;
 import com.huyvu.lightmessage.repository.MessageRepo;
 import com.huyvu.lightmessage.util.Paging;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class MessageServiceImpl implements MessageService {
@@ -86,13 +85,13 @@ public class MessageServiceImpl implements MessageService {
     public ConversationEntity createGroupChatConversation(long userId, CreateConversationRequestDTO request) {
 
         var id = msgRepo.getNextConversationId();
-        var conversation = new ConversationEntity(id, request.conversationName(), true, Instant.now().getEpochSecond(), 0, 0);
+        var conversation = new ConversationEntity(id, request.conversationName(), true);
         msgRepo.saveConversation(conversation);
         return conversation;
     }
 
     @Override
-    public List<ConversationEntity> getNewestConversations(long userId, Paging paging) {
+    public List<ConversationDto> getNewestConversations(long userId, Paging paging) {
         return msgRepo.findAllConversations(userId, paging);
     }
 }

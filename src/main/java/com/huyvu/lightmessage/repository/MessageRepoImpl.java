@@ -2,10 +2,12 @@ package com.huyvu.lightmessage.repository;
 
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
+import com.huyvu.lightmessage.jpa.ConversationDto;
 import com.huyvu.lightmessage.jpa.model.Conversation;
 import com.huyvu.lightmessage.jpa.model.Member;
 import com.huyvu.lightmessage.jpa.model.Message;
 import com.huyvu.lightmessage.jpa.model.UserProfile;
+import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MessageJpaRepo;
 import com.huyvu.lightmessage.util.Paging;
@@ -17,9 +19,7 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.LongStream;
 
@@ -30,14 +30,17 @@ public class MessageRepoImpl implements MessageRepo {
     private final MemberJpaRepo memberJpaRepo;
     private final MessageJpaRepo messageJpaRepo;
     private final SessionFactory sessionFactory;
-    public MessageRepoImpl(MemberJpaRepo memberJpaRepo, MessageJpaRepo messageJpaRepo, SessionFactory sessionFactory) {
+    private final ConversationJpaRepo conversationJpaRepo;
+
+    public MessageRepoImpl(MemberJpaRepo memberJpaRepo, MessageJpaRepo messageJpaRepo, SessionFactory sessionFactory, ConversationJpaRepo conversationJpaRepo) {
         this.memberJpaRepo = memberJpaRepo;
         this.messageJpaRepo = messageJpaRepo;
         this.sessionFactory = sessionFactory;
         var now = Instant.now().getEpochSecond();
         LongStream.range(2_000, 2_020).parallel().forEach(value -> {
-            convs.put(value, new ConversationEntity(value, "Generated title", true, now, now, now));
+            convs.put(value, new ConversationEntity(value, "Generated title", true));
         });
+        this.conversationJpaRepo = conversationJpaRepo;
     }
 
     @Cacheable(value = "findAllMessages")
@@ -61,13 +64,15 @@ public class MessageRepoImpl implements MessageRepo {
                 .sendAt(msg.sentAt())
                 .build();
 
-        messageJpaRepo.save(message);
+        var save = messageJpaRepo.save(message);
+        System.out.println(save);
     }
 
 
-    /*@Override
+   /* @Override
     public void saveMessage(MessageEntity msg) {
         var session = sessionFactory.openSession();
+        var transaction = session.beginTransaction();
         var conversation = session.getReference(Conversation.class, msg.convId());
         var sender = session.getReference(UserProfile.class, msg.senderId());
         var message = Message.builder()
@@ -76,7 +81,6 @@ public class MessageRepoImpl implements MessageRepo {
                 .content(msg.content())
                 .sendAt(msg.sentAt())
                 .build();
-        var transaction = session.beginTransaction();
         session.persist(message);
         transaction.commit();
         session.close();
@@ -93,8 +97,8 @@ public class MessageRepoImpl implements MessageRepo {
     }
 
     @Override
-    public List<ConversationEntity> findAllConversations(long userId, Paging paging) {
-        return convs.values().stream().toList();
+    public List<ConversationDto> findAllConversations(long userId, Paging paging) {
+        return conversationJpaRepo.findAllByMemberId(userId);
     }
 
     @Override

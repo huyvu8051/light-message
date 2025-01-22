@@ -1,10 +1,11 @@
 package com.huyvu.lightmessage.controller;
 
 import com.huyvu.lightmessage.dto.CreateConversationRequestDTO;
-import com.huyvu.lightmessage.dto.SendMessageResponseDTO;
 import com.huyvu.lightmessage.dto.MessageDTO;
 import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
+import com.huyvu.lightmessage.jpa.ConversationDto;
+import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.security.UserContextProvider;
 import com.huyvu.lightmessage.service.MessageService;
 import com.huyvu.lightmessage.util.Paging;
@@ -29,14 +30,14 @@ public class MessageController {
     }
 
     @GetMapping("/conversations")
-    List<ConversationEntity> conversations() {
+    List<ConversationDto> conversations() {
         return messageService.getNewestConversations(userCtxProvider.getUserContext().id(), new Paging(0, 10));
     }
 
 
     @PostMapping("/conversations")
-    ResponseEntity<ConversationEntity> conversations(@RequestBody CreateConversationRequestDTO request){
-        var conversation = messageService.createGroupChatConversation(userCtxProvider.getUserContext().id(),request);
+    ResponseEntity<ConversationEntity> conversations(@RequestBody CreateConversationRequestDTO request) {
+        var conversation = messageService.createGroupChatConversation(userCtxProvider.getUserContext().id(), request);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{username}")
@@ -48,16 +49,13 @@ public class MessageController {
     }
 
 
-
     @GetMapping("/messages/{convId}")
     List<MessageDTO> messages(@PathVariable long convId) {
         return messageService.getMessages(userCtxProvider.getUserContext().id(), convId, new Paging(0, 10));
     }
 
     @PostMapping("/messages")
-    ResponseEntity<SendMessageResponseDTO> messages(@RequestBody SendMessageRequestDTO msg) {
-//        log.info("Using: {}", Thread.currentThread());
-
+    ResponseEntity<Void> messages(@RequestBody SendMessageRequestDTO msg) {
         messageService.sendMessage(userCtxProvider.getUserContext().id(), msg);
 
         URI location = ServletUriComponentsBuilder
