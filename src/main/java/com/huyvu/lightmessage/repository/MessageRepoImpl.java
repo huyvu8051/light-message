@@ -6,15 +6,14 @@ import com.huyvu.lightmessage.jpa.model.Conversation;
 import com.huyvu.lightmessage.jpa.model.Member;
 import com.huyvu.lightmessage.jpa.model.Message;
 import com.huyvu.lightmessage.jpa.model.UserProfile;
-import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MessageJpaRepo;
 import com.huyvu.lightmessage.util.Paging;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Tuple;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.NativeQuery;
-import org.hibernate.transform.Transformers;
+import org.hibernate.jpa.spi.NativeQueryTupleTransformer;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
@@ -33,11 +32,10 @@ public class MessageRepoImpl implements MessageRepo {
     private final MemberJpaRepo memberJpaRepo;
     private final MessageJpaRepo messageJpaRepo;
     private final SessionFactory sessionFactory;
-    private final ConversationJpaRepo conversationJpaRepo;
     @PersistenceContext
     private final EntityManager entityManager;
 
-    public MessageRepoImpl(MemberJpaRepo memberJpaRepo, MessageJpaRepo messageJpaRepo, SessionFactory sessionFactory, ConversationJpaRepo conversationJpaRepo, EntityManager entityManager) {
+    public MessageRepoImpl(MemberJpaRepo memberJpaRepo, MessageJpaRepo messageJpaRepo, SessionFactory sessionFactory, EntityManager entityManager) {
         this.memberJpaRepo = memberJpaRepo;
         this.messageJpaRepo = messageJpaRepo;
         this.sessionFactory = sessionFactory;
@@ -46,7 +44,6 @@ public class MessageRepoImpl implements MessageRepo {
         LongStream.range(2_000, 2_020).parallel().forEach(value -> {
             convs.put(value, new ConversationEntity(value, "Generated title", true));
         });
-        this.conversationJpaRepo = conversationJpaRepo;
     }
 
     @Cacheable(value = "findAllMessages")
@@ -101,37 +98,66 @@ public class MessageRepoImpl implements MessageRepo {
         convs.put(conversation.id(), conversation);
     }
 
-    @Override
-    public List<ConversationJpaRepo.ConversationDto> findAllConversations(long userId, Paging paging) {
-        String sql = """
-                    SELECT conv.id AS conv_id, conv.name, conv.is_group_chat, m.id AS m_id, m.content, m.send_at
-                      FROM (SELECT conversation_id
-                              FROM member
-                             WHERE user_id = :userId) AS conv_ids(conv_id)
-                               LEFT JOIN LATERAL (
-                          SELECT *
-                            FROM message
-                           WHERE conv_id = conv_ids.conv_id
-                           ORDER BY send_at DESC
-                           LIMIT 1
-                          ) m ON TRUE
-                               LEFT JOIN conversation conv
-                                         ON conv.id = m.conv_id
-                """;
+    private record MessageDto(long messageId,
+                              String messageContent,
+                              long sendAt) {
+    }
 
-        // Sử dụng Hibernate Session để ánh xạ
-       /* List<ConversationJpaRepo.ConversationDto> results = entityManager.unwrap(org.hibernate.Session.class)
-                .createNativeQuery(sql)
+    public record ConversationDto(
+            long id,
+            String name,
+            boolean isGroupChat,
+            MessageDto message
+    ) {
+        public ConversationDto(long id,
+                               String name,
+                               boolean isGroupChat,
+                               long messageId,
+                               String messageContent,
+                               long sendAt) {
+            this(id, name, isGroupChat, new MessageDto(messageId, messageContent, sendAt));
+        }
+    }
+
+    @Override
+    public List<ConversationDto> findAllConversations(long userId, Paging paging) {
+        String sql = """
+                SELECT conv.id AS conv_id
+                     , conv.name
+                     , conv.is_group_chat
+                     , m.id    AS m_id
+                     , m.content
+                     , m.send_at
+                  FROM (SELECT conversation_id
+                          FROM member
+                         WHERE user_id = :userId) AS conv_ids(conv_id)
+                           LEFT JOIN LATERAL (
+                      SELECT *
+                        FROM message
+                       WHERE conv_id = conv_ids.conv_id
+                       ORDER BY send_at DESC
+                       LIMIT 1
+                      ) m ON TRUE
+                           LEFT JOIN conversation conv
+                                     ON conv.id = m.conv_id""";
+
+
+        var session = sessionFactory.openSession();
+        return session.createNativeQuery(sql, Tuple.class)
                 .setParameter("userId", userId)
-                .unwrap(NativeQuery.class)
-                .setResultTransformer(Transformers.aliasToBean(ConversationJpaRepo.ConversationDto.class))
-                .getResultList();*/
-//        return results;
-        return conversationJpaRepo.findAllByMemberId(userId).stream().map(tuple -> new ConversationJpaRepo.ConversationDto(tuple.get("conv_id", Long.class), tuple.get("name", String.class), tuple.get("is_group_chat", Boolean.class), tuple.get("m_id", Long.class), tuple.get("content", String.class), tuple.get("send_at", Long.class))).toList();
+                .setResultListTransformer(NativeQueryTupleTransformer.INSTANCE)
+                .stream().map(tuple -> new ConversationDto(tuple.get("conv_id", Long.class),
+                        tuple.get("name", String.class),
+                        tuple.get("is_group_chat", Boolean.class),
+                        tuple.get("m_id", Long.class),
+                        tuple.get("content", String.class),
+                        tuple.get("send_at", Long.class))).toList();
     }
 
     @Override
     public Optional<Member> findMember(long userId, long convId) {
         return memberJpaRepo.findOneByUserIdAndConversationId(userId, convId);
     }
+
+
 }

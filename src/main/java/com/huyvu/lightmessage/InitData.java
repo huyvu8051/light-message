@@ -4,7 +4,6 @@ import com.github.javafaker.Faker;
 import com.huyvu.lightmessage.jpa.model.Conversation;
 import com.huyvu.lightmessage.jpa.model.Member;
 import com.huyvu.lightmessage.jpa.model.UserProfile;
-import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.UserProfileJpaRepo;
 import lombok.extern.slf4j.Slf4j;
