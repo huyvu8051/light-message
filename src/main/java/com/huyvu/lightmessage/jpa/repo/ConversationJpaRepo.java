@@ -1,16 +1,10 @@
 package com.huyvu.lightmessage.jpa.repo;
 
-import com.huyvu.lightmessage.entity.ConversationEntity;
-import com.huyvu.lightmessage.jpa.ConversationDto;
 import com.huyvu.lightmessage.jpa.model.Conversation;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 public interface ConversationJpaRepo extends JpaRepository<Conversation, UUID> {
@@ -20,10 +14,24 @@ public interface ConversationJpaRepo extends JpaRepository<Conversation, UUID> {
                       long sendAt) {
     }
 
-
+    record ConversationDto(
+            long id,
+            String name,
+            boolean isGroupChat,
+            MessageDto message
+    ) {
+        public ConversationDto(long id,
+                               String name,
+                               boolean isGroupChat,
+                               long messageId,
+                               String messageContent,
+                               long sendAt) {
+            this(id, name, isGroupChat, new MessageDto(messageId, messageContent, sendAt));
+        }
+    }
 
     @Query("""
-            select new com.huyvu.lightmessage.jpa.ConversationDto
+            select new com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo$ConversationDto
                         (c.id
                        , c.name
                        , c.isGroupChat
@@ -38,4 +46,6 @@ public interface ConversationJpaRepo extends JpaRepository<Conversation, UUID> {
                              where m.user.id = :userId)
             """)
     List<ConversationDto> findAllByMemberId(long userId);
+
+
 }

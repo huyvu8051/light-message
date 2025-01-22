@@ -2,7 +2,6 @@ package com.huyvu.lightmessage.repository;
 
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
-import com.huyvu.lightmessage.jpa.ConversationDto;
 import com.huyvu.lightmessage.jpa.model.Conversation;
 import com.huyvu.lightmessage.jpa.model.Member;
 import com.huyvu.lightmessage.jpa.model.Message;
@@ -97,7 +96,7 @@ public class MessageRepoImpl implements MessageRepo {
     }
 
     @Override
-    public List<ConversationDto> findAllConversations(long userId, Paging paging) {
+    public List<ConversationJpaRepo.ConversationDto> findAllConversations(long userId, Paging paging) {
         return conversationJpaRepo.findAllByMemberId(userId);
     }
 

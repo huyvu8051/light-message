@@ -12,7 +12,8 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @Entity
 @Table(indexes = {
-        @Index(name = "idx_message__conv_id", columnList = "conv_id")
+        @Index(name = "idx_message__conv_id", columnList = "conv_id"),
+        @Index(name = "idx_message__conv_id__send_at", columnList = "conv_id, send_at desc")
 })
 @NoArgsConstructor
 @AllArgsConstructor

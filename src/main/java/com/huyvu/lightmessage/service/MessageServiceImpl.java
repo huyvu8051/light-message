@@ -6,7 +6,7 @@ import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
 import com.huyvu.lightmessage.exception.ConversationNotExistException;
-import com.huyvu.lightmessage.jpa.ConversationDto;
+import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.repository.MessageRepo;
 import com.huyvu.lightmessage.util.Paging;
 import org.slf4j.Logger;
@@ -91,7 +91,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<ConversationDto> getNewestConversations(long userId, Paging paging) {
+    public List<ConversationJpaRepo.ConversationDto> getNewestConversations(long userId, Paging paging) {
         return msgRepo.findAllConversations(userId, paging);
     }
 }
