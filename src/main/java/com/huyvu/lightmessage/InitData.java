@@ -1,6 +1,7 @@
 package com.huyvu.lightmessage;
 
 import com.github.javafaker.Faker;
+import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.jpa.model.Conversation;
 import com.huyvu.lightmessage.jpa.model.Member;
 import com.huyvu.lightmessage.jpa.model.UserProfile;
