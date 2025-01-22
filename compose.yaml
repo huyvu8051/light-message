@@ -42,6 +42,7 @@ services:
           memory: 512M
           cpus: "2.0"
 
+
 #  k6:
 #    container_name: k6
 #    image: grafana/k6:latest
