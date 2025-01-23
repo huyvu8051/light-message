@@ -27,6 +27,17 @@ services:
 #          memory: "512m"
 #    volumes:
 #      - "./docker/tmp-hprof:/tmp"
+
+  light-message:
+    image: light-message:0.0.1-SNAPSHOT
+    container_name: nsba
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/mydatabase
+      - SERVER_TOMCAT_THREADS_MAX=4
+      - SPRING_DATA_JPA_REPOSITORIES_BOOTSTRAP_MODE=lazy
+
   postgres:
     container_name: postgres
     image: 'postgres:17.2'

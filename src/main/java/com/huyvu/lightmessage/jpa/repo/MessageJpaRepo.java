@@ -10,8 +10,8 @@ import java.util.List;
 public interface MessageJpaRepo extends JpaRepository<Message, Long> {
 
     @Query("""
-    select new com.huyvu.lightmessage.entity.MessageEntity(id, conv.id, content, sender.id, sendAt )
-    from Message
-    where conv.id = :convId""")
-    List<MessageEntity> findAllByConversationId(long convId);
+    select m
+    from Message m
+    where m.conv.id = :convId""")
+    List<Message> findAllByConversationId(long convId);
 }

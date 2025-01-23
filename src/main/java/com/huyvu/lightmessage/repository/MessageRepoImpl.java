@@ -56,8 +56,14 @@ public class MessageRepoImpl implements MessageRepo {
     @Cacheable(value = "findAllMessages")
     @Override
     public List<MessageEntity> findAllMessages(long convId) {
-
-        return messageJpaRepo.findAllByConversationId(convId);
+        return messageJpaRepo.findAllByConversationId(convId).stream().map(m->MessageEntity.builder()
+                .id(m.getId())
+                .convId(m.getConv().getId())
+                .content(m.getContent())
+                .senderId(m.getSender().getId())
+                .sentAt(m.getSendAt())
+                .build())
+                .collect(Collectors.toList());
     }
 
     @Override
