@@ -24,12 +24,10 @@ docker attach <container-username/name>
 ```
 
 
-### To build the image, you can run the spring-boot:build-image goal with the native profile active:
+### LOCAL GRAALVM REQUIRE: build native image in local machine
 ```shell
-mvn -Pnative spring-boot:build-image
+mvn -Pnative native:compile
 ```
-
-### Option if not config in Native Compiler maven plugin
 
 ### Use SDKMAN to manage JDK versions
 ### Use graalvm jdk version of nik.
@@ -45,6 +43,15 @@ target/light-message -Xmx64m --server.tomcat.threads.max=4
 
 
 
+### DOCKER REQUIRE: To build the image, you can run the spring-boot:build-image goal with the native profile active:
+```shell
+mvn -Pnative spring-boot:build-image
+```
+
+### Option if not config in Native Compiler maven plugin
+```shell
+mvn -Pnative spring-boot:build-image -Denv.BP_NATIVE_IMAGE_BUILD_ARGUMENTS="--vm.DmaxHeapSize=8G"
+```
 
 ### For Docker Apple Silicon ARM64, rebuild maven build image result for ARM64 architect
 ```shell
