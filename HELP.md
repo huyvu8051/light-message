@@ -44,7 +44,9 @@ target/light-message -Xmx64m --server.tomcat.threads.max=4
 
 
 ### DOCKER REQUIRE: To build the image, you can run the spring-boot:build-image goal with the native profile active:
+## add this build argument in arm64 paketobuildpacks/builder-jammy-java-tiny:latest
 ```shell
+
 mvn -Pnative spring-boot:build-image
 ```
 
