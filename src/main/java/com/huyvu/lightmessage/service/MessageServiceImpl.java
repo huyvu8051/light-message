@@ -49,12 +49,9 @@ public class MessageServiceImpl implements MessageService {
      */
     @Override
     public void sendMessage(long userId, SendMessageRequestDTO request) {
-        var conversationOpt = msgRepo.findMember(userId, request.convId());
-        if(conversationOpt.isEmpty()){
-            throw new ConversationNotExistException("ID: " + request.convId());
-        }
-        var now = Instant.now();
+        checkUserIsMemberOfConversation(userId, request.convId());
 
+        var now = Instant.now();
         var entity = MessageEntity.builder()
                 .convId(request.convId())
                 .content(request.content())
@@ -73,17 +70,20 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public List<MessageDTO> getMessages(long userId, long convId, Paging paging) {
-        Optional<?> conversation = msgRepo.findMember(userId, convId);
-        if(conversation.isEmpty()){
-            throw new ConversationNotExistException("userId: " + userId + " convId:" + convId);
-        }
+        checkUserIsMemberOfConversation(userId, convId);
         var allMessages = msgRepo.findAllMessages(convId);
         return allMessages.stream().map(e -> new MessageDTO(e.id(), e.content(), e.senderId())).toList();
     }
 
+    private void checkUserIsMemberOfConversation(long userId, long convId) {
+        Optional<?> conversation = msgRepo.findMember(userId, convId);
+        if(conversation.isEmpty()){
+            throw new ConversationNotExistException("userId: " + userId + " convId:" + convId);
+        }
+    }
+
     @Override
     public ConversationEntity createGroupChatConversation(long userId, CreateConversationRequestDTO request) {
-
         var id = msgRepo.getNextConversationId();
         var conversation = new ConversationEntity(id, request.conversationName(), true);
         msgRepo.saveConversation(conversation);

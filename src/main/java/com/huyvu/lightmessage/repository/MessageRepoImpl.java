@@ -6,12 +6,17 @@ import com.huyvu.lightmessage.jpa.model.Conversation;
 import com.huyvu.lightmessage.jpa.model.Member;
 import com.huyvu.lightmessage.jpa.model.Message;
 import com.huyvu.lightmessage.jpa.model.UserProfile;
+import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MessageJpaRepo;
 import com.huyvu.lightmessage.util.Paging;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Tuple;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.Subquery;
 import org.hibernate.SessionFactory;
 import org.hibernate.jpa.spi.NativeQueryTupleTransformer;
 import org.springframework.cache.annotation.Cacheable;
@@ -23,6 +28,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 
 @Repository
@@ -31,14 +37,15 @@ public class MessageRepoImpl implements MessageRepo {
     private final Map<Long, ConversationEntity> convs = new ConcurrentHashMap<>();
     private final MemberJpaRepo memberJpaRepo;
     private final MessageJpaRepo messageJpaRepo;
-    private final SessionFactory sessionFactory;
+    private final ConversationJpaRepo conversationJpaRepo;
+
     @PersistenceContext
     private final EntityManager entityManager;
 
-    public MessageRepoImpl(MemberJpaRepo memberJpaRepo, MessageJpaRepo messageJpaRepo, SessionFactory sessionFactory, EntityManager entityManager) {
+    public MessageRepoImpl(MemberJpaRepo memberJpaRepo, MessageJpaRepo messageJpaRepo, ConversationJpaRepo conversationJpaRepo, EntityManager entityManager) {
         this.memberJpaRepo = memberJpaRepo;
         this.messageJpaRepo = messageJpaRepo;
-        this.sessionFactory = sessionFactory;
+        this.conversationJpaRepo = conversationJpaRepo;
         this.entityManager = entityManager;
         var now = Instant.now().getEpochSecond();
         LongStream.range(2_000, 2_020).parallel().forEach(value -> {
@@ -119,8 +126,9 @@ public class MessageRepoImpl implements MessageRepo {
         }
     }
 
-    @Override
+    /*@Override
     public List<ConversationDto> findAllConversations(long userId, Paging paging) {
+
         String sql = """
                 SELECT conv.id AS conv_id
                      , conv.name
@@ -142,7 +150,7 @@ public class MessageRepoImpl implements MessageRepo {
                                      ON conv.id = m.conv_id""";
 
 
-        var session = sessionFactory.openSession();
+        var session = sessionFactory.getCurrentSession();
         return session.createNativeQuery(sql, Tuple.class)
                 .setParameter("userId", userId)
                 .setResultListTransformer(NativeQueryTupleTransformer.INSTANCE)
@@ -152,6 +160,17 @@ public class MessageRepoImpl implements MessageRepo {
                         tuple.get("m_id", Long.class),
                         tuple.get("content", String.class),
                         tuple.get("send_at", Long.class))).toList();
+    }*/
+
+
+    @Override
+    public List<ConversationDto> findAllConversations(long userId, Paging paging) {
+        return conversationJpaRepo.findNewestConversation(userId).stream().map(tuple -> new ConversationDto(tuple.get("conv_id", Long.class),
+                tuple.get("name", String.class),
+                tuple.get("is_group_chat", Boolean.class),
+                tuple.get("m_id", Long.class),
+                tuple.get("content", String.class),
+                tuple.get("send_at", Long.class))).toList();
     }
 
     @Override

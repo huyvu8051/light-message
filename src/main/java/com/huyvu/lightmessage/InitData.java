@@ -37,14 +37,14 @@ public class InitData implements ApplicationRunner {
 
         var userProfiles = upRepo.saveAll(IntStream.range(0, 20).mapToObj(e -> {
             var entity = new UserProfile();
-            entity.setUsername("USER_" + String.format("%03d", e));
+            entity.setUsername(String.format("%03d", e));
             entity.setName(faker.name().fullName());
             return entity;
         }).toList());
 
         var conversations = convRepo.saveAll(IntStream.range(0, 20).mapToObj(e -> {
             var conv = new Conversation();
-            conv.setName("CONV_" + String.format("%03d", e) + "_" + faker.funnyName().name());
+            conv.setName(String.format("%03d", e) + "_" + faker.funnyName().name());
             return conv;
         }).toList());
 
