@@ -29,7 +29,7 @@ services:
 #      - "./docker/tmp-hprof:/tmp"
 
   light-message:
-    image: light-message:0.0.1-SNAPSHOT
+    image: docker.io/library/light-message:0.0.1-SNAPSHOT
     container_name: nsba
     ports:
       - "8080:8080"
