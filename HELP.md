@@ -39,7 +39,8 @@ docker attach <container-username/name>
 
 ### To build the image, you can run the spring-boot:build-image goal with the native profile active:
 ```shell
-mvn -Pnative spring-boot:build-image
+mvn -Pnative spring-boot:build-image -Denv.BP_NATIVE_IMAGE_BUILD_ARGUMENTS="--vm.DmaxHeapSize=8G"
+
 ```
 
 
