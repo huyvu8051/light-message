@@ -15,8 +15,7 @@ public class UserContextProviderImpl implements UserContextProvider {
     public UserContext getUserContext() {
         var context = SecurityContextHolder.getContext();
         var authentication = context.getAuthentication();
-        var principal = authentication.getPrincipal();
-        if (principal instanceof UserContext userContext) {
+        if (authentication != null &&  authentication.getPrincipal() instanceof UserContext userContext) {
             return userContext;
         }
         throw new AuthenticationException("Not authorized");

@@ -42,17 +42,17 @@ public class MessageRepoImpl implements MessageRepo {
         });
     }
 
-//    @Cacheable(value = "findAllMessages")
+    //    @Cacheable(value = "findAllMessages")
     @Override
     public List<MessageEntity> findAllMessages(long convId, OffsetDateTime from, OffsetDateTime to) {
         var allByConversationId = messageJpaRepo.findAllByConversationId(convId);
-        return allByConversationId.stream().map(m->MessageEntity.builder()
-                .id(m.getId())
-                .convId(m.getConv().getId())
-                .content(m.getContent())
-                .senderId(m.getSender().getId())
-                .sentAt(m.getSendAt())
-                .build())
+        return allByConversationId.stream().map(m -> MessageEntity.builder()
+                        .id(m.getId())
+                        .convId(m.getConv().getId())
+                        .content(m.getContent())
+                        .senderId(m.getSender().getId())
+                        .sentAt(m.getSendAt())
+                        .build())
                 .collect(Collectors.toList());
     }
 
@@ -101,7 +101,7 @@ public class MessageRepoImpl implements MessageRepo {
         convs.put(conversation.id(), conversation);
     }
 
-    private record MessageDto(long messageId,
+    private record MessageDto(Long messageId,
                               String messageContent,
                               OffsetDateTime sendAt) {
     }
@@ -115,10 +115,10 @@ public class MessageRepoImpl implements MessageRepo {
         public ConversationDto(long id,
                                String name,
                                boolean isGroupChat,
-                               long messageId,
+                               Long messageId,
                                String messageContent,
                                Instant sendAt) {
-            this(id, name, isGroupChat, new MessageDto(messageId, messageContent, sendAt.atOffset(ZoneOffset.UTC)));
+            this(id, name, isGroupChat, new MessageDto(messageId, messageContent, sendAt != null ? sendAt.atOffset(ZoneOffset.UTC) : null));
         }
     }
 
