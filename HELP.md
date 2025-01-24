@@ -43,21 +43,24 @@ target/light-message -Xmx64m --server.tomcat.threads.max=4
 
 
 
-### DOCKER REQUIRE: To build the image, you can run the spring-boot:build-image goal with the native profile active:
-## add this build argument in arm64 paketobuildpacks/builder-jammy-java-tiny:latest
+### DOCKER BUILD 
+
+# DOCKER REQUIRE: To build the image, you can run the spring-boot:build-image goal with the native profile active:
+#### Add this build argument in arm64 paketobuildpacks/builder-jammy-java-tiny:latest
 ```shell
 
 mvn -Pnative spring-boot:build-image
+```
+
+## Run docker container
+### --rm for remove on stop
+```shell
+docker network create my_network
+docker network connect my_network postgres
+docker run --rm --network my_network -p 8080:8080 docker.io/library/light-message:0.0.1-SNAPSHOT -Xmx64m --server.tomcat.threads.max=4  --spring.datasource.url=jdbc:postgresql://postgres:5432/mydatabase
 ```
 
 ### Option if not config in Native Compiler maven plugin
 ```shell
 mvn -Pnative spring-boot:build-image -Denv.BP_NATIVE_IMAGE_BUILD_ARGUMENTS="--vm.DmaxHeapSize=8G"
 ```
-
-### For Docker Apple Silicon ARM64, rebuild maven build image result for ARM64 architect
-```shell
-docker buildx build --platform linux/arm64 -t light-message:0.0.1-SNAPSHOT . 
-```
-docker buildx build --platform linux/arm64 -t docker.io/library/light-message:0.0.1-SNAPSHOT .
-docker run --rm -p 8080:8080 docker.io/library/light-message:0.0.1-SNAPSHOT --D
