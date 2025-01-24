@@ -16,7 +16,8 @@ import java.util.UUID;
 @Entity
 @Table(indexes = {
         @Index(name = "idx_member__user_id", columnList = "user_id"),
-        @Index(name = "idx_member__conv_id", columnList = "conversation_id")
+        @Index(name = "idx_member__conv_id", columnList = "conversation_id"),
+        @Index(name = "idx_member__conv_id__user_id", columnList = "conversation_id, user_id")
 })
 
 public class Member extends Auditable<String> {

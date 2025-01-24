@@ -11,8 +11,6 @@ import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MessageJpaRepo;
 import com.huyvu.lightmessage.util.Paging;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Tuple;
 import org.springframework.stereotype.Repository;
 
 import java.time.Instant;
@@ -21,7 +19,6 @@ import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.TimeZone;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
@@ -175,7 +172,7 @@ public class MessageRepoImpl implements MessageRepo {
 
     @Override
     public Optional<Member> findMember(long userId, long convId) {
-        return memberJpaRepo.findOneByUserIdAndConversationId(userId, convId);
+        return memberJpaRepo.findOneByConversationIdAndUserId(convId, userId);
     }
 
 
