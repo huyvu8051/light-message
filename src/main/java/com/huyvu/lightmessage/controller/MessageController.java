@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 @Slf4j
@@ -30,7 +31,7 @@ public class MessageController {
 
     @GetMapping("/conversations")
     List<MessageRepoImpl.ConversationDto> conversations() {
-        return messageService.getNewestConversations(userCtxProvider.getUserContext().id(), new Paging(0, 10));
+        return messageService.getNewestConversations(userCtxProvider.getUserContext().id(), new Paging(OffsetDateTime.now(), OffsetDateTime.now()));
     }
 
 
@@ -50,7 +51,7 @@ public class MessageController {
 
     @GetMapping("/messages/{convId}")
     List<MessageDTO> messages(@PathVariable long convId) {
-        return messageService.getMessages(userCtxProvider.getUserContext().id(), convId, new Paging(0, 10));
+        return messageService.getMessages(userCtxProvider.getUserContext().id(), convId, new Paging(OffsetDateTime.now(), OffsetDateTime.now()));
     }
 
     @PostMapping("/messages")

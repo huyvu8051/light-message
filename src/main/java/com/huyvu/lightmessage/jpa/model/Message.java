@@ -4,6 +4,9 @@ import com.huyvu.lightmessage.jpa.Auditable;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.OffsetDateTime;
 
 
 @EqualsAndHashCode(callSuper = true)
@@ -31,6 +34,7 @@ public class Message extends Auditable<String> {
     UserProfile sender;
 
     String content;
-    long sendAt;
+
+    OffsetDateTime sendAt;
 
 }

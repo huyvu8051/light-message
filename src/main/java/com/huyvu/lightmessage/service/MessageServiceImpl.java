@@ -13,7 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,12 +52,11 @@ public class MessageServiceImpl implements MessageService {
     public void sendMessage(long userId, SendMessageRequestDTO request) {
         checkUserIsMemberOfConversation(userId, request.convId());
 
-        var now = Instant.now();
         var entity = MessageEntity.builder()
                 .convId(request.convId())
                 .content(request.content())
                 .senderId(userId)
-                .sentAt(now.getEpochSecond())
+                .sentAt(OffsetDateTime.now(ZoneOffset.UTC))
                 .build();
 
         msgRepo.saveMessage(entity);
@@ -71,7 +71,7 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public List<MessageDTO> getMessages(long userId, long convId, Paging paging) {
         checkUserIsMemberOfConversation(userId, convId);
-        var allMessages = msgRepo.findAllMessages(convId);
+        var allMessages = msgRepo.findAllMessages(convId, paging.from(), paging.to());
         return allMessages.stream().map(e -> new MessageDTO(e.id(), e.content(), e.senderId())).toList();
     }
 

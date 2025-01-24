@@ -13,19 +13,15 @@ import com.huyvu.lightmessage.util.Paging;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Tuple;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
-import jakarta.persistence.criteria.Subquery;
-import org.hibernate.SessionFactory;
-import org.hibernate.jpa.spi.NativeQueryTupleTransformer;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TimeZone;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
@@ -39,24 +35,21 @@ public class MessageRepoImpl implements MessageRepo {
     private final MessageJpaRepo messageJpaRepo;
     private final ConversationJpaRepo conversationJpaRepo;
 
-    @PersistenceContext
-    private final EntityManager entityManager;
-
     public MessageRepoImpl(MemberJpaRepo memberJpaRepo, MessageJpaRepo messageJpaRepo, ConversationJpaRepo conversationJpaRepo, EntityManager entityManager) {
         this.memberJpaRepo = memberJpaRepo;
         this.messageJpaRepo = messageJpaRepo;
         this.conversationJpaRepo = conversationJpaRepo;
-        this.entityManager = entityManager;
         var now = Instant.now().getEpochSecond();
         LongStream.range(2_000, 2_020).parallel().forEach(value -> {
             convs.put(value, new ConversationEntity(value, "Generated title", true));
         });
     }
 
-    @Cacheable(value = "findAllMessages")
+//    @Cacheable(value = "findAllMessages")
     @Override
-    public List<MessageEntity> findAllMessages(long convId) {
-        return messageJpaRepo.findAllByConversationId(convId).stream().map(m->MessageEntity.builder()
+    public List<MessageEntity> findAllMessages(long convId, OffsetDateTime from, OffsetDateTime to) {
+        var allByConversationId = messageJpaRepo.findAllByConversationId(convId);
+        return allByConversationId.stream().map(m->MessageEntity.builder()
                 .id(m.getId())
                 .convId(m.getConv().getId())
                 .content(m.getContent())
@@ -113,7 +106,7 @@ public class MessageRepoImpl implements MessageRepo {
 
     private record MessageDto(long messageId,
                               String messageContent,
-                              long sendAt) {
+                              OffsetDateTime sendAt) {
     }
 
     public record ConversationDto(
@@ -127,8 +120,8 @@ public class MessageRepoImpl implements MessageRepo {
                                boolean isGroupChat,
                                long messageId,
                                String messageContent,
-                               long sendAt) {
-            this(id, name, isGroupChat, new MessageDto(messageId, messageContent, sendAt));
+                               Instant sendAt) {
+            this(id, name, isGroupChat, new MessageDto(messageId, messageContent, sendAt.atOffset(ZoneOffset.UTC)));
         }
     }
 
@@ -171,12 +164,13 @@ public class MessageRepoImpl implements MessageRepo {
 
     @Override
     public List<ConversationDto> findAllConversations(long userId, Paging paging) {
-        return conversationJpaRepo.findNewestConversation(userId).stream().map(tuple -> new ConversationDto(tuple.get("conv_id", Long.class),
+        var newestConversation = conversationJpaRepo.findNewestConversation(userId);
+        return newestConversation.stream().map(tuple -> new ConversationDto(tuple.get("conv_id", Long.class),
                 tuple.get("name", String.class),
                 tuple.get("is_group_chat", Boolean.class),
                 tuple.get("m_id", Long.class),
                 tuple.get("content", String.class),
-                tuple.get("send_at", Long.class))).toList();
+                tuple.get("send_at", Instant.class))).toList();
     }
 
     @Override

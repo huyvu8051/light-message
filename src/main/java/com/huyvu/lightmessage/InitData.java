@@ -1,6 +1,7 @@
 package com.huyvu.lightmessage;
 
 import com.github.javafaker.Faker;
+import com.github.javafaker.Name;
 import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.jpa.model.Conversation;
 import com.huyvu.lightmessage.jpa.model.Member;
@@ -37,14 +38,15 @@ public class InitData implements ApplicationRunner {
 
         var userProfiles = upRepo.saveAll(IntStream.range(0, 20).mapToObj(e -> {
             var entity = new UserProfile();
-            entity.setUsername(String.format("%03d", e));
-            entity.setName(faker.name().fullName());
+            var name = faker.name();
+            entity.setUsername(name.username());
+            entity.setName(name.fullName());
             return entity;
         }).toList());
 
         var conversations = convRepo.saveAll(IntStream.range(0, 20).mapToObj(e -> {
             var conv = new Conversation();
-            conv.setName(String.format("%03d", e) + "_" + faker.funnyName().name());
+            conv.setName(faker.funnyName().name());
             return conv;
         }).toList());
 
