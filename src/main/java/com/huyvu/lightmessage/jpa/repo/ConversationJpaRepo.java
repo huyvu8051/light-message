@@ -29,4 +29,12 @@ public interface ConversationJpaRepo extends JpaRepository<Conversation, Long> {
                                 ON conv.id = conv_ids.conv_id
             """, nativeQuery = true)
     List<Tuple> findNewestConversation(long userId);
+
+
+    @Query("""
+           select c
+           from Member m
+           left join Conversation c on m.conversation.id = c.id
+           where m.user.id = :userId""")
+    List<Conversation> findConversationsByUserId(long userId);
 }

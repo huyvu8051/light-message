@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public interface MessageJpaRepo extends JpaRepository<Message, Long> {
 
@@ -17,4 +18,6 @@ public interface MessageJpaRepo extends JpaRepository<Message, Long> {
             order by m.sendAt desc
             limit 10""")
     List<Message> findAllByConversationId(long convId);
+
+    Optional<Message> findOneByConvIdOrderBySendAtDesc(long id);
 }

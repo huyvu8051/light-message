@@ -11,11 +11,14 @@ import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MessageJpaRepo;
 import com.huyvu.lightmessage.util.Paging;
 import jakarta.persistence.EntityManager;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Array;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -122,41 +125,7 @@ public class MessageRepoImpl implements MessageRepo {
         }
     }
 
-    /*@Override
-    public List<ConversationDto> findAllConversations(long userId, Paging paging) {
 
-        String sql = """
-                SELECT conv.id AS conv_id
-                     , conv.name
-                     , conv.is_group_chat
-                     , m.id    AS m_id
-                     , m.content
-                     , m.send_at
-                  FROM (SELECT conversation_id
-                          FROM member
-                         WHERE user_id = :userId) AS conv_ids(conv_id)
-                           LEFT JOIN LATERAL (
-                      SELECT *
-                        FROM message
-                       WHERE conv_id = conv_ids.conv_id
-                       ORDER BY send_at DESC
-                       LIMIT 1
-                      ) m ON TRUE
-                           LEFT JOIN conversation conv
-                                     ON conv.id = m.conv_id""";
-
-
-        var session = sessionFactory.getCurrentSession();
-        return session.createNativeQuery(sql, Tuple.class)
-                .setParameter("userId", userId)
-                .setResultListTransformer(NativeQueryTupleTransformer.INSTANCE)
-                .stream().map(tuple -> new ConversationDto(tuple.get("conv_id", Long.class),
-                        tuple.get("name", String.class),
-                        tuple.get("is_group_chat", Boolean.class),
-                        tuple.get("m_id", Long.class),
-                        tuple.get("content", String.class),
-                        tuple.get("send_at", Long.class))).toList();
-    }*/
 
 
     @Override
@@ -169,6 +138,47 @@ public class MessageRepoImpl implements MessageRepo {
                 tuple.get("content", String.class),
                 tuple.get("send_at", Instant.class))).toList();
     }
+
+
+    /*
+    SELECT conv_ids.conv_id AS conv_id
+                , conv.name
+                , conv.is_group_chat
+                , m.id             AS m_id
+                , m.content
+                , m.send_at
+             FROM (SELECT conversation_id
+                     FROM member
+                    WHERE user_id = :userId) AS conv_ids(conv_id)
+                      LEFT JOIN LATERAL (
+                 SELECT *
+                   FROM message
+                  WHERE conv_id = conv_ids.conv_id
+                  ORDER BY send_at DESC
+                  LIMIT 1
+                 ) m ON TRUE
+                      LEFT JOIN conversation conv
+                                ON conv.id = conv_ids.conv_id
+     */
+
+   /* @Override
+    public List<ConversationDto> findAllConversations(long userId, Paging paging) {
+
+        var convIds = conversationJpaRepo.findConversationsByUserId(userId);
+        if (convIds.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        var convDtos = new ArrayList<ConversationDto>(convIds.size());
+        for (Conversation conv : convIds) {
+            var msg = messageJpaRepo.findOneByConvIdOrderBySendAtDesc(conv.getId());
+            var message = msg.map(m -> new MessageDto(m.getId(), m.getContent(), m.getSendAt()))
+                    .orElse(null);
+            convDtos.add(new ConversationDto(conv.getId(), conv.getName(), conv.isGroupChat(), message));
+        }
+
+        return convDtos;
+    }*/
 
     @Override
     public Optional<Member> findMember(long userId, long convId) {
