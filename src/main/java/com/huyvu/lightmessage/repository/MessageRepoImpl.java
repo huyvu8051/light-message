@@ -29,8 +29,6 @@ import java.util.stream.LongStream;
 
 @Repository
 public class MessageRepoImpl implements MessageRepo {
-    private final AtomicLong conversationKeyGen = new AtomicLong(2_000_000);
-    private final Map<Long, ConversationEntity> convs = new ConcurrentHashMap<>();
     private final MemberJpaRepo memberJpaRepo;
     private final MessageJpaRepo messageJpaRepo;
     private final ConversationJpaRepo conversationJpaRepo;
@@ -39,10 +37,7 @@ public class MessageRepoImpl implements MessageRepo {
         this.memberJpaRepo = memberJpaRepo;
         this.messageJpaRepo = messageJpaRepo;
         this.conversationJpaRepo = conversationJpaRepo;
-        var now = Instant.now().getEpochSecond();
-        LongStream.range(2_000, 2_020).parallel().forEach(value -> {
-            convs.put(value, new ConversationEntity(value, "Generated title", true));
-        });
+
     }
 
     //    @Cacheable(value = "findAllMessages")
@@ -94,14 +89,13 @@ public class MessageRepoImpl implements MessageRepo {
         session.close();
     }*/
 
-    @Override
-    public long getNextConversationId() {
-        return conversationKeyGen.incrementAndGet();
-    }
 
     @Override
     public void saveConversation(ConversationEntity conversation) {
-        convs.put(conversation.id(), conversation);
+        var entity = new Conversation();
+        entity.setName(conversation.name());
+        entity.setGroupChat(false);
+        conversationJpaRepo.save(entity);
     }
 
     private record MessageDto(Long messageId,
@@ -183,6 +177,11 @@ public class MessageRepoImpl implements MessageRepo {
     @Override
     public Optional<Member> findMember(long userId, long convId) {
         return memberJpaRepo.findOneByConversationIdAndUserId(convId, userId);
+    }
+
+    @Override
+    public void updateConversationLastSendAt(long convId, OffsetDateTime offsetDateTime) {
+        conversationJpaRepo.updateById(convId , offsetDateTime);
     }
 
 

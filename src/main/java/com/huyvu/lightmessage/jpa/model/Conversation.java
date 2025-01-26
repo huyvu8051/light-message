@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,5 +29,6 @@ public class Conversation extends Auditable<String> {
 
     String name;
     boolean isGroupChat;
+    OffsetDateTime lastSendAt;
 
 }

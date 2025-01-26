@@ -59,6 +59,8 @@ public class MessageServiceImpl implements MessageService {
                 .sentAt(OffsetDateTime.now(ZoneOffset.UTC))
                 .build();
 
+
+        msgRepo.updateConversationLastSendAt(entity.convId(), entity.sentAt());
         msgRepo.saveMessage(entity);
         rtmService.sendMessageNotification(request.convId(), entity);
 
@@ -84,8 +86,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public ConversationEntity createGroupChatConversation(long userId, CreateConversationRequestDTO request) {
-        var id = msgRepo.getNextConversationId();
-        var conversation = new ConversationEntity(id, request.conversationName(), true);
+        var conversation = new ConversationEntity(0l,request.conversationName(), true);
         msgRepo.saveConversation(conversation);
         return conversation;
     }
