@@ -120,8 +120,6 @@ public class MessageRepoImpl implements MessageRepo {
     }
 
 
-
-
     @Override
     public List<ConversationDto> findAllConversations(long userId, Paging paging) {
         var newestConversation = conversationJpaRepo.findNewestConversation(userId);
@@ -180,8 +178,8 @@ public class MessageRepoImpl implements MessageRepo {
     }
 
     @Override
-    public void updateConversationLastSendAt(long convId, OffsetDateTime offsetDateTime) {
-        conversationJpaRepo.updateById(convId , offsetDateTime);
+    public void updateMemberLastSendAt(long convId, OffsetDateTime offsetDateTime) {
+        memberJpaRepo.updateById(convId, offsetDateTime);
     }
 
 

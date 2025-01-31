@@ -14,12 +14,11 @@ public interface MessageRepo {
 
     void saveMessage(MessageEntity message);
 
-
     void saveConversation(ConversationEntity conversation);
 
     List<MessageRepoImpl.ConversationDto> findAllConversations(long userId, Paging paging);
 
     Optional<Member> findMember(long userId, long convId);
 
-    void updateConversationLastSendAt(long convId, OffsetDateTime offsetDateTime);
+    void updateMemberLastSendAt(long convId, OffsetDateTime offsetDateTime);
 }

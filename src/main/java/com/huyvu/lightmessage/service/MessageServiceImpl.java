@@ -60,7 +60,7 @@ public class MessageServiceImpl implements MessageService {
                 .build();
 
 
-        msgRepo.updateConversationLastSendAt(entity.convId(), entity.sentAt());
+        msgRepo.updateMemberLastSendAt(entity.convId(), entity.sentAt());
         msgRepo.saveMessage(entity);
         rtmService.sendMessageNotification(request.convId(), entity);
 

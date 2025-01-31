@@ -41,11 +41,5 @@ public interface ConversationJpaRepo extends JpaRepository<Conversation, Long> {
              where m.user.id = :userId""")
     List<Conversation> findConversationsByUserId(long userId);
 
-    @Modifying
-    @Transactional
-    @Query("""
-            update Conversation
-               set lastSendAt = :time
-             where id = :convId""")
-    void updateById(long convId, OffsetDateTime time);
+
 }

@@ -29,6 +29,5 @@ public class Conversation extends Auditable<String> {
 
     String name;
     boolean isGroupChat;
-    OffsetDateTime lastSendAt;
 
 }

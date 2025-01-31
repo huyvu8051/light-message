@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
@@ -32,4 +33,7 @@ public class Member extends Auditable<String> {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_member__conv"))
     Conversation conversation;
+
+    OffsetDateTime lastSendAt;
+
 }
