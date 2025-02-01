@@ -22,7 +22,7 @@ function testCreateConversation() {
         'Content-Type': 'application/json',
     }
 
-    const res = http.post(`${BASE_URL}/conversations`, body, {headers})
+    const res = http.post(`${BASE_URL}/api/v1/conversations`, body, {headers})
     check(res, {
         'Create conversation: status is 201': (r) => r.status === 201,
         'Create conversation: location header exists': (r) =>

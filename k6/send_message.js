@@ -19,7 +19,7 @@ function testSendMessage() {
         'Content-Type': 'application/json',
     }
 
-    const res = http.post(`${BASE_URL}/messages`, body, {headers})
+    const res = http.post(`${BASE_URL}/api/v1/messages`, body, {headers})
     check(res, {
         'Send message: status is 201': (r) => r.status === 201,
         'Send message: location header exists': (r) =>

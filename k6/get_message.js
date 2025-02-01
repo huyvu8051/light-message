@@ -12,7 +12,7 @@ function testGetMessages() {
         Authorization: generateAuthToken(),
     }
 
-    const res = http.get(`${BASE_URL}/messages/${convId}`, {headers})
+    const res = http.get(`${BASE_URL}/api/v1/messages/${convId}`, {headers})
     check(res, {
         'Get messages: status is 200': (r) => r.status === 200,
     })

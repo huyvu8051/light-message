@@ -1,22 +1,34 @@
-# Use OpenJDK 23 as the base image
-FROM openjdk:23-jdk-slim
-
-# Set the working directory inside the container
+# Stage 1: Build the Java application using Maven
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 
-# Copy the JAR file from the target folder into the container
-COPY target/light-message-0.0.1-SNAPSHOT.jar light-message.jar
+# Copy project files
+COPY pom.xml .
+COPY src ./src
 
-# Expose the ports for the app and JMX
+# Build the application
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run the application using OpenJDK 21
+FROM openjdk:21-jdk-slim
+WORKDIR /app
+
+# Copy the built JAR from the Maven build stage
+COPY --from=build /app/target/light-message-0.0.1-SNAPSHOT.jar light-message.jar
+
+# Expose application port
 EXPOSE 8080 9010
 
-# Add JVM options for JMX and set the CMD instruction to run the app
-CMD ["java", "--add-modules", "java.management,java.rmi", \
-     "-Dcom.sun.management.jmxremote=true", \
-     "-Dcom.sun.management.jmxremote.local.only=false", \
-     "-Dcom.sun.management.jmxremote.authenticate=false", \
-     "-Dcom.sun.management.jmxremote.ssl=false", \
-     "-Djava.rmi.server.hostname=localhost", \
-     "-Dcom.sun.management.jmxremote.port=9010", \
-     "-Dcom.sun.management.jmxremote.rmi.port=9010", \
-     "-jar", "light-message.jar"]
+# Define ENTRYPOINT to allow dynamic arguments (e.g., --spring.datasource.url=...)
+ENTRYPOINT ["java", "--add-modules", "java.management,java.rmi", \
+    "-Dcom.sun.management.jmxremote=true", \
+    "-Dcom.sun.management.jmxremote.local.only=false", \
+    "-Dcom.sun.management.jmxremote.authenticate=false", \
+    "-Dcom.sun.management.jmxremote.ssl=false", \
+    "-Djava.rmi.server.hostname=localhost", \
+    "-Dcom.sun.management.jmxremote.port=9010", \
+    "-Dcom.sun.management.jmxremote.rmi.port=9010", \
+    "-jar", "light-message.jar"]
+
+# CMD is left empty so we can pass additional parameters dynamically
+CMD []

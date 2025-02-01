@@ -8,7 +8,7 @@ function testGetConversations() {
         Authorization: generateAuthToken(),
     }
 
-    const res = http.get(`${BASE_URL}/conversations`, {headers})
+    const res = http.get(`${BASE_URL}/api/v1/conversations`, {headers})
     check(res, {
         'Get conversations: status is 200': (r) => r.status === 200,
         'Get conversations: response contains data': (r) =>

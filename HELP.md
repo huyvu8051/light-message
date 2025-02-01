@@ -64,3 +64,9 @@ docker run --rm --network my_network -p 8080:8080 docker.io/library/light-messag
 ```shell
 mvn -Pnative spring-boot:build-image -Denv.BP_NATIVE_IMAGE_BUILD_ARGUMENTS="--vm.DmaxHeapSize=8G"
 ```
+
+
+
+```shell
+k6 run -e BASE_URL=https://light-message.onrender.com ./k6/send_message.js
+```
