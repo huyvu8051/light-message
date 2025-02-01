@@ -11,21 +11,14 @@ import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MessageJpaRepo;
 import com.huyvu.lightmessage.util.Paging;
 import jakarta.persistence.EntityManager;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Array;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
-import java.util.stream.LongStream;
 
 @Repository
 public class MessageRepoImpl implements MessageRepo {
@@ -42,7 +35,7 @@ public class MessageRepoImpl implements MessageRepo {
 
     //    @Cacheable(value = "findAllMessages")
     @Override
-    public List<MessageEntity> findAllMessages(long convId, OffsetDateTime from, OffsetDateTime to) {
+    public List<MessageEntity> findAllMessages(long convId, Paging paging) {
         var allByConversationId = messageJpaRepo.findAllByConversationId(convId);
         return allByConversationId.stream().map(m -> MessageEntity.builder()
                         .id(m.getId())
@@ -123,7 +116,7 @@ public class MessageRepoImpl implements MessageRepo {
 
     @Override
     public List<ConversationDto> findAllConversations(long userId, Paging paging) {
-        var newestConversation = conversationJpaRepo.findNewestConversation(userId);
+        var newestConversation = conversationJpaRepo.findLatestConversation(userId, paging.cursor());
         return newestConversation.stream().map(tuple -> new ConversationDto(tuple.get("conv_id", Long.class),
                 tuple.get("name", String.class),
                 tuple.get("is_group_chat", Boolean.class),

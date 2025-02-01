@@ -73,8 +73,8 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public List<MessageDTO> getMessages(long userId, long convId, Paging paging) {
         checkUserIsMemberOfConversation(userId, convId);
-        var allMessages = msgRepo.findAllMessages(convId, paging.from(), paging.to());
-        return allMessages.stream().map(e -> new MessageDTO(e.id(), e.content(), e.senderId())).toList();
+        var allMessages = msgRepo.findAllMessages(convId, paging);
+        return allMessages.stream().map(e -> new MessageDTO(e.id(), e.content(), e.senderId(), e.sentAt())).toList();
     }
 
     private void checkUserIsMemberOfConversation(long userId, long convId) {
