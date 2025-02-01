@@ -56,14 +56,15 @@ public class MessageRepoImpl implements MessageRepo {
 
     @Override
     public void saveMessage(MessageEntity msg) {
+        var conv = Conversation.builder()
+                .id(msg.convId())
+                .build();
+        var usr = UserProfile.builder()
+                .id(msg.senderId())
+                .build();
         var message = Message.builder()
-                .conv(
-                        Conversation.builder()
-                                .id(msg.convId())
-                                .build())
-                .sender(UserProfile.builder()
-                        .id(msg.senderId())
-                        .build())
+                .conv(conv)
+                .sender(usr)
                 .content(msg.content())
                 .sendAt(msg.sentAt())
                 .build();

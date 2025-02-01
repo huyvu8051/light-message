@@ -1,4 +1,4 @@
-package com.huyvu.lightmessage.controller;
+package com.huyvu.lightmessage.controller.v2;
 
 import com.huyvu.lightmessage.dto.CreateConversationRequestDTO;
 import com.huyvu.lightmessage.dto.MessageDTO;
@@ -19,7 +19,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v2")
 public class MessageController {
     private final MessageService messageService;
     private final UserContextProvider userCtxProvider;
