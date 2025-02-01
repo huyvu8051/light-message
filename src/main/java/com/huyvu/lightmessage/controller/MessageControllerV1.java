@@ -30,8 +30,8 @@ public class MessageControllerV1 {
     }
 
     @GetMapping("/conversations")
-    List<MessageRepoImpl.ConversationDto> conversations() {
-        return messageService.getNewestConversations(userCtxProvider.getUserContext().id(), new Paging(OffsetDateTime.now(), OffsetDateTime.now()));
+    List<MessageRepoImpl.ConversationDto> conversations(OffsetDateTime cursor) {
+        return messageService.getNewestConversations(userCtxProvider.getUserContext().id(), new Paging(cursor));
     }
 
 
@@ -51,7 +51,7 @@ public class MessageControllerV1 {
 
     @GetMapping("/messages/{convId}")
     List<MessageDTO> messages(@PathVariable long convId) {
-        return messageService.getMessages(userCtxProvider.getUserContext().id(), convId, new Paging(OffsetDateTime.now(), OffsetDateTime.now()));
+        return messageService.getMessages(userCtxProvider.getUserContext().id(), convId, new Paging(OffsetDateTime.now()));
     }
 
     @PostMapping("/messages")

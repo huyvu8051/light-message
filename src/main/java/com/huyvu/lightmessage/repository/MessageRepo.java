@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MessageRepo {
-    List<MessageEntity> findAllMessages(long convId, OffsetDateTime from, OffsetDateTime to);
+
+    //    @Cacheable(value = "findAllMessages")
+    List<MessageEntity> findAllMessages(long convId, Paging paging);
 
     void saveMessage(MessageEntity message);
 
