@@ -92,8 +92,8 @@ public class MessageRepoImpl implements MessageRepo {
         conversationJpaRepo.save(entity);
     }
 
-    private record MessageDto(Long messageId,
-                              String messageContent,
+    private record MessageDto(Long id,
+                              String content,
                               OffsetDateTime sendAt) {
     }
 
