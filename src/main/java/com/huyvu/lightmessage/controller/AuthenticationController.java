@@ -2,7 +2,6 @@ package com.huyvu.lightmessage.controller;
 
 import com.huyvu.lightmessage.service.AuthenticationService;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
@@ -20,18 +19,17 @@ public class AuthenticationController {
         this.authenticationService = authenticationService;
     }
 
-
-    static class AuthDTO extends AuthenticationService.Auth {
+    static class AuthReqDTO extends AuthenticationService.Auth {
     }
 
     @Builder
-    record AuthResponse(int userId){
+    record AuthRespDTO(int userId){
     }
 
     @PostMapping("auth")
-    ResponseEntity<AuthResponse> auth(@RequestBody AuthDTO authDTO){
-        authenticationService.authenticate(authDTO);
-        String jwtToken = String.valueOf(authDTO.getUserId());
+    ResponseEntity<AuthRespDTO> auth(@RequestBody AuthReqDTO authReqDTO){
+        authenticationService.authenticate(authReqDTO);
+        String jwtToken = String.valueOf(authReqDTO.getUserId());
         ResponseCookie cookie = ResponseCookie.from("Authorization", jwtToken)
                 .httpOnly(true)
                 .secure(true)
@@ -45,8 +43,8 @@ public class AuthenticationController {
 
         return ResponseEntity.status(HttpStatus.OK)
                 .headers(headers)
-                .body(AuthResponse.builder()
-                        .userId(authDTO.getUserId())
+                .body(AuthRespDTO.builder()
+                        .userId(authReqDTO.getUserId())
                         .build());
 
     }
