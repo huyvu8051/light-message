@@ -24,13 +24,8 @@ public class AuthenticationController {
     static class AuthDTO extends AuthenticationService.Auth {
     }
 
-    @Data
     @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @FieldDefaults(level = AccessLevel.PRIVATE)
-    static class AuthResponse{
-        int userId;
+    record AuthResponse(int userId){
     }
 
     @PostMapping("auth")
@@ -47,8 +42,6 @@ public class AuthenticationController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.SET_COOKIE, cookie.toString());
-
-        new AuthResponse();
 
         return ResponseEntity.status(HttpStatus.OK)
                 .headers(headers)
