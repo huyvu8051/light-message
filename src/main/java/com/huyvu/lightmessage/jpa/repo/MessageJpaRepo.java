@@ -16,8 +16,8 @@ public interface MessageJpaRepo extends JpaRepository<Message, Long> {
             select m
             from Message m
             where m.conv.id = :convId
-            AND (cast(:sendAt as TIMESTAMP) IS NULL OR m.sendAt > :sendAt)
-            AND (:id IS NULL OR m.id > :id)
+            AND (cast(:sendAt as TIMESTAMP) IS NULL OR m.sendAt <= :sendAt)
+            AND (:id IS NULL OR m.id < :id)
             order by m.sendAt desc, m.id desc
             limit :limit""")
     List<Message> findAllByConversationId(long convId, int limit, OffsetDateTime sendAt, Long id);
