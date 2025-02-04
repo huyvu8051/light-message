@@ -1,13 +1,17 @@
 package com.huyvu.lightmessage.controller;
 
 import com.huyvu.lightmessage.dto.CreateConversationRequestDTO;
+import com.huyvu.lightmessage.dto.CursorPagingResponseDTO;
 import com.huyvu.lightmessage.dto.MessageDTO;
 import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
+import com.huyvu.lightmessage.jpa.dto.CursorPagingRequestDTO;
 import com.huyvu.lightmessage.repository.MessageRepoImpl;
 import com.huyvu.lightmessage.security.UserContextProvider;
 import com.huyvu.lightmessage.service.MessageService;
+import com.huyvu.lightmessage.util.PagingUtils;
 import com.huyvu.lightmessage.util.Paging;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -49,9 +53,11 @@ public class MessageControllerV1 {
     }
 
 
+
     @GetMapping("/messages/{convId}")
-    List<MessageDTO> messages(@PathVariable long convId) {
-        return messageService.getMessages(userCtxProvider.getUserContext().id(), convId, new Paging(OffsetDateTime.now()));
+    CursorPagingResponseDTO<MessageDTO> messages(@PathVariable long convId, CursorPagingRequestDTO pageDto) {
+        var page = PagingUtils.decrypt(pageDto, MessageService.MessageCursorPaging.class);
+        return messageService.getMessages(userCtxProvider.getUserContext().id(), convId, page);
     }
 
     @PostMapping("/messages")

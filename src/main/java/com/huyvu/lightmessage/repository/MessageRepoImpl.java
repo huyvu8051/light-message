@@ -9,6 +9,7 @@ import com.huyvu.lightmessage.jpa.model.UserProfile;
 import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MessageJpaRepo;
+import com.huyvu.lightmessage.service.MessageService;
 import com.huyvu.lightmessage.util.Paging;
 import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Repository;
@@ -35,8 +36,8 @@ public class MessageRepoImpl implements MessageRepo {
 
     //    @Cacheable(value = "findAllMessages")
     @Override
-    public List<MessageEntity> findAllMessages(long convId, Paging paging) {
-        var allByConversationId = messageJpaRepo.findAllByConversationId(convId);
+    public List<MessageEntity> findAllMessages(long convId, MessageService.MessageCursorPaging paging) {
+        var allByConversationId = messageJpaRepo.findAllByConversationId(convId, paging);
         return allByConversationId.stream().map(m -> MessageEntity.builder()
                         .id(m.getId())
                         .convId(m.getConv().getId())

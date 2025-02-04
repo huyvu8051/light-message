@@ -1,6 +1,7 @@
 package com.huyvu.lightmessage.service;
 
 import com.huyvu.lightmessage.dto.CreateConversationRequestDTO;
+import com.huyvu.lightmessage.dto.CursorPagingResponseDTO;
 import com.huyvu.lightmessage.dto.MessageDTO;
 import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
@@ -69,24 +70,30 @@ public class MessageServiceImpl implements MessageService {
     }
 
 
-
     @Override
-    public List<MessageDTO> getMessages(long userId, long convId, Paging paging) {
+    public CursorPagingResponseDTO<MessageDTO> getMessages(long userId, long convId, MessageCursorPaging paging) {
         checkUserIsMemberOfConversation(userId, convId);
         var allMessages = msgRepo.findAllMessages(convId, paging);
-        return allMessages.stream().map(e -> new MessageDTO(e.id(), e.content(), e.senderId(), e.sentAt())).toList();
+        var data = allMessages.stream()
+                .skip(1)
+                .limit(10)
+                .map(e -> new MessageDTO(e.id(), e.content(), e.senderId(), e.sentAt())).toList();
+
+        return CursorPagingResponseDTO.<MessageDTO>builder()
+                .data(data)
+                .build();
     }
 
     private void checkUserIsMemberOfConversation(long userId, long convId) {
         Optional<?> conversation = msgRepo.findMember(userId, convId);
-        if(conversation.isEmpty()){
+        if (conversation.isEmpty()) {
             throw new ConversationNotExistException("userId: " + userId + " convId:" + convId);
         }
     }
 
     @Override
     public ConversationEntity createGroupChatConversation(long userId, CreateConversationRequestDTO request) {
-        var conversation = new ConversationEntity(0l,request.conversationName(), true);
+        var conversation = new ConversationEntity(0l, request.conversationName(), true);
         msgRepo.saveConversation(conversation);
         return conversation;
     }
