@@ -5,13 +5,13 @@ import com.huyvu.lightmessage.dto.CursorPagingResponseDTO;
 import com.huyvu.lightmessage.dto.MessageDTO;
 import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
-import com.huyvu.lightmessage.jpa.dto.CursorPagingRequestDTO;
 import com.huyvu.lightmessage.repository.MessageRepoImpl;
 import com.huyvu.lightmessage.security.UserContextProvider;
 import com.huyvu.lightmessage.service.MessageService;
-import com.huyvu.lightmessage.util.PagingUtils;
+import com.huyvu.lightmessage.service.MessageService.MessageCursor;
+import com.huyvu.lightmessage.util.CursorPaging;
 import com.huyvu.lightmessage.util.Paging;
-import lombok.Data;
+import com.huyvu.lightmessage.util.PagingUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,11 +53,20 @@ public class MessageControllerV1 {
     }
 
 
-
     @GetMapping("/messages/{convId}")
-    CursorPagingResponseDTO<MessageDTO> messages(@PathVariable long convId, CursorPagingRequestDTO pageDto) {
-        var page = PagingUtils.decrypt(pageDto, MessageService.MessageCursorPaging.class);
-        return messageService.getMessages(userCtxProvider.getUserContext().id(), convId, page);
+    CursorPagingResponseDTO<MessageDTO> messages(@PathVariable long convId, @RequestParam(defaultValue = "") String nextCursor, @RequestParam(defaultValue = "5") int limit) {
+        var cursor = PagingUtils.decrypt(nextCursor, MessageCursor.class);
+        if(cursor == null){
+            cursor = new MessageCursor(null, null);
+        }
+        var cp = new CursorPaging<>(limit, cursor);
+        var messages = messageService.getMessages(userCtxProvider.getUserContext().id(), convId, cp);
+        var encryptedCursor = PagingUtils.encrypt(messages.nextCursor());
+
+        return CursorPagingResponseDTO.<MessageDTO>builder()
+                .data(messages.data())
+                .nextCursor(encryptedCursor)
+                .build();
     }
 
     @PostMapping("/messages")

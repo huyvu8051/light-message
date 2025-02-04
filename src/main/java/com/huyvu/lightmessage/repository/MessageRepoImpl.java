@@ -1,5 +1,6 @@
 package com.huyvu.lightmessage.repository;
 
+import com.huyvu.lightmessage.dto.MessageDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
 import com.huyvu.lightmessage.jpa.model.Conversation;
@@ -9,7 +10,9 @@ import com.huyvu.lightmessage.jpa.model.UserProfile;
 import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MessageJpaRepo;
-import com.huyvu.lightmessage.service.MessageService;
+import com.huyvu.lightmessage.service.MessageService.MessageCursor;
+import com.huyvu.lightmessage.util.CursorPaging;
+import com.huyvu.lightmessage.util.CursorPagingResult;
 import com.huyvu.lightmessage.util.Paging;
 import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Repository;
@@ -36,16 +39,26 @@ public class MessageRepoImpl implements MessageRepo {
 
     //    @Cacheable(value = "findAllMessages")
     @Override
-    public List<MessageEntity> findAllMessages(long convId, MessageService.MessageCursorPaging paging) {
-        var allByConversationId = messageJpaRepo.findAllByConversationId(convId, paging);
-        return allByConversationId.stream().map(m -> MessageEntity.builder()
+    public CursorPagingResult<MessageDTO, MessageCursor> findAllMessages(long convId, CursorPaging<MessageCursor> paging) {
+        var allByConversationId = messageJpaRepo.findAllByConversationId(convId, paging.limit(), paging.cursor().sendAt(), paging.cursor().id());
+        var collect = allByConversationId
+                .stream()
+                .map(m -> MessageDTO.builder()
                         .id(m.getId())
-                        .convId(m.getConv().getId())
                         .content(m.getContent())
                         .senderId(m.getSender().getId())
-                        .sentAt(m.getSendAt())
+                        .sendAt(m.getSendAt())
                         .build())
                 .collect(Collectors.toList());
+
+        var lastItem = collect.getLast();
+
+        var cursor = new MessageCursor(lastItem.sendAt(), lastItem.id());
+
+        return CursorPagingResult.<MessageDTO, MessageCursor>builder()
+                .data(collect)
+                .nextCursor(cursor)
+                .build();
     }
 
     @Override

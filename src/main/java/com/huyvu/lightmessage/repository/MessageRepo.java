@@ -1,9 +1,13 @@
 package com.huyvu.lightmessage.repository;
 
+import com.huyvu.lightmessage.dto.CursorPagingResponseDTO;
+import com.huyvu.lightmessage.dto.MessageDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
 import com.huyvu.lightmessage.jpa.model.Member;
 import com.huyvu.lightmessage.service.MessageService;
+import com.huyvu.lightmessage.util.CursorPaging;
+import com.huyvu.lightmessage.util.CursorPagingResult;
 import com.huyvu.lightmessage.util.Paging;
 
 import java.time.OffsetDateTime;
@@ -13,7 +17,7 @@ import java.util.Optional;
 public interface MessageRepo {
 
     //    @Cacheable(value = "findAllMessages")
-    List<MessageEntity> findAllMessages(long convId, MessageService.MessageCursorPaging paging);
+    CursorPagingResult<MessageDTO, MessageService.MessageCursor> findAllMessages(long convId, CursorPaging<MessageService.MessageCursor> paging);
 
     void saveMessage(MessageEntity message);
 

@@ -2,16 +2,18 @@ package com.huyvu.lightmessage.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huyvu.lightmessage.exception.CursorPagingException;
-import com.huyvu.lightmessage.jpa.dto.CursorPagingRequestDTO;
+import jakarta.annotation.Nullable;
 import lombok.experimental.UtilityClass;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Base64;
 
 @UtilityClass
 public class PagingUtils {
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
     public <T> String encrypt(T object) {
         String jsonString = null;
@@ -23,14 +25,18 @@ public class PagingUtils {
         return Base64.getUrlEncoder().encodeToString(jsonString.getBytes());
     }
 
-    public  <T extends CursorPaging> T decrypt(CursorPagingRequestDTO dto, Class<T> des) {
-        var decode = Base64.getUrlDecoder().decode(dto.getNextCursor());
+    @Nullable
+    public  <T> T decrypt(String encrypted, Class<T> des) {
+        if(encrypted == null || encrypted.isEmpty()) {
+            return null;
+        }
+
+        var decoded = Base64.getUrlDecoder().decode(encrypted);
         try {
-            var cp = objectMapper.readValue(decode, des);
-            cp.setLimit(dto.getLimit());
-            return cp;
+            return objectMapper.readValue(decoded, des);
         } catch (IOException e) {
             throw new CursorPagingException("decrypt false");
         }
     }
+
 }

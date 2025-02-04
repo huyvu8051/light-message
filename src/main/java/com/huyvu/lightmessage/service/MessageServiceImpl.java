@@ -9,6 +9,8 @@ import com.huyvu.lightmessage.entity.MessageEntity;
 import com.huyvu.lightmessage.exception.ConversationNotExistException;
 import com.huyvu.lightmessage.repository.MessageRepo;
 import com.huyvu.lightmessage.repository.MessageRepoImpl;
+import com.huyvu.lightmessage.util.CursorPaging;
+import com.huyvu.lightmessage.util.CursorPagingResult;
 import com.huyvu.lightmessage.util.Paging;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,17 +73,10 @@ public class MessageServiceImpl implements MessageService {
 
 
     @Override
-    public CursorPagingResponseDTO<MessageDTO> getMessages(long userId, long convId, MessageCursorPaging paging) {
+    public CursorPagingResult<MessageDTO, MessageCursor> getMessages(long userId, long convId, CursorPaging<MessageCursor> paging) {
         checkUserIsMemberOfConversation(userId, convId);
-        var allMessages = msgRepo.findAllMessages(convId, paging);
-        var data = allMessages.stream()
-                .skip(1)
-                .limit(10)
-                .map(e -> new MessageDTO(e.id(), e.content(), e.senderId(), e.sentAt())).toList();
+        return msgRepo.findAllMessages(convId, paging);
 
-        return CursorPagingResponseDTO.<MessageDTO>builder()
-                .data(data)
-                .build();
     }
 
     private void checkUserIsMemberOfConversation(long userId, long convId) {
