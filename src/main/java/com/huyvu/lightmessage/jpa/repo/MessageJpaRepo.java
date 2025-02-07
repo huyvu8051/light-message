@@ -1,5 +1,6 @@
 package com.huyvu.lightmessage.jpa.repo;
 
+import com.huyvu.lightmessage.jpa.model.Conversation;
 import com.huyvu.lightmessage.jpa.model.Message;
 import com.huyvu.lightmessage.service.MessageService.MessageCursor;
 import com.huyvu.lightmessage.util.CursorPaging;
@@ -23,4 +24,6 @@ public interface MessageJpaRepo extends JpaRepository<Message, Long> {
     List<Message> findAllByConversationId(long convId, int limit, OffsetDateTime sendAt, Long id);
 
     Optional<Message> findOneByConvIdOrderBySendAtDesc(long id);
+
+    long conv(Conversation conv);
 }

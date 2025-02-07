@@ -1,6 +1,5 @@
 package com.huyvu.lightmessage.repository;
 
-import com.huyvu.lightmessage.dto.CursorPagingResponseDTO;
 import com.huyvu.lightmessage.dto.MessageDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
@@ -28,4 +27,8 @@ public interface MessageRepo {
     Optional<Member> findMember(long userId, long convId);
 
     void updateMemberLastSendAt(long convId, OffsetDateTime offsetDateTime);
+
+    Optional<ConversationEntity> findConversation(long convId);
+
+    Optional<MessageEntity> findConversationLastMessage(long convId);
 }

@@ -15,6 +15,7 @@ import com.huyvu.lightmessage.util.CursorPaging;
 import com.huyvu.lightmessage.util.CursorPagingResult;
 import com.huyvu.lightmessage.util.Paging;
 import jakarta.persistence.EntityManager;
+import lombok.Builder;
 import org.springframework.stereotype.Repository;
 
 import java.time.Instant;
@@ -34,7 +35,6 @@ public class MessageRepoImpl implements MessageRepo {
         this.memberJpaRepo = memberJpaRepo;
         this.messageJpaRepo = messageJpaRepo;
         this.conversationJpaRepo = conversationJpaRepo;
-
     }
 
     //    @Cacheable(value = "findAllMessages")
@@ -106,11 +106,13 @@ public class MessageRepoImpl implements MessageRepo {
         conversationJpaRepo.save(entity);
     }
 
-    private record MessageDto(Long id,
+    @Builder
+    public record MessageDto(Long id,
                               String content,
                               OffsetDateTime sendAt) {
     }
 
+    @Builder
     public record ConversationDto(
             long id,
             String name,
@@ -188,6 +190,37 @@ public class MessageRepoImpl implements MessageRepo {
     @Override
     public void updateMemberLastSendAt(long convId, OffsetDateTime offsetDateTime) {
         memberJpaRepo.updateById(convId, offsetDateTime);
+    }
+
+    @Override
+    public Optional<ConversationEntity> findConversation(long convId) {
+        var convOpt = conversationJpaRepo.findById(convId);
+        if (convOpt.isEmpty()) {
+            return Optional.empty();
+        }
+        var conv = convOpt.get();
+        return Optional.of(ConversationEntity.builder()
+                .id(conv.getId())
+                .name(conv.getName())
+                .isGroupChat(conv.isGroupChat())
+                .build());
+    }
+
+    @Override
+    public Optional<MessageEntity> findConversationLastMessage(long convId) {
+        var lastMsg = messageJpaRepo.findOneByConvIdOrderBySendAtDesc(convId);
+        if (lastMsg.isEmpty()) {
+            return Optional.empty();
+        }
+        var msg = lastMsg.get();
+
+        return Optional.of(MessageEntity.builder()
+                .id(msg.getId())
+                .convId(convId)
+                .content(msg.getContent())
+                .senderId(msg.getSender().getId())
+                .sentAt(msg.getSendAt())
+                .build());
     }
 
 

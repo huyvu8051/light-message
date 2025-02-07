@@ -7,11 +7,15 @@ import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
 import com.huyvu.lightmessage.exception.ConversationNotExistException;
+import com.huyvu.lightmessage.jpa.model.Conversation;
+import com.huyvu.lightmessage.jpa.model.Message;
 import com.huyvu.lightmessage.repository.MessageRepo;
 import com.huyvu.lightmessage.repository.MessageRepoImpl;
+import com.huyvu.lightmessage.repository.MessageRepoImpl.MessageDto;
 import com.huyvu.lightmessage.util.CursorPaging;
 import com.huyvu.lightmessage.util.CursorPagingResult;
 import com.huyvu.lightmessage.util.Paging;
+import jakarta.annotation.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -69,6 +73,27 @@ public class MessageServiceImpl implements MessageService {
 
         // logger.info("User {} send a message to {}", userContextProvider.getUserContext().username(), request.convId());
 
+    }
+
+    @Override
+    public MessageRepoImpl.ConversationDto getNewestConversations(long id, long convId) {
+        msgRepo.findMember(id, convId).orElseThrow(() -> new ConversationNotExistException("User not a member or conversation not exist"));
+        var conv = msgRepo.findConversation(convId).orElseThrow(() -> new ConversationNotExistException("Conversation not exist"));
+
+        @Nullable
+        var lastMsg = msgRepo.findConversationLastMessage(convId).map(messageEntity -> MessageDto.builder()
+                        .id(messageEntity.id())
+                        .content(messageEntity.content())
+                        .sendAt(messageEntity.sentAt())
+                        .build())
+                .orElse(null);
+
+        return MessageRepoImpl.ConversationDto.builder()
+                .id(conv.id())
+                .name(conv.name())
+                .isGroupChat(conv.isGroupChat())
+                .message(lastMsg)
+                .build();
     }
 
 

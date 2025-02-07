@@ -15,6 +15,8 @@ import java.util.List;
 public interface MessageService {
     void sendMessage(long userId, SendMessageRequestDTO request);
 
+    MessageRepoImpl.ConversationDto getNewestConversations(long id, long convId);
+
     record MessageCursor(OffsetDateTime sendAt,
                          Long id) {
     }

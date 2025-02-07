@@ -24,45 +24,37 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1")
-public class MessageControllerV1 {
+public class ConversationControllerV1 {
     private final MessageService messageService;
     private final UserContextProvider userCtxProvider;
 
-    public MessageControllerV1(MessageService messageService, UserContextProvider userCtxProvider) {
+    public ConversationControllerV1(MessageService messageService, UserContextProvider userCtxProvider) {
         this.messageService = messageService;
         this.userCtxProvider = userCtxProvider;
     }
 
-
-    @GetMapping("/messages/{convId}")
-    CursorPagingResponseDTO<MessageDTO> messages(@PathVariable long convId, @RequestParam(defaultValue = "") String nextCursor, @RequestParam(defaultValue = "5") int limit) {
-        var cursor = PagingUtils.decrypt(nextCursor, MessageCursor.class);
-        if(cursor == null){
-            cursor = new MessageCursor(null, null);
-        }
-        var cp = new CursorPaging<>(limit, cursor);
-        var messages = messageService.getMessages(userCtxProvider.getUserContext().id(), convId, cp);
-        var encryptedCursor = PagingUtils.encrypt(messages.nextCursor());
-
-        return CursorPagingResponseDTO.<MessageDTO>builder()
-                .data(messages.data())
-                .nextCursor(encryptedCursor)
-                .build();
+    @GetMapping("/conversations/{convId}")
+    MessageRepoImpl.ConversationDto conversations(@PathVariable long convId) {
+        return messageService.getNewestConversations(userCtxProvider.getUserContext().id(), convId);
     }
 
-    @PostMapping("/messages")
-    ResponseEntity<Void> messages(@RequestBody SendMessageRequestDTO msg) {
-        messageService.sendMessage(userCtxProvider.getUserContext().id(), msg);
+    @GetMapping("/conversations")
+    List<MessageRepoImpl.ConversationDto> conversations(OffsetDateTime cursor) {
+        return messageService.getNewestConversations(userCtxProvider.getUserContext().id(), new Paging(cursor));
+    }
 
+
+    @PostMapping("/conversations")
+    ResponseEntity<ConversationEntity> conversations(@RequestBody CreateConversationRequestDTO request) {
+        var conversation = messageService.createGroupChatConversation(userCtxProvider.getUserContext().id(), request);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{username}")
-                .buildAndExpand(msg.convId())
+                .buildAndExpand(conversation.id())
                 .toUri();
 
-        return ResponseEntity
-                .created(location)
-                .build();
+        return ResponseEntity.created(location)
+                .body(conversation);
     }
 
 
