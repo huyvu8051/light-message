@@ -10,6 +10,7 @@ import com.huyvu.lightmessage.security.UserContextProvider;
 import com.huyvu.lightmessage.service.MessageService;
 import com.huyvu.lightmessage.service.MessageService.MessageCursor;
 import com.huyvu.lightmessage.util.CursorPaging;
+import com.huyvu.lightmessage.util.LimitPaging;
 import com.huyvu.lightmessage.util.Paging;
 import com.huyvu.lightmessage.util.PagingUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -39,8 +40,19 @@ public class ConversationControllerV1 {
     }
 
     @GetMapping("/conversations")
-    List<MessageRepoImpl.ConversationDto> conversations(OffsetDateTime cursor) {
-        return messageService.getNewestConversations(userCtxProvider.getUserContext().id(), new Paging(cursor));
+    CursorPagingResponseDTO<MessageRepoImpl.ConversationDto> conversations(@RequestParam(defaultValue = "") String nextCursor, @RequestParam(defaultValue = "10") int limit) {
+        var cursor = PagingUtils.decrypt(nextCursor, MessageService.ConversationCursor.class);
+        if(cursor == null){
+            cursor = new MessageService.ConversationCursor(limit);
+        }
+        var cp = new CursorPaging<>(limit, cursor);
+
+        var newestConversations = messageService.getNewestConversations(userCtxProvider.getUserContext().id(), cp);
+        var encryptedCursor = PagingUtils.encrypt(newestConversations.nextCursor());
+        return CursorPagingResponseDTO.<MessageRepoImpl.ConversationDto>builder()
+                .data(newestConversations.data())
+                .nextCursor(encryptedCursor)
+                .build();
     }
 
 

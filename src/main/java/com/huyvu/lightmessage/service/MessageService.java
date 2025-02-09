@@ -7,15 +7,15 @@ import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.repository.MessageRepoImpl;
 import com.huyvu.lightmessage.util.CursorPaging;
 import com.huyvu.lightmessage.util.CursorPagingResult;
-import com.huyvu.lightmessage.util.Paging;
 
 import java.time.OffsetDateTime;
-import java.util.List;
 
 public interface MessageService {
     void sendMessage(long userId, SendMessageRequestDTO request);
 
     MessageRepoImpl.ConversationDto getNewestConversations(long id, long convId);
+
+    CursorPagingResult<MessageRepoImpl.ConversationDto, ConversationCursor> getNewestConversations(long userId, CursorPaging<ConversationCursor> paging);
 
     record MessageCursor(OffsetDateTime sendAt,
                          Long id) {
@@ -25,5 +25,9 @@ public interface MessageService {
 
     ConversationEntity createGroupChatConversation(long userId, CreateConversationRequestDTO request);
 
-    List<MessageRepoImpl.ConversationDto> getNewestConversations(long userId, Paging paging);
+
+
+
+    record ConversationCursor(int limit) {
+    }
 }

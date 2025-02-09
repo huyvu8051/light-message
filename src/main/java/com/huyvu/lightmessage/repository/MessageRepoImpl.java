@@ -10,10 +10,10 @@ import com.huyvu.lightmessage.jpa.model.UserProfile;
 import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MessageJpaRepo;
+import com.huyvu.lightmessage.service.MessageService;
 import com.huyvu.lightmessage.service.MessageService.MessageCursor;
 import com.huyvu.lightmessage.util.CursorPaging;
 import com.huyvu.lightmessage.util.CursorPagingResult;
-import com.huyvu.lightmessage.util.Paging;
 import jakarta.persistence.EntityManager;
 import lombok.Builder;
 import org.springframework.stereotype.Repository;
@@ -131,8 +131,8 @@ public class MessageRepoImpl implements MessageRepo {
 
 
     @Override
-    public List<ConversationDto> findAllConversations(long userId, Paging paging) {
-        var newestConversation = conversationJpaRepo.findLatestConversation(userId, paging.cursor());
+    public List<ConversationDto> findAllConversations(long userId, CursorPaging<MessageService.ConversationCursor> paging) {
+        var newestConversation = conversationJpaRepo.findLatestConversation(userId, paging.cursor().limit());
         return newestConversation.stream().map(tuple -> new ConversationDto(tuple.get("conv_id", Long.class),
                 tuple.get("name", String.class),
                 tuple.get("is_group_chat", Boolean.class),

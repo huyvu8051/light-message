@@ -2,12 +2,9 @@ package com.huyvu.lightmessage.jpa.repo;
 
 import com.huyvu.lightmessage.jpa.model.Conversation;
 import jakarta.persistence.Tuple;
-import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import java.time.OffsetDateTime;
 import java.util.List;
 
 public interface ConversationJpaRepo extends JpaRepository<Conversation, Long> {
@@ -48,10 +45,8 @@ public interface ConversationJpaRepo extends JpaRepository<Conversation, Long> {
               FROM (SELECT conversation_id
                       FROM member
                      WHERE user_id = :userId
-                     --AND ($2::timestamp IS NULL OR last_send_at <= :cursor)
-                       AND (cast(:cursor as TIMESTAMP) IS NULL OR last_send_at <= :cursor)
                      ORDER BY last_send_at DESC
-                     LIMIT 5) AS conv_ids(conv_id)
+                     LIMIT :limit) AS conv_ids(conv_id)
                        LEFT JOIN LATERAL (
                   SELECT *
                     FROM message
@@ -61,7 +56,7 @@ public interface ConversationJpaRepo extends JpaRepository<Conversation, Long> {
                   ) m ON TRUE
                        LEFT JOIN conversation conv
                                  ON conv.id = conv_ids.conv_id""", nativeQuery = true)
-    List<Tuple> findLatestConversation(long userId, OffsetDateTime cursor);
+    List<Tuple> findLatestConversation(long userId, int limit);
 
 
 
@@ -69,7 +64,8 @@ public interface ConversationJpaRepo extends JpaRepository<Conversation, Long> {
             select c
               from Member m
               left join Conversation c on m.conversation.id = c.id
-             where m.user.id = :userId""")
+             where m.user.id = :userId
+            """)
     List<Conversation> findConversationsByUserId(long userId);
 
 

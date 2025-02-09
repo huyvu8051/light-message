@@ -7,7 +7,6 @@ import com.huyvu.lightmessage.jpa.model.Member;
 import com.huyvu.lightmessage.service.MessageService;
 import com.huyvu.lightmessage.util.CursorPaging;
 import com.huyvu.lightmessage.util.CursorPagingResult;
-import com.huyvu.lightmessage.util.Paging;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -22,7 +21,7 @@ public interface MessageRepo {
 
     void saveConversation(ConversationEntity conversation);
 
-    List<MessageRepoImpl.ConversationDto> findAllConversations(long userId, Paging paging);
+    List<MessageRepoImpl.ConversationDto> findAllConversations(long userId, CursorPaging<MessageService.ConversationCursor > paging);
 
     Optional<Member> findMember(long userId, long convId);
 

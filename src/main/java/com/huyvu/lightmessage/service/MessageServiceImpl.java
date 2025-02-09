@@ -1,20 +1,16 @@
 package com.huyvu.lightmessage.service;
 
 import com.huyvu.lightmessage.dto.CreateConversationRequestDTO;
-import com.huyvu.lightmessage.dto.CursorPagingResponseDTO;
 import com.huyvu.lightmessage.dto.MessageDTO;
 import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
 import com.huyvu.lightmessage.exception.ConversationNotExistException;
-import com.huyvu.lightmessage.jpa.model.Conversation;
-import com.huyvu.lightmessage.jpa.model.Message;
 import com.huyvu.lightmessage.repository.MessageRepo;
 import com.huyvu.lightmessage.repository.MessageRepoImpl;
 import com.huyvu.lightmessage.repository.MessageRepoImpl.MessageDto;
 import com.huyvu.lightmessage.util.CursorPaging;
 import com.huyvu.lightmessage.util.CursorPagingResult;
-import com.huyvu.lightmessage.util.Paging;
 import jakarta.annotation.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -119,7 +114,16 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public List<MessageRepoImpl.ConversationDto> getNewestConversations(long userId, Paging paging) {
-        return msgRepo.findAllConversations(userId, paging);
+    public CursorPagingResult<MessageRepoImpl.ConversationDto, ConversationCursor> getNewestConversations(long userId, CursorPaging<ConversationCursor> paging) {
+        var allConversations = msgRepo.findAllConversations(userId, paging);
+
+        var limit = paging.limit() + 10;
+        if(allConversations.size() <= paging.limit()) {
+            limit = paging.limit();
+        }
+        return CursorPagingResult.<MessageRepoImpl.ConversationDto, ConversationCursor>builder()
+                .data(allConversations)
+                .nextCursor(new ConversationCursor(limit))
+                .build();
     }
 }
