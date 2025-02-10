@@ -71,8 +71,8 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public MessageRepoImpl.ConversationDto getNewestConversations(long id, long convId) {
-        msgRepo.findMember(id, convId).orElseThrow(() -> new ConversationNotExistException("User not a member or conversation not exist"));
+    public MessageRepoImpl.ConversationDto getNewestConversation(long userId, long convId) {
+        msgRepo.findMember(userId, convId).orElseThrow(() -> new ConversationNotExistException("User not a member or conversation not exist"));
         var conv = msgRepo.findConversation(convId).orElseThrow(() -> new ConversationNotExistException("Conversation not exist"));
 
         @Nullable
@@ -114,12 +114,12 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public CursorPagingResult<MessageRepoImpl.ConversationDto, ConversationCursor> getNewestConversations(long userId, CursorPaging<ConversationCursor> paging) {
+    public CursorPagingResult<MessageRepoImpl.ConversationDto, ConversationCursor> getNewestConversation(long userId, CursorPaging<ConversationCursor> paging) {
         var allConversations = msgRepo.findAllConversations(userId, paging);
 
-        var limit = paging.limit() + 10;
-        if(allConversations.size() <= paging.limit()) {
-            limit = paging.limit();
+        var limit = paging.cursor().limit() + paging.limit();
+        if(allConversations.size() < paging.cursor().limit()) {
+            limit = paging.cursor().limit();
         }
         return CursorPagingResult.<MessageRepoImpl.ConversationDto, ConversationCursor>builder()
                 .data(allConversations)

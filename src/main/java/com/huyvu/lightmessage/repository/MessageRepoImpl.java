@@ -208,7 +208,7 @@ public class MessageRepoImpl implements MessageRepo {
 
     @Override
     public Optional<MessageEntity> findConversationLastMessage(long convId) {
-        var lastMsg = messageJpaRepo.findOneByConvIdOrderBySendAtDesc(convId);
+        var lastMsg = messageJpaRepo.findFirstByConvIdOrderBySendAtDesc(convId);
         if (lastMsg.isEmpty()) {
             return Optional.empty();
         }

@@ -23,7 +23,7 @@ public interface MessageJpaRepo extends JpaRepository<Message, Long> {
             limit :limit""")
     List<Message> findAllByConversationId(long convId, int limit, OffsetDateTime sendAt, Long id);
 
-    Optional<Message> findOneByConvIdOrderBySendAtDesc(long id);
-
     long conv(Conversation conv);
+
+    Optional<Message> findFirstByConvIdOrderBySendAtDesc(long convId);
 }

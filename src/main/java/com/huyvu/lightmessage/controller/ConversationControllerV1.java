@@ -2,16 +2,11 @@ package com.huyvu.lightmessage.controller;
 
 import com.huyvu.lightmessage.dto.CreateConversationRequestDTO;
 import com.huyvu.lightmessage.dto.CursorPagingResponseDTO;
-import com.huyvu.lightmessage.dto.MessageDTO;
-import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.repository.MessageRepoImpl;
 import com.huyvu.lightmessage.security.UserContextProvider;
 import com.huyvu.lightmessage.service.MessageService;
-import com.huyvu.lightmessage.service.MessageService.MessageCursor;
 import com.huyvu.lightmessage.util.CursorPaging;
-import com.huyvu.lightmessage.util.LimitPaging;
-import com.huyvu.lightmessage.util.Paging;
 import com.huyvu.lightmessage.util.PagingUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.time.OffsetDateTime;
-import java.util.List;
 
 @Slf4j
 @RestController
@@ -36,7 +29,7 @@ public class ConversationControllerV1 {
 
     @GetMapping("/conversations/{convId}")
     MessageRepoImpl.ConversationDto conversations(@PathVariable long convId) {
-        return messageService.getNewestConversations(userCtxProvider.getUserContext().id(), convId);
+        return messageService.getNewestConversation(userCtxProvider.getUserContext().id(), convId);
     }
 
     @GetMapping("/conversations")
@@ -47,7 +40,7 @@ public class ConversationControllerV1 {
         }
         var cp = new CursorPaging<>(limit, cursor);
 
-        var newestConversations = messageService.getNewestConversations(userCtxProvider.getUserContext().id(), cp);
+        var newestConversations = messageService.getNewestConversation(userCtxProvider.getUserContext().id(), cp);
         var encryptedCursor = PagingUtils.encrypt(newestConversations.nextCursor());
         return CursorPagingResponseDTO.<MessageRepoImpl.ConversationDto>builder()
                 .data(newestConversations.data())

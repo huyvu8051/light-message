@@ -13,9 +13,9 @@ import java.time.OffsetDateTime;
 public interface MessageService {
     void sendMessage(long userId, SendMessageRequestDTO request);
 
-    MessageRepoImpl.ConversationDto getNewestConversations(long id, long convId);
+    MessageRepoImpl.ConversationDto getNewestConversation(long id, long convId);
 
-    CursorPagingResult<MessageRepoImpl.ConversationDto, ConversationCursor> getNewestConversations(long userId, CursorPaging<ConversationCursor> paging);
+    CursorPagingResult<MessageRepoImpl.ConversationDto, ConversationCursor> getNewestConversation(long userId, CursorPaging<ConversationCursor> paging);
 
     record MessageCursor(OffsetDateTime sendAt,
                          Long id) {
