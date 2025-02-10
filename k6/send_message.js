@@ -15,7 +15,7 @@ function generateMessage() {
 function testSendMessage() {
     const body = JSON.stringify(generateMessage())
     const headers = {
-        Authorization: generateAuthToken(),
+        Cookie: `Authorization=${generateAuthToken()}`,
         'Content-Type': 'application/json',
     }
 
