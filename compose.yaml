@@ -70,7 +70,11 @@ services:
       KAFKA_PROCESS_ROLES: broker,controller
       KAFKA_LOG_DIRS: /var/lib/kafka/data
       CLUSTER_ID: "QJwH8wqGTqGqXv0hFjMY9A"
-
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: "2.0"
 #  control-center:
 #    image: confluentinc/cp-enterprise-control-center:latest
 #    depends_on:

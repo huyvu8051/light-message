@@ -30,4 +30,6 @@ public interface MessageRepo {
     Optional<ConversationEntity> findConversation(long convId);
 
     Optional<MessageEntity> findConversationLastMessage(long convId);
+
+    List<Long> findAllMembers(long convId);
 }

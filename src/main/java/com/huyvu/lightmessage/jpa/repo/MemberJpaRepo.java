@@ -1,6 +1,5 @@
 package com.huyvu.lightmessage.jpa.repo;
 
-import com.huyvu.lightmessage.jpa.model.Conversation;
 import com.huyvu.lightmessage.jpa.model.Member;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,4 +21,10 @@ public interface MemberJpaRepo extends JpaRepository<Member, Long> {
              where id = :convId""")
     void updateById(long convId, OffsetDateTime time);
 
+
+    @Query("""
+            select m.user.id
+            from Member m
+            where m.conversation.id = :convId""")
+    List<Long> findAllByConversationId(long convId);
 }

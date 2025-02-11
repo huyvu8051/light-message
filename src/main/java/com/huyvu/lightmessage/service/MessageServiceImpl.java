@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -54,11 +55,13 @@ public class MessageServiceImpl implements MessageService {
     public void sendMessage(long userId, SendMessageRequestDTO request) {
         checkUserIsMemberOfConversation(userId, request.convId());
 
+        List<Long> ids = msgRepo.findAllMembers(request.convId());
         var entity = MessageEntity.builder()
                 .convId(request.convId())
                 .content(request.content())
                 .senderId(userId)
                 .sentAt(OffsetDateTime.now(ZoneOffset.UTC))
+                .memberIds(ids)
                 .build();
 
 

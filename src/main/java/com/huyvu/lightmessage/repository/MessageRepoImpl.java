@@ -223,5 +223,10 @@ public class MessageRepoImpl implements MessageRepo {
                 .build());
     }
 
+    @Override
+    public List<Long> findAllMembers(long convId) {
+        return memberJpaRepo.findAllByConversationId(convId);
+    }
+
 
 }
