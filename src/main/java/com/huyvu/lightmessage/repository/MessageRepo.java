@@ -17,7 +17,7 @@ public interface MessageRepo {
     //    @Cacheable(value = "findAllMessages")
     CursorPagingResult<MessageDTO, MessageService.MessageCursor> findAllMessages(long convId, CursorPaging<MessageService.MessageCursor> paging);
 
-    void saveMessage(MessageEntity message);
+    long saveMessage(MessageEntity message);
 
     void saveConversation(ConversationEntity conversation);
 

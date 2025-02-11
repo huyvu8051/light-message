@@ -62,7 +62,7 @@ public class MessageRepoImpl implements MessageRepo {
     }
 
     @Override
-    public void saveMessage(MessageEntity msg) {
+    public long saveMessage(MessageEntity msg) {
         var conv = Conversation.builder()
                 .id(msg.convId())
                 .build();
@@ -76,7 +76,8 @@ public class MessageRepoImpl implements MessageRepo {
                 .sendAt(msg.sentAt())
                 .build();
 
-        messageJpaRepo.save(message);
+        var save = messageJpaRepo.save(message);
+        return save.getId();
     }
 
 
@@ -117,7 +118,8 @@ public class MessageRepoImpl implements MessageRepo {
             long id,
             String name,
             boolean isGroupChat,
-            MessageDto message
+            MessageDto message,
+            String sendAt
     ) {
         public ConversationDto(long id,
                                String name,
@@ -125,7 +127,7 @@ public class MessageRepoImpl implements MessageRepo {
                                Long messageId,
                                String messageContent,
                                Instant sendAt) {
-            this(id, name, isGroupChat, new MessageDto(messageId, messageContent, sendAt != null ? sendAt.atOffset(ZoneOffset.UTC) : null));
+            this(id, name, isGroupChat, new MessageDto(messageId, messageContent, sendAt != null ? sendAt.atOffset(ZoneOffset.UTC) : null), sendAt != null ? sendAt.atOffset(ZoneOffset.UTC).toString() : null);
         }
     }
 

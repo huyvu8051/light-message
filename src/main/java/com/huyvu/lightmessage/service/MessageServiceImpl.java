@@ -5,6 +5,7 @@ import com.huyvu.lightmessage.dto.MessageDTO;
 import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
+import com.huyvu.lightmessage.entity.MessageKafkaDTO;
 import com.huyvu.lightmessage.exception.ConversationNotExistException;
 import com.huyvu.lightmessage.repository.MessageRepo;
 import com.huyvu.lightmessage.repository.MessageRepoImpl;
@@ -61,13 +62,20 @@ public class MessageServiceImpl implements MessageService {
                 .content(request.content())
                 .senderId(userId)
                 .sentAt(OffsetDateTime.now(ZoneOffset.UTC))
-                .memberIds(ids)
                 .build();
 
 
         msgRepo.updateMemberLastSendAt(entity.convId(), entity.sentAt());
-        msgRepo.saveMessage(entity);
-        rtmService.sendMessageNotification(request.convId(), entity);
+        var msgId = msgRepo.saveMessage(entity);
+
+        rtmService.sendMessageNotification(request.convId(), MessageKafkaDTO.builder()
+                .id(msgId)
+                .convId(request.convId())
+                .content(request.content())
+                .senderId(userId)
+                .sentAt(entity.sentAt().toString())
+                .memberIds(ids)
+                .build());
 
         // logger.info("User {} send a message to {}", userContextProvider.getUserContext().username(), request.convId());
 
@@ -121,7 +129,7 @@ public class MessageServiceImpl implements MessageService {
         var allConversations = msgRepo.findAllConversations(userId, paging);
 
         var limit = paging.cursor().limit() + paging.limit();
-        if(allConversations.size() < paging.cursor().limit()) {
+        if (allConversations.size() < paging.cursor().limit()) {
             limit = paging.cursor().limit();
         }
         return CursorPagingResult.<MessageRepoImpl.ConversationDto, ConversationCursor>builder()
