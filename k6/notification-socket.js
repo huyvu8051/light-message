@@ -1,6 +1,8 @@
 import ws from "k6/ws";
 import http from "k6/http";
 import { sleep } from "k6";
+import {getOption} from './config.js'
+const faker = require('./faker.min.js')
 
 const socketIoPath = "localhost:8081/socket.io/?EIO=4&transport=";
 
@@ -9,11 +11,12 @@ const formatMessage = (...args) => {
 }
 
 // Define headers with cookies
-const headers = {
-    "Cookie": "Idea-4a7216e0=c551f3eb-c58e-4214-8b0a-e952086fc946; Authorization=2"
-};
 
 export default function () {
+    const headers = {
+        "Cookie": `Authorization=${faker.datatype.number({min: 1, max: 20})}`
+    };
+
     // Step 1: Initial HTTP Polling Request with Cookie
     const received = http.get(`http://${socketIoPath}polling`, { headers });
     const { sid, upgrades, pingInterval, pingTimeout, maxPayload } = JSON.parse(received.body.substring(1));
@@ -35,16 +38,18 @@ export default function () {
 
                 // Step 3: Namespace connection established
                 if (message.startsWith("40/chat")) {
-                    const messageSent = formatMessage("chatMessage", JSON.stringify({
+                    /*const messageSent = formatMessage("chatMessage", JSON.stringify({
                         username: "testUser",
                         message: "Hello from k6 with cookies!",
-                    }));
+                    }));*/
+
+                    const messageSent = '42/chat,["chatMessage","chung ta cua tuong lai"]'
                     console.log(`Message sent : ${messageSent}`)
                     socket.send(messageSent); // Send test message
-                    sleep(5);
+                    /*sleep(5);
                     socket.send('41/chat'); // Disconnect from chat namespace
                     sleep(1);
-                    socket.close();
+                    socket.close();*/
                 }
             });
 
@@ -54,3 +59,6 @@ export default function () {
         });
     }
 }
+
+
+// export let options = getOption(3)
