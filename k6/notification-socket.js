@@ -59,4 +59,10 @@ export default function () {
     }
 }
 
-export let options = getOption(3)
+// export let options = getOption(3)
+
+
+export let options = {
+    vus: 1000,   // 50 user ảo chạy song song
+    duration: '30s', // Chạy test trong 30 giây
+};
