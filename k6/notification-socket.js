@@ -6,11 +6,6 @@ const faker = require('./faker.min.js')
 
 const socketIoPath = "localhost:8081/socket.io/?EIO=4&transport=";
 
-const formatMessage = (...args) => {
-    return `42${JSON.stringify(args)}`;
-}
-
-// Define headers with cookies
 
 export default function () {
     const headers = {
@@ -56,9 +51,12 @@ export default function () {
             socket.on("error", (error) => {
                 console.error(error);
             });
+
+            socket.on('close', () => {
+                console.log('closing')
+            })
         });
     }
 }
 
-
-// export let options = getOption(3)
+export let options = getOption(3)

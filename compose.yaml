@@ -28,15 +28,15 @@ services:
 #    volumes:
 #      - "./docker/tmp-hprof:/tmp"
 
-  light-message:
-    image: docker.io/library/light-message:0.0.1-SNAPSHOT
-    container_name: nsba
-    ports:
-      - "8080:8080"
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/mydatabase
-      - SERVER_TOMCAT_THREADS_MAX=4
-      - SPRING_DATA_JPA_REPOSITORIES_BOOTSTRAP_MODE=lazy
+#  light-message:
+#    image: docker.io/library/light-message:0.0.1-SNAPSHOT
+#    container_name: nsba
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/mydatabase
+#      - SERVER_TOMCAT_THREADS_MAX=4
+#      - SPRING_DATA_JPA_REPOSITORIES_BOOTSTRAP_MODE=lazy
 
   postgres:
     container_name: postgres
@@ -73,7 +73,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 4G
+          memory: 2G
           cpus: "2.0"
 #  control-center:
 #    image: confluentinc/cp-enterprise-control-center:latest
