@@ -63,6 +63,15 @@ export default function () {
 
 
 export let options = {
-    vus: 1000,   // 50 user ảo chạy song song
-    duration: '30s', // Chạy test trong 30 giây
+    stages: [
+        { duration: '30s', target: 100 },  
+        { duration: '30s', target: 500 }, 
+        { duration: '30s', target: 1000},
+	{ duration: '5m', target: 1000 }, 
+/*      { duration: '1m', target: 2500 },  
+        { duration: '2m', target: 2500 }, */ 
+       	{ duration: '30s', target: 1000 },
+	 { duration: '30s', target: 100 },  
+    ],
 };
+
