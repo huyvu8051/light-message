@@ -48,14 +48,14 @@ export default function () {
         });
     }
 }
-
+const ratio = 50
 export let options = {
     stages: [
-        { duration: '30s', target: 100 },
-        { duration: '30s', target: 500 },
-        { duration: '30s', target: 1000 },
-        { duration: '5m', target: 1000 },
-        { duration: '30s', target: 1000 },
-        { duration: '30s', target: 100 },
+        { duration: '5s', target: 2 * ratio},
+        { duration: '5s', target: 5 * ratio},
+        { duration: '5s', target: 10  * ratio},
+        { duration: '5m', target: 10  * ratio},
+        { duration: '30s', target: 5  * ratio},
+        { duration: '30s', target: 2  * ratio},
     ],
 };

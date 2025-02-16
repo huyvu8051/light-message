@@ -1,0 +1,1770 @@
+WARNING: package com.sun.java.swing.plaf.gtk not in java.desktop
+WARNING: package sun.awt.X11 not in java.desktop
+2025-02-15 19:39:25.303 java[1708:15931] +[IMKClient subclass]: chose IMKClient_Legacy
+2025-02-15 19:39:25.303 java[1708:15931] +[IMKInputSession subclass]: chose IMKInputSession_Legacy
+-------------------------------------------------------------------------------
+>Log Session: Saturday, February 15, 2025, 7:39:25 PM Indochina Time
+>System Info: 
+  Product Version         = VisualVM 2.1.10
+  Operating System        = Mac OS X version 15.0.1 running on aarch64
+  Java; VM; Vendor        = 21.0.6; OpenJDK 64-Bit Server VM 21.0.6+7-LTS; Eclipse Adoptium
+  Runtime                 = OpenJDK Runtime Environment 21.0.6+7-LTS
+  Java Home               = /Users/vuvanhuy/.sdkman/candidates/java/21.0.6-tem
+  System Locale; Encoding = en_VN (visualvm); UTF-8
+  Home Directory          = /Users/vuvanhuy
+  Current Directory       = /Users/vuvanhuy/IdeaProjects/light-message
+  User Directory          = /Users/vuvanhuy/Library/Application Support/VisualVM/2.1.10
+  Cache Directory         = /Users/vuvanhuy/Library/Caches/VisualVM/2.1.10
+  Installation            = /Users/vuvanhuy/.sdkman/candidates/visualvm/current/visualvm
+                            /Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform
+  Boot & Ext. Classpath   = 
+  Application Classpath   = /Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform/lib/boot.jar:/Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform/lib/org-openide-modules.jar:/Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform/lib/org-openide-util-lookup.jar:/Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform/lib/org-openide-util-ui.jar:/Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform/lib/org-openide-util.jar
+  Startup Classpath       = /Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform/core/asm-9.7.jar:/Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform/core/asm-commons-9.7.jar:/Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform/core/org-netbeans-libs-asm.jar:/Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform/core/asm-tree-9.7.jar:/Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform/core/org-openide-filesystems.jar:/Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform/core/core.jar:/Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform/core/core-base.jar:/Users/vuvanhuy/.sdkman/candidates/visualvm/current/visualvm/core/org-graalvm-visualvm-modules-startup.jar:/Users/vuvanhuy/.sdkman/candidates/visualvm/current/visualvm/core/locale/core_visualvm.jar
+-------------------------------------------------------------------------------
+INFO [org.netbeans.core.startup.NbEvents]: Turning on modules:
+	org.openide.util.lookup [8.58 20240628-0d0bfcf3fa]
+	org.openide.util [9.32 20240628-0d0bfcf3fa]
+	org.openide.util.ui [9.33 20240628-0d0bfcf3fa]
+	org.openide.modules [7.72 20240628-0d0bfcf3fa]
+	org.netbeans.api.annotations.common/1 [1.52 20240628-0d0bfcf3fa]
+	org.openide.filesystems [9.37 20240628-0d0bfcf3fa]
+	org.openide.awt [7.92 20240628-0d0bfcf3fa]
+	org.netbeans.api.progress/1 [1.72 20240628-0d0bfcf3fa]
+	org.netbeans.api.progress.nb [1.72 20240628-0d0bfcf3fa]
+	org.openide.dialogs [7.71 20240628-0d0bfcf3fa]
+	org.openide.nodes [7.69 20240628-0d0bfcf3fa]
+	org.openide.windows [6.101 20240628-0d0bfcf3fa]
+	org.netbeans.modules.editor.mimelookup/1 [1.64 20240628-0d0bfcf3fa]
+	org.openide.text [6.92 20240628-0d0bfcf3fa]
+	org.netbeans.api.scripting [1.21 20240628-0d0bfcf3fa]
+	org.netbeans.swing.tabcontrol [1.81 20240628-0d0bfcf3fa]
+	org.netbeans.swing.outline [1.58 20240628-0d0bfcf3fa]
+	org.openide.explorer [6.86 20240628-0d0bfcf3fa]
+	org.openide.actions [6.63 20240628-0d0bfcf3fa]
+	org.netbeans.modules.queries/1 [1.67 20240628-0d0bfcf3fa]
+	org.netbeans.api.templates [1.32 20240628-0d0bfcf3fa]
+	org.openide.filesystems.nb [9.34 20240628-0d0bfcf3fa]
+	org.openide.loaders [7.94 20240628-0d0bfcf3fa]
+	org.netbeans.api.intent [1.26 20240628-0d0bfcf3fa]
+	org.netbeans.api.io [1.27 20240628-0d0bfcf3fa]
+	org.openide.io [1.73 20240628-0d0bfcf3fa]
+	org.netbeans.swing.plaf [1.66 20240628-0d0bfcf3fa]
+	org.netbeans.modules.keyring [1.48 20240628-0d0bfcf3fa]
+	org.netbeans.libs.asm [5.27 20240628-0d0bfcf3fa]
+	org.netbeans.bootstrap/1 [2.103 20240628-0d0bfcf3fa]
+	org.netbeans.core.startup.base [1.86.0.1 1 20240628-0d0bfcf3fa]
+	org.netbeans.core.startup/1 [1.87.0.1 20240628-0d0bfcf3fa]
+	org.netbeans.modules.sampler [1.38 20240628-0d0bfcf3fa]
+	org.netbeans.core/2 [3.75 20240628-0d0bfcf3fa]
+	org.netbeans.spi.quicksearch [1.51 20240628-0d0bfcf3fa]
+	org.netbeans.modules.options.api/1 [1.69 20240628-0d0bfcf3fa]
+	org.netbeans.libs.flatlaf/1 [1.18 3.3 20240628-0d0bfcf3fa]
+	org.netbeans.swing.laf.flatlaf [1.17 20240628-0d0bfcf3fa]
+	org.netbeans.modules.settings/1 [1.73 20240628-0d0bfcf3fa]
+	org.netbeans.modules.sendopts/2 [2.60 20240628-0d0bfcf3fa]
+	org.netbeans.modules.progress.ui [1.57 20240628-0d0bfcf3fa]
+	org.netbeans.modules.options.keymap [1.61 20240628-0d0bfcf3fa]
+	org.netbeans.modules.masterfs/2 [2.79.0.2 2 20240628-0d0bfcf3fa]
+	org.netbeans.modules.masterfs.ui [2.27.0.2 20240628-0d0bfcf3fa]
+	org.netbeans.modules.masterfs.nio2 [1.39 20240628-0d0bfcf3fa]
+	org.netbeans.libs.jna/2 [2.19 20240628-0d0bfcf3fa]
+	org.netbeans.modules.masterfs.macosx [1.37 20240628-0d0bfcf3fa]
+	org.netbeans.modules.keyring.fallback [1.32 20240628-0d0bfcf3fa]
+	org.netbeans.modules.keyring.impl [1.48 20240628-0d0bfcf3fa]
+	org.netbeans.modules.editor.mimelookup.impl/1 [1.56 20240628-0d0bfcf3fa]
+	org.netbeans.modules.autoupdate.services [1.80 20240628-0d0bfcf3fa]
+	org.netbeans.modules.autoupdate.ui [1.70 20240628-0d0bfcf3fa]
+	org.netbeans.modules.autoupdate.cli [1.38 20240628-0d0bfcf3fa]
+	org.netbeans.core.windows/2 [2.109 20240628-0d0bfcf3fa]
+	org.netbeans.modules.applemenu/1 [1.61 20240628-0d0bfcf3fa]
+	org.netbeans.libs.jna.platform/2 [2.19 20240628-0d0bfcf3fa]
+	org.netbeans.core.ui/1 [1.69 20240628-0d0bfcf3fa]
+	org.netbeans.core.network [1.36 20240628-0d0bfcf3fa]
+	org.netbeans.core.nativeaccess/1 [1.55 20240628-0d0bfcf3fa]
+	org.netbeans.core.multitabs/1 [1.36.0.1 1 20240628-0d0bfcf3fa]
+	org.netbeans.core.io.ui/1 [1.54 20240628-0d0bfcf3fa]
+	org.graalvm.visualvm.lib.jfluid/2 [2.18 240911]
+	org.graalvm.visualvm.lib.charts/2 [2.1 240911]
+	org.graalvm.visualvm.lib.common/2 [2.11 240911]
+	org.graalvm.visualvm.lib.profiler.api/2 [2.2 240911]
+	org.graalvm.visualvm.lib.ui/2 [2.4 240911]
+	org.graalvm.visualvm.uisupport/2 [2.1 240911]
+	org.graalvm.visualvm.core/2 [2.4 240911]
+	org.graalvm.visualvm.host/2 [2.1 240911]
+	org.graalvm.visualvm.application/2 [2.4 240911]
+	org.graalvm.visualvm.tools/2 [2.3 240911]
+	org.graalvm.visualvm.coredump/2 [2.1 240911]
+	org.graalvm.visualvm.threaddump/2 [2.1 240911]
+	org.graalvm.visualvm.lib.profiler.utilities/2 [2.0 240911]
+	org.graalvm.visualvm.lib.profiler.attach/2 [2.3 240911]
+	org.graalvm.visualvm.lib.profiler/2 [2.4 240911]
+	org.graalvm.visualvm.lib.profiler.snaptracer/2 [2.0 240911]
+	org.graalvm.visualvm.profiling/2 [2.3 240911]
+	org.graalvm.visualvm.lib.jfluid.heap [1.3 240911]
+	org.graalvm.visualvm.lib.profiler.oql/2 [2.0 240911]
+	org.graalvm.visualvm.lib.profiler.heapwalker/2 [2.2 240911]
+	org.graalvm.visualvm.heapviewer/2 [2.8 240911]
+	org.graalvm.visualvm.heapdump/2 [2.1 240911]
+	org.graalvm.visualvm.sampler.truffle/2 [2.1 240911]
+	org.graalvm.visualvm.sampler/2 [2.2 240911]
+	org.graalvm.visualvm.sa/2 [2.0 240911]
+	org.graalvm.visualvm.modules.startup/2 [2.1 240911]
+	org.graalvm.visualvm.profiler/2 [2.1 240911]
+	org.graalvm.visualvm.pluginimporter [1.0 240911]
+	org.graalvm.visualvm.modules.nashorn.jdk15 [1.1 240911]
+	org.graalvm.visualvm.modules.appui/2 [2.1 240911]
+	org.graalvm.visualvm.jvmstat/2 [2.0 240911]
+	org.graalvm.visualvm.jvm/2 [2.0 240911]
+	org.graalvm.visualvm.jmx/2 [2.2 240911]
+	org.graalvm.visualvm.charts/2 [2.1 240911]
+	org.graalvm.visualvm.jfr/2 [2.3 240911]
+	org.graalvm.visualvm.jfr.jdk11/2 [2.2 240911]
+	org.graalvm.visualvm.jfr.generic/2 [2.5 240911]
+	org.graalvm.visualvm.host.views/2 [2.0 240911]
+	org.graalvm.visualvm.host.remote/2 [2.0 240911]
+	org.graalvm.visualvm.heapviewer.truffle/2 [2.1 240911]
+	org.graalvm.visualvm.heapviewer.console/2 [2.0 240911]
+	org.graalvm.visualvm.application.views/2 [2.1 240911]
+	org.graalvm.visualvm.graalvm/2 [2.0 240911]
+	org.graalvm.visualvm.gotosource/2 [2.0 240911]
+	org.graalvm.visualvm.attach/2 [2.0 240911]
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy resolver: Mac
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy reloading failed! Trying fallback resolver.
+INFO [org.netbeans.core.network.proxy.fallback.FallbackNetworkProxy]: Fallback system proxy resolver: no http_proxy variable found
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy reloading succeeded. Fallback provider was successful.
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy - mode: direct
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy: fell to default (correct if direct mode went before)
+WARNING: A terminally deprecated method in java.lang.System has been called
+WARNING: System::setSecurityManager has been called by org.netbeans.TopSecurityManager (file:/Users/vuvanhuy/.sdkman/candidates/visualvm/2.1.10/platform/lib/boot.jar)
+WARNING: Please consider reporting this to the maintainers of org.netbeans.TopSecurityManager
+WARNING: System::setSecurityManager will be removed in a future release
+INFO [org.netbeans.ui.metrics.laf]: USG_LOOK_AND_FEEL
+Diagnostic information
+Input arguments:
+	-Djdk.home=/Users/vuvanhuy/.sdkman/candidates/java/21.0.6-tem
+	-Dnetbeans.default_userdir_root=/Users/vuvanhuy/Library/Application Support/VisualVM
+	-Dnetbeans.dirs=/Users/vuvanhuy/.sdkman/candidates/visualvm/current/visualvm:
+	-Dnetbeans.home=/Users/vuvanhuy/.sdkman/candidates/visualvm/current/platform
+	-Xms24m
+	-Xmx768m
+	-Dnetbeans.accept_license_class=org.graalvm.visualvm.modules.startup.AcceptLicense
+	-Dnetbeans.importclass=org.graalvm.visualvm.modules.startup.ImportSettings
+	-Dsun.jvmstat.perdata.syncWaitMs=10000
+	-Dsun.java2d.noddraw=true
+	-Dsun.java2d.d3d=false
+	-Dorg.netbeans.core.TimeableEventQueue.quantum=360000
+	-Dpolyglot.js.nashorn-compat=true
+	-Dsun.misc.URLClassPath.disableJarChecking=true
+	-Djdk.attach.allowAttachSelf=true
+	-Dorg.openide.util.ImageUtilities.level=950
+	--add-exports=java.desktop/com.sun.java.swing.plaf.gtk=ALL-UNNAMED
+	--add-exports=java.desktop/sun.awt=ALL-UNNAMED
+	--add-exports=jdk.internal.jvmstat/sun.jvmstat.monitor.event=ALL-UNNAMED
+	--add-exports=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED
+	--add-exports=java.desktop/sun.swing=ALL-UNNAMED
+	--add-exports=jdk.attach/sun.tools.attach=ALL-UNNAMED
+	--add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED
+	--add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED
+	--add-opens=java.base/java.net=ALL-UNNAMED
+	--add-opens=java.base/java.lang.ref=ALL-UNNAMED
+	--add-opens=java.base/java.lang=ALL-UNNAMED
+	--add-opens=java.desktop/javax.swing=ALL-UNNAMED
+	--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED
+	-XX:+IgnoreUnrecognizedVMOptions
+	-Dnetbeans.logger.console=true
+	-XX:+HeapDumpOnOutOfMemoryError
+	-XX:HeapDumpPath=/Users/vuvanhuy/Library/Application Support/VisualVM/2.1.10/var/log/heapdump.hprof
+	-Djava.security.manager=allow
+Compiler: HotSpot 64-Bit Tiered Compilers
+Heap memory usage: initial 24.0MB maximum 768.0MB
+Non heap memory usage: initial 7.3MB maximum -1b
+Garbage collector: G1 Young Generation (Collections=8 Total time spent=0s)
+Garbage collector: G1 Concurrent GC (Collections=6 Total time spent=0s)
+Garbage collector: G1 Old Generation (Collections=0 Total time spent=0s)
+Classes: loaded=6149 total loaded=6149 unloaded 0
+INFO [org.netbeans.core.ui.warmup.DiagnosticTask]: Total memory 34,359,738,368
+INFO [null]: Total physical memory 34,359,738,368
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+takeHeapDump: Dumping heap to /var/folders/rx/msfldmrj5j7b2drf9gb2d8500000gp/T/visualvm_vuvanhuy.dat/localhost_9569/heapdump-1739644496152.hprof ...
+Heap dump file created [185895666 bytes in 0.166 secs]
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-9726 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-9726 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-9726 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-9726 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-9866 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-9866 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-16730 sun.rt.createVmEndTime = 0
+WARNING [javax.management.remote.misc]: Failed to check connection: java.net.ConnectException: Connection refused
+WARNING [javax.management.remote.misc]: stopping
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: executeJCmd
+com.sun.tools.attach.AttachOperationFailedException: java.lang.OutOfMemoryError: Java heap space
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.processCompletionStatus(HotSpotVirtualMachine.java:414)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:183)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeJCmd(HotSpotVirtualMachine.java:298)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:213)
+	at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:182)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.executeJCmd(JfrModelImpl.java:216)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.jfrCheck(JfrModelImpl.java:105)
+	at org.graalvm.visualvm.jvm.JVMImpl.jfrCheck(JVMImpl.java:501)
+	at org.graalvm.visualvm.jfr.JFRSnapshotSupport.supportsJfrDump(JFRSnapshotSupport.java:141)
+	at org.graalvm.visualvm.jfr.impl.JFRDumpAction.isEnabled(JFRDumpAction.java:96)
+	at org.graalvm.visualvm.core.ui.actions.MultiDataSourceAction.updateState(MultiDataSourceAction.java:76)
+	at org.graalvm.visualvm.jfr.impl.JFRDumpAction.updateState(JFRDumpAction.java:118)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+ERROR: attach: task_for_pid(18013) failed: '(os/kern) failure' (5)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: executeJCmd
+java.io.IOException: Premature EOF
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.readInt(HotSpotVirtualMachine.java:347)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.processCompletionStatus(HotSpotVirtualMachine.java:381)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:183)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeJCmd(HotSpotVirtualMachine.java:298)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:213)
+	at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:182)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.executeJCmd(JfrModelImpl.java:216)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.jfrCheck(JfrModelImpl.java:105)
+	at org.graalvm.visualvm.jvm.JVMImpl.jfrCheck(JVMImpl.java:501)
+	at org.graalvm.visualvm.jfr.JFRSnapshotSupport.supportsJfrStart(JFRSnapshotSupport.java:170)
+	at org.graalvm.visualvm.jfr.impl.JFRStartAction.isEnabled(JFRStartAction.java:95)
+	at org.graalvm.visualvm.core.ui.actions.MultiDataSourceAction.updateState(MultiDataSourceAction.java:76)
+	at org.graalvm.visualvm.jfr.impl.JFRStartAction.updateState(JFRStartAction.java:117)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: executeJCmd
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeJCmd(HotSpotVirtualMachine.java:298)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:213)
+	at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:182)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.executeJCmd(JfrModelImpl.java:216)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.jfrCheck(JfrModelImpl.java:105)
+	at org.graalvm.visualvm.jvm.JVMImpl.jfrCheck(JVMImpl.java:501)
+	at org.graalvm.visualvm.jfr.JFRSnapshotSupport.supportsJfrStop(JFRSnapshotSupport.java:193)
+	at org.graalvm.visualvm.jfr.impl.JFRStopAction.isEnabled(JFRStopAction.java:95)
+	at org.graalvm.visualvm.core.ui.actions.MultiDataSourceAction.updateState(MultiDataSourceAction.java:76)
+	at org.graalvm.visualvm.jfr.impl.JFRStopAction.updateState(JFRStopAction.java:117)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: getSystemProperties
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.getSystemProperties(HotSpotVirtualMachine.java:197)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.getSystemProperties(AttachModelImpl.java:65)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSystemProperties(JVMImpl.java:336)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.getJVMArchitecture(ProfilerSupport.java:394)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.supportsProfiling(ProfilerSupport.java:315)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:70)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:42)
+	at org.graalvm.visualvm.core.ui.actions.SingleDataSourceAction.updateState(SingleDataSourceAction.java:77)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.updateState(ProfileApplicationAction.java:78)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.netbeans.core.network.proxy.NbProxySelector]: Timeout when waiting for DNS response. (192.168.1.27)
+WARNING [javax.management.remote.misc]: Failed to check connection: java.net.SocketException: Connection reset
+WARNING [javax.management.remote.misc]: stopping
+INFO [org.graalvm.visualvm.sa.SaModelProvider]: Error getting SA agent
+sun.jvm.hotspot.debugger.DebuggerException: Can't attach to the process. Could be caused by an incorrect pid or lack of privileges.
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal.attach0(Native Method)
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal$1AttachTask.doit(BsdDebuggerLocal.java:251)
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal$BsdDebuggerLocalWorkerThread.run(BsdDebuggerLocal.java:143)
+Caused: sun.jvm.hotspot.debugger.DebuggerException: Can't attach to the process. Could be caused by an incorrect pid or lack of privileges.
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal$BsdDebuggerLocalWorkerThread.execute(BsdDebuggerLocal.java:168)
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal.attach(BsdDebuggerLocal.java:260)
+	at sun.jvm.hotspot.HotSpotAgent.attachDebugger(HotSpotAgent.java:636)
+	at sun.jvm.hotspot.HotSpotAgent.setupDebuggerDarwin(HotSpotAgent.java:624)
+	at sun.jvm.hotspot.HotSpotAgent.setupDebugger(HotSpotAgent.java:372)
+	at sun.jvm.hotspot.HotSpotAgent.go(HotSpotAgent.java:337)
+	at sun.jvm.hotspot.HotSpotAgent.attach(HotSpotAgent.java:142)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+Caused: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.graalvm.visualvm.sa.SAObject.invoke(SAObject.java:106)
+	at org.graalvm.visualvm.sa.Agent.attach(Agent.java:64)
+	at org.graalvm.visualvm.sa.SaModelImpl.attach(SaModelImpl.java:118)
+	at org.graalvm.visualvm.sa.SaModelImpl.readData(SaModelImpl.java:126)
+	at org.graalvm.visualvm.sa.SaModelImpl.<init>(SaModelImpl.java:52)
+[catch] at org.graalvm.visualvm.sa.SaModelProvider.createModelFor(SaModelProvider.java:84)
+	at org.graalvm.visualvm.sa.SaModelProvider.createModelFor(SaModelProvider.java:45)
+	at org.graalvm.visualvm.core.model.ModelFactory.getModel(ModelFactory.java:105)
+	at org.graalvm.visualvm.tools.sa.SaModelFactory.getSAAgentFor(SaModelFactory.java:65)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSAAgent(JVMImpl.java:552)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSystemProperties(JVMImpl.java:347)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.getJVMArchitecture(ProfilerSupport.java:394)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.supportsProfiling(ProfilerSupport.java:315)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:70)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:42)
+	at org.graalvm.visualvm.core.ui.actions.SingleDataSourceAction.updateState(SingleDataSourceAction.java:77)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.updateState(ProfileApplicationAction.java:78)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: executeJCmd
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeJCmd(HotSpotVirtualMachine.java:298)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:213)
+	at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:182)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.executeJCmd(JfrModelImpl.java:216)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.jfrCheck(JfrModelImpl.java:105)
+	at org.graalvm.visualvm.jvm.JVMImpl.jfrCheck(JVMImpl.java:501)
+	at org.graalvm.visualvm.jfr.JFRSnapshotSupport.supportsJfrDump(JFRSnapshotSupport.java:141)
+	at org.graalvm.visualvm.jfr.impl.JFRDumpAction.isEnabled(JFRDumpAction.java:96)
+	at org.graalvm.visualvm.core.ui.actions.MultiDataSourceAction.updateState(MultiDataSourceAction.java:76)
+	at org.graalvm.visualvm.jfr.impl.JFRDumpAction.updateState(JFRDumpAction.java:118)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: executeJCmd
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeJCmd(HotSpotVirtualMachine.java:298)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:213)
+	at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:182)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.executeJCmd(JfrModelImpl.java:216)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.jfrCheck(JfrModelImpl.java:105)
+	at org.graalvm.visualvm.jvm.JVMImpl.jfrCheck(JVMImpl.java:501)
+	at org.graalvm.visualvm.jfr.JFRSnapshotSupport.supportsJfrStart(JFRSnapshotSupport.java:170)
+	at org.graalvm.visualvm.jfr.impl.JFRStartAction.isEnabled(JFRStartAction.java:95)
+	at org.graalvm.visualvm.core.ui.actions.MultiDataSourceAction.updateState(MultiDataSourceAction.java:76)
+	at org.graalvm.visualvm.jfr.impl.JFRStartAction.updateState(JFRStartAction.java:117)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: executeJCmd
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeJCmd(HotSpotVirtualMachine.java:298)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:213)
+	at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:182)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.executeJCmd(JfrModelImpl.java:216)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.jfrCheck(JfrModelImpl.java:105)
+	at org.graalvm.visualvm.jvm.JVMImpl.jfrCheck(JVMImpl.java:501)
+	at org.graalvm.visualvm.jfr.JFRSnapshotSupport.supportsJfrStop(JFRSnapshotSupport.java:193)
+	at org.graalvm.visualvm.jfr.impl.JFRStopAction.isEnabled(JFRStopAction.java:95)
+	at org.graalvm.visualvm.core.ui.actions.MultiDataSourceAction.updateState(MultiDataSourceAction.java:76)
+	at org.graalvm.visualvm.jfr.impl.JFRStopAction.updateState(JFRStopAction.java:117)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: getSystemProperties
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.getSystemProperties(HotSpotVirtualMachine.java:197)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.getSystemProperties(AttachModelImpl.java:65)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSystemProperties(JVMImpl.java:336)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.getJVMArchitecture(ProfilerSupport.java:394)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.supportsProfiling(ProfilerSupport.java:315)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:70)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:42)
+	at org.graalvm.visualvm.core.ui.actions.SingleDataSourceAction.updateState(SingleDataSourceAction.java:77)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.updateState(ProfileApplicationAction.java:78)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: executeJCmd
+com.sun.tools.attach.AttachOperationFailedException: java.lang.OutOfMemoryError: Java heap space
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.processCompletionStatus(HotSpotVirtualMachine.java:414)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:183)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeJCmd(HotSpotVirtualMachine.java:298)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:213)
+	at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:182)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.executeJCmd(JfrModelImpl.java:216)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.isJfrAvailable(JfrModelImpl.java:86)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelProvider.createModelFor(JfrModelProvider.java:43)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelProvider.createModelFor(JfrModelProvider.java:39)
+	at org.graalvm.visualvm.core.model.ModelFactory.getModel(ModelFactory.java:105)
+	at org.graalvm.visualvm.tools.jfr.JfrModelFactory.getJFRFor(JfrModelFactory.java:64)
+	at org.graalvm.visualvm.jvm.JVMImpl.isJfrAvailable(JVMImpl.java:495)
+	at org.graalvm.visualvm.jfr.JFRSnapshotSupport.supportsJfrDump(JFRSnapshotSupport.java:140)
+	at org.graalvm.visualvm.jfr.impl.JFRDumpAction.isEnabled(JFRDumpAction.java:96)
+	at org.graalvm.visualvm.core.ui.actions.MultiDataSourceAction.updateState(MultiDataSourceAction.java:76)
+	at org.graalvm.visualvm.jfr.impl.JFRDumpAction.updateState(JFRDumpAction.java:118)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPath(DefaultTreeSelectionModel.java:200)
+	at java.desktop/javax.swing.JTree.setSelectionPath(JTree.java:1709)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI.selectPathForEvent(BasicTreeUI.java:2761)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI$Handler.handleSelection(BasicTreeUI.java:4096)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI$Handler.mousePressed(BasicTreeUI.java:4035)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:287)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6618)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)
+	at org.graalvm.visualvm.core.explorer.ExplorerComponent$1.processMouseEvent(ExplorerComponent.java:110)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6386)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4996)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4572)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: getSystemProperties
+com.sun.tools.attach.AttachOperationFailedException: java.lang.OutOfMemoryError: Java heap space
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.processCompletionStatus(HotSpotVirtualMachine.java:414)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:183)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.getSystemProperties(HotSpotVirtualMachine.java:197)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.getSystemProperties(AttachModelImpl.java:65)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSystemProperties(JVMImpl.java:336)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.getJVMArchitecture(ProfilerSupport.java:394)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.supportsProfiling(ProfilerSupport.java:315)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:70)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:42)
+	at org.graalvm.visualvm.core.ui.actions.SingleDataSourceAction.updateState(SingleDataSourceAction.java:77)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.updateState(ProfileApplicationAction.java:78)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPath(DefaultTreeSelectionModel.java:200)
+	at java.desktop/javax.swing.JTree.setSelectionPath(JTree.java:1709)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI.selectPathForEvent(BasicTreeUI.java:2761)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI$Handler.handleSelection(BasicTreeUI.java:4096)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI$Handler.mousePressed(BasicTreeUI.java:4035)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:287)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6618)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)
+	at org.graalvm.visualvm.core.explorer.ExplorerComponent$1.processMouseEvent(ExplorerComponent.java:110)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6386)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4996)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4572)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+ERROR: attach: task_for_pid(18265) failed: '(os/kern) failure' (5)
+INFO [org.graalvm.visualvm.jmx.impl.ProxyClient]: tryConnect
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:589)
+	at java.base/sun.nio.ch.Net.connect(Net.java:578)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:751)
+	at java.base/java.net.Socket.connect(Socket.java:686)
+	at java.base/java.net.Socket.<init>(Socket.java:555)
+	at java.base/java.net.Socket.<init>(Socket.java:324)
+	at java.rmi/sun.rmi.transport.tcp.TCPDirectSocketFactory.createSocket(TCPDirectSocketFactory.java:40)
+	at java.rmi/sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+Caused: java.rmi.ConnectException: Connection refused to host: 192.168.1.27; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at java.rmi/sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:625)
+	at java.rmi/sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:217)
+	at java.rmi/sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:204)
+	at java.rmi/sun.rmi.server.UnicastRef.invoke(UnicastRef.java:134)
+	at java.management.rmi/javax.management.remote.rmi.RMIServerImpl_Stub.newClient(RMIServerImpl_Stub.java:83)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnector.getConnection(RMIConnector.java:2106)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:321)
+[catch] at org.graalvm.visualvm.jmx.impl.ProxyClient.tryConnect(ProxyClient.java:290)
+	at org.graalvm.visualvm.jmx.impl.ProxyClient.connectImpl(ProxyClient.java:233)
+	at org.graalvm.visualvm.jmx.impl.ProxyClient.connect(ProxyClient.java:175)
+	at org.graalvm.visualvm.jmx.impl.JmxModelImpl.<init>(JmxModelImpl.java:180)
+	at org.graalvm.visualvm.jmx.impl.JmxModelProvider.createModelFor(JmxModelProvider.java:67)
+	at org.graalvm.visualvm.jmx.impl.JmxModelProvider.createModelFor(JmxModelProvider.java:42)
+	at org.graalvm.visualvm.core.model.ModelFactory.getModel(ModelFactory.java:105)
+	at org.graalvm.visualvm.tools.jmx.JmxModelFactory.getJmxModelFor(JmxModelFactory.java:69)
+	at org.graalvm.visualvm.jvm.JVMImpl.getJmxModel(JVMImpl.java:556)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSystemProperties(JVMImpl.java:340)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.getJVMArchitecture(ProfilerSupport.java:394)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.supportsProfiling(ProfilerSupport.java:315)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:70)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:42)
+	at org.graalvm.visualvm.core.ui.actions.SingleDataSourceAction.updateState(SingleDataSourceAction.java:77)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.updateState(ProfileApplicationAction.java:78)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPath(DefaultTreeSelectionModel.java:200)
+	at java.desktop/javax.swing.JTree.setSelectionPath(JTree.java:1709)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI.selectPathForEvent(BasicTreeUI.java:2761)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI$Handler.handleSelection(BasicTreeUI.java:4096)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI$Handler.mousePressed(BasicTreeUI.java:4035)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:287)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6618)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)
+	at org.graalvm.visualvm.core.explorer.ExplorerComponent$1.processMouseEvent(ExplorerComponent.java:110)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6386)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4996)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4572)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.sa.SaModelProvider]: Error getting SA agent
+sun.jvm.hotspot.debugger.DebuggerException: Can't attach to the process. Could be caused by an incorrect pid or lack of privileges.
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal.attach0(Native Method)
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal$1AttachTask.doit(BsdDebuggerLocal.java:251)
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal$BsdDebuggerLocalWorkerThread.run(BsdDebuggerLocal.java:143)
+Caused: sun.jvm.hotspot.debugger.DebuggerException: Can't attach to the process. Could be caused by an incorrect pid or lack of privileges.
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal$BsdDebuggerLocalWorkerThread.execute(BsdDebuggerLocal.java:168)
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal.attach(BsdDebuggerLocal.java:260)
+	at sun.jvm.hotspot.HotSpotAgent.attachDebugger(HotSpotAgent.java:636)
+	at sun.jvm.hotspot.HotSpotAgent.setupDebuggerDarwin(HotSpotAgent.java:624)
+	at sun.jvm.hotspot.HotSpotAgent.setupDebugger(HotSpotAgent.java:372)
+	at sun.jvm.hotspot.HotSpotAgent.go(HotSpotAgent.java:337)
+	at sun.jvm.hotspot.HotSpotAgent.attach(HotSpotAgent.java:142)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+Caused: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.graalvm.visualvm.sa.SAObject.invoke(SAObject.java:106)
+	at org.graalvm.visualvm.sa.Agent.attach(Agent.java:64)
+	at org.graalvm.visualvm.sa.SaModelImpl.attach(SaModelImpl.java:118)
+	at org.graalvm.visualvm.sa.SaModelImpl.readData(SaModelImpl.java:126)
+	at org.graalvm.visualvm.sa.SaModelImpl.<init>(SaModelImpl.java:52)
+[catch] at org.graalvm.visualvm.sa.SaModelProvider.createModelFor(SaModelProvider.java:84)
+	at org.graalvm.visualvm.sa.SaModelProvider.createModelFor(SaModelProvider.java:45)
+	at org.graalvm.visualvm.core.model.ModelFactory.getModel(ModelFactory.java:105)
+	at org.graalvm.visualvm.tools.sa.SaModelFactory.getSAAgentFor(SaModelFactory.java:65)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSAAgent(JVMImpl.java:552)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSystemProperties(JVMImpl.java:347)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.getJVMArchitecture(ProfilerSupport.java:394)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.supportsProfiling(ProfilerSupport.java:315)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:70)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:42)
+	at org.graalvm.visualvm.core.ui.actions.SingleDataSourceAction.updateState(SingleDataSourceAction.java:77)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.updateState(ProfileApplicationAction.java:78)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPath(DefaultTreeSelectionModel.java:200)
+	at java.desktop/javax.swing.JTree.setSelectionPath(JTree.java:1709)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI.selectPathForEvent(BasicTreeUI.java:2761)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI$Handler.handleSelection(BasicTreeUI.java:4096)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI$Handler.mousePressed(BasicTreeUI.java:4035)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:287)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6618)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)
+	at org.graalvm.visualvm.core.explorer.ExplorerComponent$1.processMouseEvent(ExplorerComponent.java:110)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6386)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4996)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4572)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: printFlag
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.printFlag(HotSpotVirtualMachine.java:294)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.printFlag(AttachModelImpl.java:103)
+	at org.graalvm.visualvm.jvm.JVMImpl.isDumpOnOOMEnabled(JVMImpl.java:255)
+	at org.graalvm.visualvm.heapdump.impl.HeapDumpOnOOMEAction.updateState(HeapDumpOnOOMEAction.java:87)
+	at org.graalvm.visualvm.heapdump.impl.HeapDumpOnOOMEAction.isEnabled(HeapDumpOnOOMEAction.java:81)
+	at org.graalvm.visualvm.heapdump.impl.HeapDumpOnOOMEAction.isEnabled(HeapDumpOnOOMEAction.java:50)
+	at org.graalvm.visualvm.core.ui.actions.SingleDataSourceAction.updateState(SingleDataSourceAction.java:77)
+	at org.graalvm.visualvm.heapdump.impl.HeapDumpOnOOMEAction.updateState(HeapDumpOnOOMEAction.java:95)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPath(DefaultTreeSelectionModel.java:200)
+	at java.desktop/javax.swing.JTree.setSelectionPath(JTree.java:1709)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI.selectPathForEvent(BasicTreeUI.java:2761)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI$Handler.handleSelection(BasicTreeUI.java:4096)
+	at java.desktop/javax.swing.plaf.basic.BasicTreeUI$Handler.mousePressed(BasicTreeUI.java:4035)
+	at java.desktop/java.awt.AWTEventMulticaster.mousePressed(AWTEventMulticaster.java:287)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6618)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)
+	at org.graalvm.visualvm.core.explorer.ExplorerComponent$1.processMouseEvent(ExplorerComponent.java:110)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6386)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4996)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4572)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: getSystemProperties
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.getSystemProperties(HotSpotVirtualMachine.java:197)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.getSystemProperties(AttachModelImpl.java:65)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSystemProperties(JVMImpl.java:336)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.getJVMArchitecture(ProfilerSupport.java:394)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.supportsProfiling(ProfilerSupport.java:315)
+	at org.graalvm.visualvm.profiler.ApplicationProfilerViewProvider.supportsViewFor(ApplicationProfilerViewProvider.java:40)
+	at org.graalvm.visualvm.profiler.ApplicationProfilerViewProvider.supportsViewFor(ApplicationProfilerViewProvider.java:37)
+	at org.graalvm.visualvm.core.ui.DataSourceViewsManager.getViews(DataSourceViewsManager.java:136)
+	at org.graalvm.visualvm.core.ui.DataSourceWindowManager.openWindowAndAddView(DataSourceWindowManager.java:262)
+	at org.graalvm.visualvm.core.ui.DataSourceWindowManager.access$000(DataSourceWindowManager.java:52)
+	at org.graalvm.visualvm.core.ui.DataSourceWindowManager$2.run(DataSourceWindowManager.java:121)
+	at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:1420)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:2035)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: getSystemProperties
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.getSystemProperties(HotSpotVirtualMachine.java:197)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.getSystemProperties(AttachModelImpl.java:65)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSystemProperties(JVMImpl.java:336)
+	at org.graalvm.visualvm.sampler.truffle.SamplerSupport.isRunningOnGraalVM(SamplerSupport.java:93)
+	at org.graalvm.visualvm.sampler.truffle.SamplerSupport.supportsProfiling(SamplerSupport.java:73)
+	at org.graalvm.visualvm.sampler.truffle.ApplicationSamplerViewProvider.supportsViewFor(ApplicationSamplerViewProvider.java:40)
+	at org.graalvm.visualvm.sampler.truffle.ApplicationSamplerViewProvider.supportsViewFor(ApplicationSamplerViewProvider.java:37)
+	at org.graalvm.visualvm.core.ui.DataSourceViewsManager.getViews(DataSourceViewsManager.java:136)
+	at org.graalvm.visualvm.core.ui.DataSourceWindowManager.openWindowAndAddView(DataSourceWindowManager.java:262)
+	at org.graalvm.visualvm.core.ui.DataSourceWindowManager.access$000(DataSourceWindowManager.java:52)
+	at org.graalvm.visualvm.core.ui.DataSourceWindowManager$2.run(DataSourceWindowManager.java:121)
+	at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:1420)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:2035)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: getSystemProperties
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.getSystemProperties(HotSpotVirtualMachine.java:197)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.getSystemProperties(AttachModelImpl.java:65)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSystemProperties(JVMImpl.java:336)
+	at org.graalvm.visualvm.application.views.overview.ApplicationOverviewModel.initialize(ApplicationOverviewModel.java:241)
+	at org.graalvm.visualvm.application.views.overview.ApplicationOverviewModel.initialize(ApplicationOverviewModel.java:134)
+	at org.graalvm.visualvm.application.views.overview.ApplicationOverviewView.willBeAdded(ApplicationOverviewView.java:56)
+	at org.graalvm.visualvm.core.ui.DataSourceView.viewWillBeAdded(DataSourceView.java:206)
+	at org.graalvm.visualvm.core.ui.DataSourceWindowManager.addViews(DataSourceWindowManager.java:340)
+	at org.graalvm.visualvm.core.ui.DataSourceWindowManager.openWindowAndAddView(DataSourceWindowManager.java:263)
+	at org.graalvm.visualvm.core.ui.DataSourceWindowManager.access$000(DataSourceWindowManager.java:52)
+	at org.graalvm.visualvm.core.ui.DataSourceWindowManager$2.run(DataSourceWindowManager.java:121)
+	at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:1420)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:2035)
+takeHeapDump: Dumping heap to /var/folders/rx/msfldmrj5j7b2drf9gb2d8500000gp/T/visualvm_vuvanhuy.dat/localhost_18275/heapdump-1739716241861.hprof ...
+Heap dump file created [4039871804 bytes in 1.598 secs]
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: takeHeapDump
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.dumpHeap(HotSpotVirtualMachine.java:279)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.takeHeapDump(AttachModelImpl.java:74)
+	at org.graalvm.visualvm.jvm.JVMImpl.takeHeapDump(JVMImpl.java:410)
+	at org.graalvm.visualvm.heapdump.impl.HeapDumpProvider$1.run(HeapDumpProvider.java:100)
+	at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:1420)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:2035)
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-18437 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-18437 sun.rt.createVmEndTime = 0
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-18524 java.property.java.vm.version is null
+INFO [org.graalvm.visualvm.jvmstat.JvmstatModelProvider]: localhost-18524 sun.rt.createVmEndTime = 0
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+takeHeapDump: Dumping heap to /var/folders/rx/msfldmrj5j7b2drf9gb2d8500000gp/T/visualvm_vuvanhuy.dat/localhost_18697/heapdump-1739718574544.hprof ...
+Heap dump file created [6765197053 bytes in 2.488 secs]
+takeHeapDump: Dumping heap to /var/folders/rx/msfldmrj5j7b2drf9gb2d8500000gp/T/visualvm_vuvanhuy.dat/localhost_19178/heapdump-1739718950223.hprof ...
+Heap dump file created [3386424760 bytes in 1.441 secs]
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+takeHeapDump: Dumping heap to /var/folders/rx/msfldmrj5j7b2drf9gb2d8500000gp/T/visualvm_vuvanhuy.dat/localhost_19501/heapdump-1739720176654.hprof ...
+Heap dump file created [11418925481 bytes in 16.542 secs]
+ERROR: attach: task_for_pid(19501) failed: '(os/kern) failure' (5)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: executeJCmd
+java.io.IOException: Premature EOF
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.readInt(HotSpotVirtualMachine.java:347)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.processCompletionStatus(HotSpotVirtualMachine.java:381)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:183)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeJCmd(HotSpotVirtualMachine.java:298)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:213)
+	at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:182)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.executeJCmd(JfrModelImpl.java:216)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.jfrCheck(JfrModelImpl.java:105)
+	at org.graalvm.visualvm.jvm.JVMImpl.jfrCheck(JVMImpl.java:501)
+	at org.graalvm.visualvm.jfr.JFRSnapshotSupport.supportsJfrDump(JFRSnapshotSupport.java:141)
+	at org.graalvm.visualvm.jfr.impl.JFRDumpAction.isEnabled(JFRDumpAction.java:96)
+	at org.graalvm.visualvm.core.ui.actions.MultiDataSourceAction.updateState(MultiDataSourceAction.java:76)
+	at org.graalvm.visualvm.jfr.impl.JFRDumpAction.updateState(JFRDumpAction.java:118)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: executeJCmd
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeJCmd(HotSpotVirtualMachine.java:298)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:213)
+	at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:182)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.executeJCmd(JfrModelImpl.java:216)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.jfrCheck(JfrModelImpl.java:105)
+	at org.graalvm.visualvm.jvm.JVMImpl.jfrCheck(JVMImpl.java:501)
+	at org.graalvm.visualvm.jfr.JFRSnapshotSupport.supportsJfrStart(JFRSnapshotSupport.java:170)
+	at org.graalvm.visualvm.jfr.impl.JFRStartAction.isEnabled(JFRStartAction.java:95)
+	at org.graalvm.visualvm.core.ui.actions.MultiDataSourceAction.updateState(MultiDataSourceAction.java:76)
+	at org.graalvm.visualvm.jfr.impl.JFRStartAction.updateState(JFRStartAction.java:117)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: executeJCmd
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeJCmd(HotSpotVirtualMachine.java:298)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:213)
+	at org.graalvm.visualvm.attach.AttachModelImpl.executeJCmd(AttachModelImpl.java:182)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.executeJCmd(JfrModelImpl.java:216)
+	at org.graalvm.visualvm.jfr.model.impl.JfrModelImpl.jfrCheck(JfrModelImpl.java:105)
+	at org.graalvm.visualvm.jvm.JVMImpl.jfrCheck(JVMImpl.java:501)
+	at org.graalvm.visualvm.jfr.JFRSnapshotSupport.supportsJfrStop(JFRSnapshotSupport.java:193)
+	at org.graalvm.visualvm.jfr.impl.JFRStopAction.isEnabled(JFRStopAction.java:95)
+	at org.graalvm.visualvm.core.ui.actions.MultiDataSourceAction.updateState(MultiDataSourceAction.java:76)
+	at org.graalvm.visualvm.jfr.impl.JFRStopAction.updateState(JFRStopAction.java:117)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.attach.AttachModelImpl]: getSystemProperties
+java.io.IOException: Connection refused
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.connect(Native Method)
+	at jdk.attach/sun.tools.attach.VirtualMachineImpl.execute(VirtualMachineImpl.java:153)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.executeCommand(HotSpotVirtualMachine.java:316)
+	at jdk.attach/sun.tools.attach.HotSpotVirtualMachine.getSystemProperties(HotSpotVirtualMachine.java:197)
+[catch] at org.graalvm.visualvm.attach.AttachModelImpl.getSystemProperties(AttachModelImpl.java:65)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSystemProperties(JVMImpl.java:336)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.getJVMArchitecture(ProfilerSupport.java:394)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.supportsProfiling(ProfilerSupport.java:315)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:70)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:42)
+	at org.graalvm.visualvm.core.ui.actions.SingleDataSourceAction.updateState(SingleDataSourceAction.java:77)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.updateState(ProfileApplicationAction.java:78)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+INFO [org.graalvm.visualvm.sa.SaModelProvider]: Error getting SA agent
+sun.jvm.hotspot.debugger.DebuggerException: Can't attach to the process. Could be caused by an incorrect pid or lack of privileges.
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal.attach0(Native Method)
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal$1AttachTask.doit(BsdDebuggerLocal.java:251)
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal$BsdDebuggerLocalWorkerThread.run(BsdDebuggerLocal.java:143)
+Caused: sun.jvm.hotspot.debugger.DebuggerException: Can't attach to the process. Could be caused by an incorrect pid or lack of privileges.
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal$BsdDebuggerLocalWorkerThread.execute(BsdDebuggerLocal.java:168)
+	at sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal.attach(BsdDebuggerLocal.java:260)
+	at sun.jvm.hotspot.HotSpotAgent.attachDebugger(HotSpotAgent.java:636)
+	at sun.jvm.hotspot.HotSpotAgent.setupDebuggerDarwin(HotSpotAgent.java:624)
+	at sun.jvm.hotspot.HotSpotAgent.setupDebugger(HotSpotAgent.java:372)
+	at sun.jvm.hotspot.HotSpotAgent.go(HotSpotAgent.java:337)
+	at sun.jvm.hotspot.HotSpotAgent.attach(HotSpotAgent.java:142)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+Caused: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:118)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.graalvm.visualvm.sa.SAObject.invoke(SAObject.java:106)
+	at org.graalvm.visualvm.sa.Agent.attach(Agent.java:64)
+	at org.graalvm.visualvm.sa.SaModelImpl.attach(SaModelImpl.java:118)
+	at org.graalvm.visualvm.sa.SaModelImpl.readData(SaModelImpl.java:126)
+	at org.graalvm.visualvm.sa.SaModelImpl.<init>(SaModelImpl.java:52)
+[catch] at org.graalvm.visualvm.sa.SaModelProvider.createModelFor(SaModelProvider.java:84)
+	at org.graalvm.visualvm.sa.SaModelProvider.createModelFor(SaModelProvider.java:45)
+	at org.graalvm.visualvm.core.model.ModelFactory.getModel(ModelFactory.java:105)
+	at org.graalvm.visualvm.tools.sa.SaModelFactory.getSAAgentFor(SaModelFactory.java:65)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSAAgent(JVMImpl.java:552)
+	at org.graalvm.visualvm.jvm.JVMImpl.getSystemProperties(JVMImpl.java:347)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.getJVMArchitecture(ProfilerSupport.java:394)
+	at org.graalvm.visualvm.profiler.ProfilerSupport.supportsProfiling(ProfilerSupport.java:315)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:70)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.isEnabled(ProfileApplicationAction.java:42)
+	at org.graalvm.visualvm.core.ui.actions.SingleDataSourceAction.updateState(SingleDataSourceAction.java:77)
+	at org.graalvm.visualvm.profiler.ProfileApplicationAction.updateState(ProfileApplicationAction.java:78)
+	at org.graalvm.visualvm.core.ui.actions.DataSourceAction$1.selectionChanged(DataSourceAction.java:87)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$ExplorerTreeSelectionListener.valueChanged(ExplorerSupport.java:272)
+	at java.desktop/javax.swing.JTree.fireValueChanged(JTree.java:3019)
+	at java.desktop/javax.swing.JTree$TreeSelectionRedirector.valueChanged(JTree.java:3520)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.fireValueChanged(DefaultTreeSelectionModel.java:650)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.notifyPathChange(DefaultTreeSelectionModel.java:1120)
+	at java.desktop/javax.swing.tree.DefaultTreeSelectionModel.setSelectionPaths(DefaultTreeSelectionModel.java:306)
+	at java.desktop/javax.swing.JTree.setSelectionPaths(JTree.java:1722)
+	at org.graalvm.visualvm.core.explorer.ExplorerSupport$1.run(ExplorerSupport.java:107)
+	at org.netbeans.core.windows.WindowManagerImpl$Exclusive$1.run(WindowManagerImpl.java:1611)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:45)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:287)
+	at org.netbeans.modules.openide.util.NbMutexEventProvider$Event.lambda$doEventRequest$1(NbMutexEventProvider.java:112)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:136)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+WARNING [org.netbeans.modules.progress.spi.InternalHandle]: Cannot switch to silent mode when not running at org.netbeans.core.ui.warmup.MenuWarmUpTask$NbWindowsAdapter$1HandleBridge.run(MenuWarmUpTask.java:243)
+takeHeapDump: Dumping heap to /var/folders/rx/msfldmrj5j7b2drf9gb2d8500000gp/T/visualvm_vuvanhuy.dat/localhost_19881/heapdump-1739721226426.hprof ...
+Heap dump file created [176297005 bytes in 0.160 secs]
+takeHeapDump: Dumping heap to /var/folders/rx/msfldmrj5j7b2drf9gb2d8500000gp/T/visualvm_vuvanhuy.dat/localhost_19881/heapdump-1739721380014.hprof ...
+Heap dump file created [171460152 bytes in 0.211 secs]
+takeHeapDump: Dumping heap to /var/folders/rx/msfldmrj5j7b2drf9gb2d8500000gp/T/visualvm_vuvanhuy.dat/localhost_19881/heapdump-1739721672733.hprof ...
+Heap dump file created [170091672 bytes in 0.194 secs]
+takeHeapDump: Dumping heap to /var/folders/rx/msfldmrj5j7b2drf9gb2d8500000gp/T/visualvm_vuvanhuy.dat/localhost_21188/heapdump-1739724530338.hprof ...
+Heap dump file created [1350671463 bytes in 0.840 secs]
+INFO [org.netbeans.core.windows.persistence]: [PersistenceManager.getTopComponentForID] Problem when deserializing TopComponent for tcID:'org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_11'. Reason: Top component org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_11 could not be located or loaded from Components folder.
+INFO [org.netbeans.core.windows.persistence]: [PersistenceManager.getTopComponentForID] Problem when deserializing TopComponent for tcID:'org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_10'. Reason: Top component org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_10 could not be located or loaded from Components folder.
+INFO [org.netbeans.core.windows.persistence]: [PersistenceManager.getTopComponentForID] Problem when deserializing TopComponent for tcID:'org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_9'. Reason: Top component org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_9 could not be located or loaded from Components folder.
+INFO [org.netbeans.core.windows.persistence]: [PersistenceManager.getTopComponentForID] Problem when deserializing TopComponent for tcID:'org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_8'. Reason: Top component org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_8 could not be located or loaded from Components folder.
+INFO [org.netbeans.core.windows.persistence]: [PersistenceManager.getTopComponentForID] Problem when deserializing TopComponent for tcID:'org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_7'. Reason: Top component org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_7 could not be located or loaded from Components folder.
+INFO [org.netbeans.core.windows.persistence]: [PersistenceManager.getTopComponentForID] Problem when deserializing TopComponent for tcID:'org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_6'. Reason: Top component org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_6 could not be located or loaded from Components folder.
+INFO [org.netbeans.core.windows.persistence]: [PersistenceManager.getTopComponentForID] Problem when deserializing TopComponent for tcID:'org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_5'. Reason: Top component org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_5 could not be located or loaded from Components folder.
+INFO [org.netbeans.core.windows.persistence]: [PersistenceManager.getTopComponentForID] Problem when deserializing TopComponent for tcID:'org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_4'. Reason: Top component org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_4 could not be located or loaded from Components folder.
+INFO [org.netbeans.core.windows.persistence]: [PersistenceManager.getTopComponentForID] Problem when deserializing TopComponent for tcID:'org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_1'. Reason: Top component org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_1 could not be located or loaded from Components folder.
+INFO [org.netbeans.core.windows.persistence]: [PersistenceManager.getTopComponentForID] Problem when deserializing TopComponent for tcID:'org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_2'. Reason: Top component org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_2 could not be located or loaded from Components folder.
+INFO [org.netbeans.core.windows.persistence]: [PersistenceManager.getTopComponentForID] Problem when deserializing TopComponent for tcID:'org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_3'. Reason: Top component org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow_3 could not be located or loaded from Components folder.
+INFO [org.netbeans.core.windows.persistence]: [PersistenceManager.getTopComponentForID] Problem when deserializing TopComponent for tcID:'org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow'. Reason: Top component org#002Egraalvm#002Ev69B682EF#002EDataSourceWindow could not be located or loaded from Components folder.
