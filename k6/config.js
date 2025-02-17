@@ -6,7 +6,7 @@ const getOption = (ratio) => {
         stages: [
             {duration: '30s', target: 1 * ratio},
             {duration: '1m', target: 3 * ratio},
-            {duration: '5m', target: 3 * ratio},
+            {duration: '10m', target: 3 * ratio},
             {duration: '30s', target: 1 * ratio},
         ],
     }

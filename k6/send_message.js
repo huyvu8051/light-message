@@ -31,4 +31,4 @@ export default function () {
     testSendMessage()
 }
 
-export let options = getOption(1)
+export let options = getOption(3)

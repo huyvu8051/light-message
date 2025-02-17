@@ -54,7 +54,7 @@ export let options = {
         { duration: '5s', target: 2 * ratio},
         { duration: '5s', target: 5 * ratio},
         { duration: '5s', target: 10  * ratio},
-        { duration: '5m', target: 10  * ratio},
+        { duration: '10m', target: 10  * ratio},
         { duration: '30s', target: 5  * ratio},
         { duration: '30s', target: 2  * ratio},
     ],
