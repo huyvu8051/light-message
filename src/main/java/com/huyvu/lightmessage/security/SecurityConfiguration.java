@@ -1,28 +1,38 @@
 package com.huyvu.lightmessage.security;
 
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
-import org.springframework.security.config.annotation.web.configurers.SessionManagementConfigurer;
+import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
+import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.session.SessionManagementFilter;
+import org.springframework.security.web.server.SecurityWebFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
+@Slf4j
 @Configuration
+@EnableWebFluxSecurity
 public class SecurityConfiguration {
-    private final TokenBasedSecurityFilter filter;
 
-    public SecurityConfiguration(TokenBasedSecurityFilter filter) {
+    private final ReactiveTokenBasedSecurityFilter filter;
+
+    public SecurityConfiguration(ReactiveTokenBasedSecurityFilter filter) {
         this.filter = filter;
     }
 
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(CsrfConfigurer::disable)
-                .sessionManagement(se -> se.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterAfter(filter, SessionManagementFilter.class);
+    public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
+        http.httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)
+                .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
+                .logout(ServerHttpSecurity.LogoutSpec::disable)
+                .addFilterAt(filter, SecurityWebFiltersOrder.AUTHORIZATION);
 
         return http.build();
     }

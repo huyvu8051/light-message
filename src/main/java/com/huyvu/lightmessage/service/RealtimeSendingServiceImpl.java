@@ -41,7 +41,7 @@ public class RealtimeSendingServiceImpl implements RealtimeSendingService {
     }
 
 
-    @Scheduled(fixedDelay = 1)
+//    @Scheduled(fixedDelay = 1)
     public void reportCurrentTime() {
         var convId = faker.number().numberBetween(1, 20);
         var mk = MessageKafkaDTO.builder()
