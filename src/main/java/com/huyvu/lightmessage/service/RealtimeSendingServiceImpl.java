@@ -37,7 +37,7 @@ public class RealtimeSendingServiceImpl implements RealtimeSendingService {
     @Override
     public void sendMessageNotification(long convId, MessageKafkaDTO entity) {
         log.info("Produce notify {} = {}", convId, entity.content().subSequence(0, 10) + "...");
-        rabbitTemplate.convertAndSend(NOTIFICATION_EXCHANGE, "notification.*", entity);
+        rabbitTemplate.convertAndSend(NOTIFICATION_EXCHANGE, "notification.socket", entity);
     }
 
 
