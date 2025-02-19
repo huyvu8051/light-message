@@ -1,6 +1,8 @@
 package com.huyvu.lightmessage;
 
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -43,6 +45,11 @@ public class RabbitConfig {
         return BindingBuilder.bind(socketQueue)
                 .to(notificationExchange)
                 .with("notification.socket");
+    }
+
+    @Bean
+    public MessageConverter jsonMessageConverter() {
+        return new Jackson2JsonMessageConverter();
     }
 
 
