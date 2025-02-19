@@ -2,6 +2,7 @@ package com.huyvu.lightmessage.entity;
 
 import lombok.Builder;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Builder
@@ -12,5 +13,5 @@ public record MessageKafkaDTO(
         long senderId,
         String sentAt,
         List<Long> memberIds
-) {
+) implements Serializable {
 }

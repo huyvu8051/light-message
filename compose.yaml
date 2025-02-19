@@ -66,48 +66,23 @@ services:
 #      SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: 'INFO'
 
 
-  kafka:
-    image: confluentinc/cp-kafka:7.5.0
-    container_name: kafka
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
     ports:
-      - "9092:9092"  # Kafka client connection port (from outside)
-      - "9093:9093"  # Kafka controller port (internal communication)
+      - "5672:5672"      # Cổng RabbitMQ
+      - "15672:15672"    # Cổng giao diện quản lý web
     environment:
-      KAFKA_NODE_ID: 1
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://0.0.0.0:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
-      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
-      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka:9093"
-      KAFKA_PROCESS_ROLES: broker,controller
-      KAFKA_LOG_DIRS: /var/lib/kafka/data
-      CLUSTER_ID: "QJwH8wqGTqGqXv0hFjMY9A"
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
     deploy:
       resources:
         limits:
-          memory: 2G
-          cpus: "1.0"
-
-  akhq:
-    image: tchiotludo/akhq:0.25.1
-    container_name: akhq
-    depends_on:
-      - kafka
-    ports:
-      - "8083:8080"  # Expose AKHQ web UI on port 8083
-    environment:
-      AKHQ_CONFIGURATION: |
-        akhq:
-          connections:
-            my-cluster:
-              properties:
-                bootstrap.servers: "kafka:9092"  # Use internal Docker network address for Kafka
-    deploy:
-      resources:
-        limits:
-          memory: 512M
-          cpus: "1.0"
+          memory: 512M  # Giới hạn bộ nhớ tối đa
+          cpus: '1.0'   # Giới hạn sử dụng CPU (1 CPU)
+        reservations:
+          memory: 256M  # Bộ nhớ tối thiểu (dành cho container)
+          cpus: '0.5'   # CPU tối thiểu (dành cho container)
 
 #  k6:
 #    container_name: k6

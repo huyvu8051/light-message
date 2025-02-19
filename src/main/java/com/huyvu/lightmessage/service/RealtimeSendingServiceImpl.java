@@ -2,34 +2,30 @@ package com.huyvu.lightmessage.service;
 
 import com.github.javafaker.Faker;
 import com.huyvu.lightmessage.entity.MessageKafkaDTO;
-import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.Locale;
 import java.util.stream.LongStream;
+
+import static com.huyvu.lightmessage.RabbitConfig.*;
 
 
 @Slf4j
 @EnableScheduling
 @Service
 public class RealtimeSendingServiceImpl implements RealtimeSendingService {
-    static final String TOPIC = "socket-message";
 
     Faker faker = new Faker(Locale.of("vi"));
 
-    private final KafkaTemplate<String, MessageKafkaDTO> kafkaTemplate;
+    private final RabbitTemplate rabbitTemplate;
 
-    public RealtimeSendingServiceImpl(KafkaTemplate<String, MessageKafkaDTO> kafkaTemplate) {
-        this.kafkaTemplate = kafkaTemplate;
+    public RealtimeSendingServiceImpl(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     /**
@@ -40,13 +36,12 @@ public class RealtimeSendingServiceImpl implements RealtimeSendingService {
      */
     @Override
     public void sendMessageNotification(long convId, MessageKafkaDTO entity) {
-        log.info("Produce kafka {} = {}", convId, entity.content().subSequence(0, 10) + "...");
-        log.info("Produce kafka {} = {}", convId, entity.content().subSequence(0, 10) + "...");
-        kafkaTemplate.send(TOPIC, entity);
+        log.info("Produce notify {} = {}", convId, entity.content().subSequence(0, 10) + "...");
+        rabbitTemplate.convertAndSend(NOTIFICATION_EXCHANGE, "notification.*", entity);
     }
 
 
-    @Scheduled(fixedDelay  = 50)
+    @Scheduled(fixedDelay = 50)
     public void reportCurrentTime() {
         var convId = faker.number().numberBetween(1, 20);
         var mk = MessageKafkaDTO.builder()
