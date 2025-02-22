@@ -18,7 +18,7 @@ import java.util.Locale;
 import java.util.stream.IntStream;
 
 @Slf4j
-@Configuration
+//@Configuration
 public class InitData implements ApplicationRunner {
     private final UserProfileJpaRepo upRepo;
     private final ConversationJpaRepo convRepo;
