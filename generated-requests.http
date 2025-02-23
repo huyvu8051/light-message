@@ -1,0 +1,46 @@
+###
+POST {{base_url}}/api/v1/messages
+Content-Type: application/json
+Cookie: Authorization=5
+
+{
+  "convId": 8,
+  "content": "dung lam trai tim anh dau"
+}
+
+
+###
+GET http://localhost:8080/api/v1/conversations
+Cookie: Authorization=5
+
+###
+GET http://localhost:8080/api/v1/conversations?cursor=2025-02-01T06:18:55.261936Z
+Cookie: Authorization=5
+
+
+
+
+###
+GET http://localhost:8080/api/v1/messages/2?limit=7
+Cookie: Authorization=5
+
+
+###
+GET http://localhost:8080/api/v2/messages/2?limit=7
+Cookie: Authorization=5
+
+
+###
+GET http://localhost:8080/api/v1/messages/2?limit=7&nextCursor=eyJzZW5kQXQiOjE3Mzg2MDg4MTguMDA5NzU5MDAwLCJpZCI6MTA5NTl9
+Cookie: Authorization=5
+
+<> 2025-02-01T225449.200.json
+<> 2025-02-01T225333.200.json
+
+###
+POST http://localhost:8080/api/v1/auth
+Content-Type: application/json
+
+{
+  "userId": 2
+}

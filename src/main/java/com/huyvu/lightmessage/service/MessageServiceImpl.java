@@ -151,10 +151,15 @@ public class MessageServiceImpl implements MessageService {
                    Mono<List<MessageDTO>> msg = msgRepoR2.findAllMessages(convId, paging).collectList();
 
                    return msg.map(collect -> {
+                       if(collect.isEmpty()) {
+                           return CursorPagingResult.<MessageDTO, MessageCursor>builder()
+                                   .data(List.of())
+                                   .nextCursor(null)
+                                   .build();
+                       }
+
                        var lastItem = collect.getLast();
-
                        var cursor = new MessageCursor(lastItem.sendAt(), lastItem.id());
-
                        return CursorPagingResult.<MessageDTO, MessageCursor>builder()
                                .data(collect)
                                .nextCursor(cursor)

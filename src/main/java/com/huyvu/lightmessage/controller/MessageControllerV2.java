@@ -38,13 +38,16 @@ public class MessageControllerV2 {
         var cp = new CursorPaging<>(limit, cursor);
 
 
-        return messageService.getMessagesR2(userCtxProvider.getUserContext().id(), convId, cp)
-                .map(cpr -> {
-                    var encrypt = PagingUtils.encrypt(cpr.nextCursor());
-                    return CursorPagingResponseDTO.<MessageDTO>builder()
-                            .data(cpr.data())
-                            .nextCursor(encrypt)
-                            .build();
+        return userCtxProvider.getUserContextR2()
+                .flatMap(userContext -> {
+                    return messageService.getMessagesR2(userContext.id(), convId, cp)
+                            .map(cpr -> {
+                                var encrypt = PagingUtils.encrypt(cpr.nextCursor());
+                                return CursorPagingResponseDTO.<MessageDTO>builder()
+                                        .data(cpr.data())
+                                        .nextCursor(encrypt)
+                                        .build();
+                            });
                 });
     }
 
@@ -62,6 +65,4 @@ public class MessageControllerV2 {
                 .created(location)
                 .build();
     }
-
-
 }

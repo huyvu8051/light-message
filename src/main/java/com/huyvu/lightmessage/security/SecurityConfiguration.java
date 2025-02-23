@@ -27,7 +27,7 @@ public class SecurityConfiguration {
                 .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .logout(ServerHttpSecurity.LogoutSpec::disable)
-                .addFilterAt(filter, SecurityWebFiltersOrder.AUTHORIZATION)
+                .addFilterBefore(filter, SecurityWebFiltersOrder.AUTHORIZATION)
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance());
 
         return http.build();

@@ -18,6 +18,8 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @Slf4j
 @Component
 public class ReactiveTokenBasedSecurityFilter implements WebFilter {
@@ -36,7 +38,7 @@ public class ReactiveTokenBasedSecurityFilter implements WebFilter {
                 .map(token -> {
                     Long userId = Long.parseLong(token);
                     var userContext = new UserContext(userId);
-                    var authentication = new PreAuthenticatedAuthenticationToken(userContext, token);
+                    var authentication = new PreAuthenticatedAuthenticationToken(userContext, token, List.of());
                     return new SecurityContextImpl(authentication);
                 })
                 .flatMap(securityContext -> securityContextRepository.save(exchange, securityContext)
