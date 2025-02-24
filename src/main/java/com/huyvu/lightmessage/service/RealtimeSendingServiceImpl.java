@@ -2,13 +2,16 @@ package com.huyvu.lightmessage.service;
 
 import com.github.javafaker.Faker;
 import com.huyvu.lightmessage.entity.MessageKafkaDTO;
+import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.Locale;
 import java.util.stream.LongStream;
 
@@ -37,11 +40,35 @@ public class RealtimeSendingServiceImpl implements RealtimeSendingService {
     @Override
     public void sendMessageNotification(long convId, MessageKafkaDTO entity) {
         log.info("Produce notify {} = {}", convId, entity.content().subSequence(0, 10) + "...");
-        rabbitTemplate.convertAndSend(NOTIFICATION_EXCHANGE, "notification.socket", entity);
+
+
+        entity.memberIds().forEach(member -> {
+            rabbitTemplate.convertAndSend(NOTIFICATION_EXCHANGE, "notification.socket", MessageRealtimeItemDTO.builder()
+                            .id(entity.id())
+                            .convId(entity.convId())
+                            .content(entity.content())
+                            .senderId(entity.senderId())
+                            .sentAt(entity.sentAt())
+                            .memberId(member)
+                    .build());
+        });
+
     }
 
 
-//    @Scheduled(fixedDelay = 1)
+    @Builder
+    public record MessageRealtimeItemDTO(
+            long id,
+            long convId,
+            String content,
+            long senderId,
+            String sentAt,
+            long memberId
+    ) implements Serializable {
+    }
+
+
+    @Scheduled(fixedDelay = 10)
     public void reportCurrentTime() {
         var convId = faker.number().numberBetween(1, 20);
         var mk = MessageKafkaDTO.builder()

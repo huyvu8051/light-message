@@ -31,72 +31,8 @@ import java.util.concurrent.CountDownLatch;
 
 public class LightMessageApplication {
     public static void main(String[] args) throws InterruptedException {
-//        SpringApplication.run(LightMessageApplication.class, args);
-
-
-
-
-        CountDownLatch countDownLatch = new CountDownLatch(1);
-        Flux.range(1, 5)
-
-                .publishOn(Schedulers.boundedElastic())  // Đọc từ DB trên thread I/O
-                .map(i -> {
-                    System.out.println("Fetching from DB: " + i + " | Thread: " + Thread.currentThread().getName());
-                    return i * 2;
-                })
-                .publishOn(Schedulers.parallel())  // Xử lý dữ liệu trên thread CPU
-                .map(i -> {
-                    System.out.println("Processing: " + i + " | Thread: " + Thread.currentThread().getName());
-                    return i;
-                })
-                .doOnComplete(() -> countDownLatch.countDown())
-                .subscribe();
-
-        countDownLatch.await();
-
+        SpringApplication.run(LightMessageApplication.class, args);
     }
 
-    public void start() throws InterruptedException {
-        // Boss handles incoming connections, Worker handles data transfer
-        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
-
-        try {
-            ServerBootstrap bootstrap = new ServerBootstrap();
-            bootstrap.group(bossGroup, workerGroup)
-                    .channel(NioServerSocketChannel.class) // Create Server Channel
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel ch) {
-                            ch.pipeline().addLast(new SimpleChannelInboundHandler<Object>() {
-                                @Override
-                                protected void channelRead0(ChannelHandlerContext ctx, Object msg) {
-                                    // Handle incoming messages
-                                    System.out.println("Received: " + msg);
-
-                                }
-                            });
-
-                            ch.eventLoop().execute(() -> {});
-
-
-
-                        }
-                    })
-                    .option(ChannelOption.SO_BACKLOG, 128)
-                    .childOption(ChannelOption.SO_KEEPALIVE, true);
-
-            // Bind and start to accept incoming connections
-            ChannelFuture future = bootstrap.bind(8088).sync();
-
-            System.out.println("Netty server started on port " + 8088);
-
-            // Wait until the server socket is closed
-            future.channel().closeFuture().sync();
-        } finally {
-            bossGroup.shutdownGracefully();
-            workerGroup.shutdownGracefully();
-        }
-    }
 }
 

@@ -22,7 +22,7 @@ export default function () {
             });
 
             socket.on("message", (message) => {
-                console.log(`Received: ${message}`);
+                console.log(`Received: ${message}`.substring(0, 70));
 
                 // Step 2: Handle WebSocket upgrade
                 if (message === "3probe") {
@@ -33,7 +33,7 @@ export default function () {
                 // Step 3: Namespace connection established
                 if (message.startsWith("40")) {
                     const messageSent = '42["message","chung ta cua tuong lai"]'; // Default namespace
-                    console.log(`Message sent : ${messageSent}`);
+                    console.log(`Message sent : ${messageSent.substring(0, 10)}`);
                     socket.send(messageSent); // Send test message
                 }
             });
@@ -48,14 +48,16 @@ export default function () {
         });
     }
 }
-const ratio = 50
+const ratio = 5
 export let options = {
     stages: [
-        { duration: '5s', target: 2 * ratio},
+        /*{ duration: '5s', target: 2 * ratio},
         { duration: '5s', target: 5 * ratio},
         { duration: '5s', target: 10  * ratio},
         { duration: '10m', target: 10  * ratio},
         { duration: '30s', target: 5  * ratio},
-        { duration: '30s', target: 2  * ratio},
+        { duration: '30s', target: 2  * ratio},*/
+        { duration: '10s', target: 500},
+        { duration: '7m', target: 500},
     ],
 };
