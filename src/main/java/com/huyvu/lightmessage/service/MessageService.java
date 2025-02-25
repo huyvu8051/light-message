@@ -7,6 +7,7 @@ import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.repository.MessageRepoImpl;
 import com.huyvu.lightmessage.util.CursorPaging;
 import com.huyvu.lightmessage.util.CursorPagingResult;
+import reactor.core.publisher.Mono;
 
 import java.time.OffsetDateTime;
 
@@ -16,6 +17,8 @@ public interface MessageService {
     MessageRepoImpl.ConversationDto getNewestConversation(long id, long convId);
 
     CursorPagingResult<MessageRepoImpl.ConversationDto, ConversationCursor> getNewestConversation(long userId, CursorPaging<ConversationCursor> paging);
+
+    Mono<CursorPagingResult<MessageDTO, MessageCursor>> getMessagesR2(long id, long convId, CursorPaging<MessageCursor> cp);
 
     record MessageCursor(OffsetDateTime sendAt,
                          Long id) {

@@ -14,6 +14,7 @@
     <name>light-message</name>
     <description>light-message</description>
     <properties>
+        <resilience4j.version>2.2.0</resilience4j.version>
         <java.version>21</java.version>
     </properties>
     <dependencies>
@@ -21,10 +22,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -58,8 +56,17 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>r2dbc-postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
 
@@ -86,17 +93,27 @@
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.5.0</version>
         </dependency>
-
-
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>
@@ -125,11 +142,13 @@
                 <artifactId>native-maven-plugin</artifactId>
                 <configuration>
                     <jvmArgs>
-                        <arg>-Xmx8g</arg>
-                        <arg>-Xms8g</arg>
+                        <!-- provide ram for graalvm-->
+                        <arg>-Xmx20g</arg>
+                        <arg>-Xms20g</arg>
                     </jvmArgs>
                     <buildArgs>
-                        <arg>--gc=parallel</arg>
+                        <!-- free version doesn't support parallel GC -->
+                        <arg>--gc=serial</arg>
                     </buildArgs>
                 </configuration>
             </plugin>

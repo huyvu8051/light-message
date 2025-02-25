@@ -34,5 +34,23 @@
     "allDeclaredConstructors": true,
     "allDeclaredMethods": true,
     "allDeclaredFields": true
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.ser.BeanSerializerModifier"
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.ser.DefaultSerializerProvider"
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.ser.FilterProvider"
+  },
+  {
+    "name":"com.fasterxml.jackson.databind.ser.SerializerFactory"
+  },
+  {
+    "name": "com.huyvu.lightmessage.entity.MessageKafkaDTO",
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true,
+    "allDeclaredFields": true
   }
 ]

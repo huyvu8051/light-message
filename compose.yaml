@@ -53,39 +53,36 @@ services:
           memory: 512M
           cpus: "2.0"
 
-  kafka:
-    image: confluentinc/cp-kafka:7.5.0  # Chọn phiên bản Kafka 4.0.0
-    container_name: kafka
+
+
+#  schema-registry:
+#    image: confluentinc/cp-schema-registry:7.5.0
+#    depends_on:
+#      - kafka
+#    environment:
+#      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'PLAINTEXT://kafka:9092'
+#      SCHEMA_REGISTRY_HOST_NAME: 'schema-registry'
+#      SCHEMA_REGISTRY_LISTENERS: 'http://0.0.0.0:8085'
+#      SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: 'INFO'
+
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
     ports:
-      - "9092:9092"
-      - "9093:9093"
+      - "5672:5672"      # Cổng RabbitMQ
+      - "15672:15672"    # Cổng giao diện quản lý web
     environment:
-      KAFKA_NODE_ID: 1
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
-      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
-      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka:9093"
-      KAFKA_PROCESS_ROLES: broker,controller
-      KAFKA_LOG_DIRS: /var/lib/kafka/data
-      CLUSTER_ID: "QJwH8wqGTqGqXv0hFjMY9A"
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
     deploy:
       resources:
         limits:
-          memory: 2G
-          cpus: "2.0"
-#  control-center:
-#    image: confluentinc/cp-enterprise-control-center:latest
-#    depends_on:
-#      - kafka
-#    ports:
-#      - "9021:9021"
-#    environment:
-#      CONTROL_CENTER_BOOTSTRAP_SERVERS: "kafka:9092"
-#      CONTROL_CENTER_REPLICATION_FACTOR: 1
-
-
+          memory: 512M  # Giới hạn bộ nhớ tối đa
+          cpus: '1.0'   # Giới hạn sử dụng CPU (1 CPU)
+        reservations:
+          memory: 256M  # Bộ nhớ tối thiểu (dành cho container)
+          cpus: '0.5'   # CPU tối thiểu (dành cho container)
 
 #  k6:
 #    container_name: k6
@@ -97,38 +94,38 @@ services:
 #
 #    command: run /scripts/send_message.js
 
-  redis:
-    image: redis:6.2
-    container_name: redis
-    ports:
-      - "6379:6379"
+#  redis:
+#    image: redis:6.2
+#    container_name: redis
+#    ports:
+#      - "6379:6379"
 
-
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: prometheus
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
-    command:
-      - --config.file=/etc/prometheus/prometheus.yml
-
-  grafana:
-    image: grafana/grafana-oss:latest
-    container_name: grafana
-    ports:
-      - "3000:3000"
-    environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-    depends_on:
-      - prometheus
-    volumes:
-      - grafana-data:/var/lib/grafana
-      - ./docker/grafana/datasources/:/etc/grafana/provisioning/datasources/
-      - ./docker/grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/main.yaml
-      - ./docker/grafana/dashboards:/var/lib/grafana/dashboards
+#
+#  prometheus:
+#    image: prom/prometheus:latest
+#    container_name: prometheus
+#    ports:
+#      - "9090:9090"
+#    volumes:
+#      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
+#    command:
+#      - --config.file=/etc/prometheus/prometheus.yml
+#
+#  grafana:
+#    image: grafana/grafana-oss:latest
+#    container_name: grafana
+#    ports:
+#      - "3000:3000"
+#    environment:
+#      - GF_SECURITY_ADMIN_USER=admin
+#      - GF_SECURITY_ADMIN_PASSWORD=admin
+#    depends_on:
+#      - prometheus
+#    volumes:
+#      - grafana-data:/var/lib/grafana
+#      - ./docker/grafana/datasources/:/etc/grafana/provisioning/datasources/
+#      - ./docker/grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/main.yaml
+#      - ./docker/grafana/dashboards:/var/lib/grafana/dashboards
 
 volumes:
   grafana-data:

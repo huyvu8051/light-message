@@ -1,20 +1,28 @@
 package com.huyvu.lightmessage.service;
 
 import com.huyvu.lightmessage.entity.MessageKafkaDTO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.kafka.core.KafkaTemplate;
+import lombok.Builder;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
+
+import static com.huyvu.lightmessage.RabbitConfig.NOTIFICATION_EXCHANGE;
+import static com.huyvu.lightmessage.RabbitConfig.NOTIFICATION_SOCKET_ROUTING_KEY;
+
+
+@Slf4j
+@EnableScheduling
 @Service
 public class RealtimeSendingServiceImpl implements RealtimeSendingService {
-    static final String TOPIC = "socket-message";
 
-    private static final Logger logger = LoggerFactory.getLogger(RealtimeSendingServiceImpl.class);
-    private final KafkaTemplate<String, MessageKafkaDTO> kafkaTemplate;
 
-    public RealtimeSendingServiceImpl(KafkaTemplate<String, MessageKafkaDTO> kafkaTemplate) {
-        this.kafkaTemplate = kafkaTemplate;
+    private final RabbitTemplate rabbitTemplate;
+
+    public RealtimeSendingServiceImpl(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     /**
@@ -25,7 +33,21 @@ public class RealtimeSendingServiceImpl implements RealtimeSendingService {
      */
     @Override
     public void sendMessageNotification(long convId, MessageKafkaDTO entity) {
-        logger.info("Send socket to channel {} = {}", convId, entity);
-        kafkaTemplate.send(TOPIC, entity);
+        log.info("Produce notify {} = {}", convId, entity.content().subSequence(0, 10) + "...");
+        rabbitTemplate.convertAndSend(NOTIFICATION_EXCHANGE, NOTIFICATION_SOCKET_ROUTING_KEY, entity);
     }
+
+
+    @Builder
+    public record MessageRealtimeItemDTO(
+            long id,
+            long convId,
+            String content,
+            long senderId,
+            String sentAt,
+            long memberId
+    ) implements Serializable {
+    }
+
+
 }

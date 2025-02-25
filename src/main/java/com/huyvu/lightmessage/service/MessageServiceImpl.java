@@ -7,15 +7,19 @@ import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
 import com.huyvu.lightmessage.entity.MessageKafkaDTO;
 import com.huyvu.lightmessage.exception.ConversationNotExistException;
+import com.huyvu.lightmessage.jpa.model.Member;
 import com.huyvu.lightmessage.repository.MessageRepo;
 import com.huyvu.lightmessage.repository.MessageRepoImpl;
 import com.huyvu.lightmessage.repository.MessageRepoImpl.MessageDto;
+import com.huyvu.lightmessage.repository.MessageRepoR2;
 import com.huyvu.lightmessage.util.CursorPaging;
 import com.huyvu.lightmessage.util.CursorPagingResult;
 import jakarta.annotation.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -26,11 +30,13 @@ import java.util.Optional;
 public class MessageServiceImpl implements MessageService {
     private final Logger logger = LoggerFactory.getLogger(MessageServiceImpl.class);
     private final MessageRepo msgRepo;
+    private final MessageRepoR2 msgRepoR2;
     private final RealtimeSendingService rtmService;
 
 
-    public MessageServiceImpl(MessageRepo msgRepo, RealtimeSendingService rtmService) {
+    public MessageServiceImpl(MessageRepo msgRepo, MessageRepoR2 msgRepoR2, RealtimeSendingService rtmService) {
         this.msgRepo = msgRepo;
+        this.msgRepoR2 = msgRepoR2;
         this.rtmService = rtmService;
     }
 
@@ -136,5 +142,40 @@ public class MessageServiceImpl implements MessageService {
                 .data(allConversations)
                 .nextCursor(new ConversationCursor(limit))
                 .build();
+    }
+
+    @Override
+    public Mono<CursorPagingResult<MessageDTO, MessageCursor>> getMessagesR2(long userId, long convId, CursorPaging<MessageCursor> paging) {
+       return checkUserIsMemberOfConversationR2(userId, convId)
+               .then(Mono.defer(() -> {
+                   Mono<List<MessageDTO>> msg = msgRepoR2.findAllMessages(convId, paging).collectList();
+
+                   return msg.map(collect -> {
+                       if(collect.isEmpty()) {
+                           return CursorPagingResult.<MessageDTO, MessageCursor>builder()
+                                   .data(List.of())
+                                   .nextCursor(null)
+                                   .build();
+                       }
+
+                       var lastItem = collect.getLast();
+                       var cursor = new MessageCursor(lastItem.sendAt(), lastItem.id());
+                       return CursorPagingResult.<MessageDTO, MessageCursor>builder()
+                               .data(collect)
+                               .nextCursor(cursor)
+                               .build();
+                   });
+
+               }));
+    }
+
+    private Mono<Void> checkUserIsMemberOfConversationR2(long userId, long convId) {
+        Mono<Optional<Member>> mem = msgRepoR2.findMember(userId, convId);
+        return mem.flatMap(o -> {
+            if (o.isEmpty()) {
+                return Mono.error(new ConversationNotExistException("User not a member or conversation not exist"));
+            }
+            return Mono.empty();
+        });
     }
 }
