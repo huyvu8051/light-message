@@ -14,6 +14,7 @@
     <name>light-message</name>
     <description>light-message</description>
     <properties>
+        <resilience4j.version>2.2.0</resilience4j.version>
         <java.version>21</java.version>
     </properties>
     <dependencies>
@@ -111,6 +112,21 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring-boot3</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-reactor</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-vavr</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
 
     </dependencies>
 

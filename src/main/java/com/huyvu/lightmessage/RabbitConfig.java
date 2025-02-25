@@ -8,10 +8,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitConfig {
-    public static final String SOCKET_QUEUE = "socket-queue";
+    public static final String SOCKET_BROADCAST_QUEUE = "socket-broadcast-queue";
+
     public static final String MAIL_QUEUE = "mail-queue";
 
     public static final String NOTIFICATION_EXCHANGE = "notification-exchange";
+    public static final String NOTIFICATION_SOCKET_ROUTING_KEY = "notification.socket";
 
 
     @Bean
@@ -22,7 +24,7 @@ public class RabbitConfig {
     // Define socket queue
     @Bean
     public Queue socketQueue() {
-        return new Queue(SOCKET_QUEUE, true); // Durable Queue for socket notifications
+        return new Queue(SOCKET_BROADCAST_QUEUE, true); // Durable Queue for socket notifications
     }
 
     // Define topic exchange for notifications
@@ -44,7 +46,7 @@ public class RabbitConfig {
     public Binding socketBinding(Queue socketQueue, TopicExchange notificationExchange) {
         return BindingBuilder.bind(socketQueue)
                 .to(notificationExchange)
-                .with("notification.socket");
+                .with(NOTIFICATION_SOCKET_ROUTING_KEY);
     }
 
     @Bean
