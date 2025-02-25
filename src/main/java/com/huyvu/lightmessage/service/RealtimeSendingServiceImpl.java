@@ -1,21 +1,16 @@
 package com.huyvu.lightmessage.service;
 
-import com.github.javafaker.Faker;
 import com.huyvu.lightmessage.entity.MessageKafkaDTO;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
-import java.time.OffsetDateTime;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.LongStream;
 
-import static com.huyvu.lightmessage.RabbitConfig.*;
+import static com.huyvu.lightmessage.RabbitConfig.NOTIFICATION_EXCHANGE;
+import static com.huyvu.lightmessage.RabbitConfig.NOTIFICATION_SOCKET_ROUTING_KEY;
 
 
 @Slf4j
@@ -23,7 +18,6 @@ import static com.huyvu.lightmessage.RabbitConfig.*;
 @Service
 public class RealtimeSendingServiceImpl implements RealtimeSendingService {
 
-    Faker faker = new Faker(Locale.of("vi"));
 
     private final RabbitTemplate rabbitTemplate;
 
@@ -40,7 +34,7 @@ public class RealtimeSendingServiceImpl implements RealtimeSendingService {
     @Override
     public void sendMessageNotification(long convId, MessageKafkaDTO entity) {
         log.info("Produce notify {} = {}", convId, entity.content().subSequence(0, 10) + "...");
-        rabbitTemplate.convertAndSend(NOTIFICATION_EXCHANGE, NOTIFICATION_SOCKET_ROUTING_KEY,entity);
+        rabbitTemplate.convertAndSend(NOTIFICATION_EXCHANGE, NOTIFICATION_SOCKET_ROUTING_KEY, entity);
     }
 
 
@@ -56,16 +50,4 @@ public class RealtimeSendingServiceImpl implements RealtimeSendingService {
     }
 
 
-    @Scheduled(fixedRateString = "${fixed-rate}")
-    public void reportCurrentTime() {
-        var convId = faker.number().numberBetween(1, 20);
-        var mk = MessageKafkaDTO.builder()
-                .id(faker.number().randomNumber())
-                .content(faker.lorem().paragraph())
-                .convId(convId)
-                .sentAt(OffsetDateTime.now().toString())
-                .memberIds(LongStream.range(1, 20).boxed().toList())
-                .build();
-        this.sendMessageNotification(convId, mk);
-    }
 }

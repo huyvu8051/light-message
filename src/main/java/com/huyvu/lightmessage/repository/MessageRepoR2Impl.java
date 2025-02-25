@@ -25,11 +25,7 @@ public class MessageRepoR2Impl implements MessageRepoR2 {
         return r2MemberRepo.findByUserIdAndConversationId(userId, convId).map(member -> Optional.of(new Member()));
     }
 
-    @Scheduled(fixedRate = 5000)
-    public void scheduled() {
-        var byUserIdAndConversationId = r2MemberRepo.findByUserIdAndConversationId(2, 3);
-        byUserIdAndConversationId.subscribe(member -> System.out.println(member.toString()));
-    }
+
 
     @Override
     public Flux<MessageDTO> findAllMessages(long convId, CursorPaging<MessageService.MessageCursor> paging) {

@@ -112,21 +112,7 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-spring-boot3</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-reactor</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-vavr</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
+
 
     </dependencies>
 
@@ -156,11 +142,13 @@
                 <artifactId>native-maven-plugin</artifactId>
                 <configuration>
                     <jvmArgs>
-                        <arg>-Xmx8g</arg>
-                        <arg>-Xms8g</arg>
+                        <!-- provide ram for graalvm-->
+                        <arg>-Xmx20g</arg>
+                        <arg>-Xms20g</arg>
                     </jvmArgs>
                     <buildArgs>
-                        <arg>--gc=parallel</arg>
+                        <!-- free version doesn't support parallel GC -->
+                        <arg>--gc=serial</arg>
                     </buildArgs>
                 </configuration>
             </plugin>
