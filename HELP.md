@@ -70,3 +70,8 @@ mvn -Pnative spring-boot:build-image -Denv.BP_NATIVE_IMAGE_BUILD_ARGUMENTS="--vm
 ```shell
 k6 run -e BASE_URL=https://light-message.onrender.com ./k6/send_message.js
 ```
+
+
+```angular2html
+java -agentlib:native-image-agent=config-output-dir=src/main/resources/META-INF/native-image-bak -jar target/light-message-0.0.1-SNAPSHOT.jar
+```

@@ -78,7 +78,7 @@ public class InitData implements ApplicationRunner {
     }
 
 
-    @Scheduled(fixedRateString = "${fixed-rate}")
+    @Scheduled(fixedRateString = "#{1000 / ${fixed-rate}}")
     public void reportCurrentTime() {
         var convId = faker.number().numberBetween(1, 20);
         var mk = MessageKafkaDTO.builder()
