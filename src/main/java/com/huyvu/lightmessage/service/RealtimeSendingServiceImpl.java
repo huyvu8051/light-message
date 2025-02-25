@@ -40,24 +40,7 @@ public class RealtimeSendingServiceImpl implements RealtimeSendingService {
     @Override
     public void sendMessageNotification(long convId, MessageKafkaDTO entity) {
         log.info("Produce notify {} = {}", convId, entity.content().subSequence(0, 10) + "...");
-
-
-        rabbitTemplate.invoke(operations -> {
-            entity.memberIds().forEach(member -> {
-                operations.convertAndSend(NOTIFICATION_EXCHANGE, NOTIFICATION_SOCKET_ROUTING_KEY,
-                        MessageRealtimeItemDTO.builder()
-                                .id(entity.id())
-                                .convId(entity.convId())
-                                .content(entity.content())
-                                .senderId(entity.senderId())
-                                .sentAt(entity.sentAt())
-                                .memberId(member)
-                                .build()
-                );
-            });
-            return null;
-        });
-
+        rabbitTemplate.convertAndSend(NOTIFICATION_EXCHANGE, NOTIFICATION_SOCKET_ROUTING_KEY,entity);
     }
 
 
@@ -73,7 +56,7 @@ public class RealtimeSendingServiceImpl implements RealtimeSendingService {
     }
 
 
-    @Scheduled(fixedDelayString = "${gen-socket-scheduler.fixedDelay}")
+    @Scheduled(fixedRateString = "${fixed-rate}")
     public void reportCurrentTime() {
         var convId = faker.number().numberBetween(1, 20);
         var mk = MessageKafkaDTO.builder()

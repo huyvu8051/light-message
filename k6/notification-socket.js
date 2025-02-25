@@ -48,7 +48,7 @@ export default function () {
         });
     }
 }
-const ratio = 5
+const ratio = parseInt(__ENV.CCU_FACTOR) || 10
 export let options = {
     stages: [
         /*{ duration: '5s', target: 2 * ratio},
@@ -57,7 +57,7 @@ export let options = {
         { duration: '10m', target: 10  * ratio},
         { duration: '30s', target: 5  * ratio},
         { duration: '30s', target: 2  * ratio},*/
-        { duration: '10s', target: 10},
-        { duration: '7m', target: 10},
+        { duration: '10s', target: 1 * ratio},
+        { duration: '1h', target: 1 * ratio},
     ],
 };

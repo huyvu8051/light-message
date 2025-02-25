@@ -9,17 +9,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfig {
     public static final String SOCKET_BROADCAST_QUEUE = "socket-broadcast-queue";
-
-    public static final String MAIL_QUEUE = "mail-queue";
-
     public static final String NOTIFICATION_EXCHANGE = "notification-exchange";
     public static final String NOTIFICATION_SOCKET_ROUTING_KEY = "notification.socket";
 
-
-    @Bean
-    public Queue emailQueue() {
-        return new Queue(MAIL_QUEUE, true);  // Durable Queue for email notifications
-    }
 
     // Define socket queue
     @Bean
@@ -33,13 +25,6 @@ public class RabbitConfig {
         return new TopicExchange(NOTIFICATION_EXCHANGE);
     }
 
-    // Bind emailQueue to the exchange with the routing key "notification.email"
-    @Bean
-    public Binding emailBinding(Queue emailQueue, TopicExchange notificationExchange) {
-        return BindingBuilder.bind(emailQueue)
-                .to(notificationExchange)
-                .with("notification.email");
-    }
 
     // Bind socketQueue to the exchange with the routing key "notification.socket"
     @Bean
