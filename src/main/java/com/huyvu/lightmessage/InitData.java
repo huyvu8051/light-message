@@ -1,7 +1,6 @@
 package com.huyvu.lightmessage;
 
 import com.github.javafaker.Faker;
-import com.huyvu.lightmessage.entity.MessageKafkaDTO;
 import com.huyvu.lightmessage.jpa.model.Conversation;
 import com.huyvu.lightmessage.jpa.model.Member;
 import com.huyvu.lightmessage.jpa.model.UserProfile;
@@ -9,13 +8,15 @@ import com.huyvu.lightmessage.jpa.repo.ConversationJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.MemberJpaRepo;
 import com.huyvu.lightmessage.jpa.repo.UserProfileJpaRepo;
 import com.huyvu.lightmessage.r2.R2MemberRepo;
-import com.huyvu.lightmessage.service.RealtimeSendingService;
+import com.huyvu.lightmessage.realtime.api.MessageDTO;
+import com.huyvu.lightmessage.realtime.api.RealtimeSendingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.time.OffsetDateTime;
@@ -27,6 +28,7 @@ import java.util.stream.LongStream;
 @Slf4j
 @Configuration
 @ConditionalOnProperty("generate-data")
+@EnableScheduling
 public class InitData implements ApplicationRunner {
     private final UserProfileJpaRepo upRepo;
     private final ConversationJpaRepo convRepo;
@@ -81,7 +83,7 @@ public class InitData implements ApplicationRunner {
     @Scheduled(fixedRateString = "#{1000 / ${fixed-rate}}")
     public void reportCurrentTime() {
         var convId = faker.number().numberBetween(1, 20);
-        var mk = MessageKafkaDTO.builder()
+        var mk = MessageDTO.builder()
                 .id(faker.number().randomNumber())
                 .content(faker.lorem().paragraph())
                 .convId(convId)

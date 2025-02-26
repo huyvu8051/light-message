@@ -12,7 +12,7 @@ public class ReactorNettyConfiguration {
     public NettyReactiveWebServerFactory nettyReactiveWebServerFactory() {
         NettyReactiveWebServerFactory factory = new NettyReactiveWebServerFactory();
         factory.addServerCustomizers(httpServer -> {
-            int numberOfThreads = 6; // Set your desired number of threads here
+            int numberOfThreads = 4; // Set your desired number of threads here
             EventLoopGroup eventLoopGroup = new NioEventLoopGroup(numberOfThreads);
             return httpServer.runOn(eventLoopGroup);
         });

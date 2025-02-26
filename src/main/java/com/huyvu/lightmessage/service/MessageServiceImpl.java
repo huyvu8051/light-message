@@ -5,9 +5,9 @@ import com.huyvu.lightmessage.dto.MessageDTO;
 import com.huyvu.lightmessage.dto.SendMessageRequestDTO;
 import com.huyvu.lightmessage.entity.ConversationEntity;
 import com.huyvu.lightmessage.entity.MessageEntity;
-import com.huyvu.lightmessage.entity.MessageKafkaDTO;
 import com.huyvu.lightmessage.exception.ConversationNotExistException;
 import com.huyvu.lightmessage.jpa.model.Member;
+import com.huyvu.lightmessage.realtime.api.RealtimeSendingService;
 import com.huyvu.lightmessage.repository.MessageRepo;
 import com.huyvu.lightmessage.repository.MessageRepoImpl;
 import com.huyvu.lightmessage.repository.MessageRepoImpl.MessageDto;
@@ -74,7 +74,7 @@ public class MessageServiceImpl implements MessageService {
         msgRepo.updateMemberLastSendAt(entity.convId(), entity.sentAt());
         var msgId = msgRepo.saveMessage(entity);
 
-        rtmService.sendMessageNotification(request.convId(), MessageKafkaDTO.builder()
+        rtmService.sendMessageNotification(request.convId(), com.huyvu.lightmessage.realtime.api.MessageDTO.builder()
                 .id(msgId)
                 .convId(request.convId())
                 .content(request.content())
